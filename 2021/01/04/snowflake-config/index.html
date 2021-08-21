@@ -24,22 +24,22 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yloopdaed.icu","root":"/","images":"/images","scheme":"Mist","version":"8.1.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1}};
   </script>
-<meta name="description" content="前言基于 Hutool 工具包 唯一ID工具-IdUtil 封装的一个雪花算法ID生成工具。 雪花算法雪花算法简单介绍下：  Twitter公司开源的一种生成分布式id的算法。大致满足：1 生产性能高，每秒生成26万个趋势自增的ID2 稳定性高，不依赖其他第三方系统，分布式系统中不会产生ID碰撞3 使用灵活，ID中包含时间戳、工作主机、数据中心等数据，可以自由配置 缺点：1 依赖机器时钟，如果机器">
+<meta name="description" content="前言基于 Hutool 工具包 唯一ID工具-IdUtil 封装的一个雪花算法ID生成工具。 雪花算法雪花算法简单介绍下：  1 第一位，符号位，永远不用。永远为0，为了兼容长整型格式2 41bit时间戳，时间范围69.73年不重复，毫秒时间3 10bit工作机器id，用来记录工作机器的id。5位datacenterId和5位workId。也就是最多部署1024个机器(2^10)4 12bit序列">
 <meta property="og:type" content="article">
 <meta property="og:title" content="snowflake 雪花算法封装">
 <meta property="og:url" content="http://yloopdaed.icu/2021/01/04/snowflake-config/index.html">
 <meta property="og:site_name" content="yloopdaed">
-<meta property="og:description" content="前言基于 Hutool 工具包 唯一ID工具-IdUtil 封装的一个雪花算法ID生成工具。 雪花算法雪花算法简单介绍下：  Twitter公司开源的一种生成分布式id的算法。大致满足：1 生产性能高，每秒生成26万个趋势自增的ID2 稳定性高，不依赖其他第三方系统，分布式系统中不会产生ID碰撞3 使用灵活，ID中包含时间戳、工作主机、数据中心等数据，可以自由配置 缺点：1 依赖机器时钟，如果机器">
+<meta property="og:description" content="前言基于 Hutool 工具包 唯一ID工具-IdUtil 封装的一个雪花算法ID生成工具。 雪花算法雪花算法简单介绍下：  1 第一位，符号位，永远不用。永远为0，为了兼容长整型格式2 41bit时间戳，时间范围69.73年不重复，毫秒时间3 10bit工作机器id，用来记录工作机器的id。5位datacenterId和5位workId。也就是最多部署1024个机器(2^10)4 12bit序列">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/Image.png">
+<meta property="og:image" content="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/snowflake.png">
 <meta property="article:published_time" content="2021-01-04T02:11:21.000Z">
-<meta property="article:modified_time" content="2021-01-04T02:58:05.586Z">
+<meta property="article:modified_time" content="2021-08-21T14:38:21.000Z">
 <meta property="article:author" content="yloopdaed">
 <meta property="article:tag" content="snowflake">
 <meta property="article:tag" content="雪花算法">
 <meta property="article:tag" content="hutool">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/Image.png">
+<meta name="twitter:image" content="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/snowflake.png">
 
 
 <link rel="canonical" href="http://yloopdaed.icu/2021/01/04/snowflake-config/">
@@ -318,10 +318,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-01-04 10:11:21 / 修改时间：10:58:05" itemprop="dateCreated datePublished" datetime="2021-01-04T10:11:21+08:00">2021-01-04</time>
+      <time title="创建时间：2021-01-04 10:11:21" itemprop="dateCreated datePublished" datetime="2021-01-04T10:11:21+08:00">2021-01-04</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-08-21 22:38:21" itemprop="dateModified" datetime="2021-08-21T22:38:21+08:00">2021-08-21</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -344,10 +350,18 @@
     <div class="post-body" itemprop="articleBody">
         <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>基于 <a target="_blank" rel="noopener" href="https://www.hutool.cn/">Hutool</a> 工具包 <code>唯一ID工具-IdUtil</code> 封装的一个雪花算法ID生成工具。</p>
 <h4 id="雪花算法"><a href="#雪花算法" class="headerlink" title="雪花算法"></a>雪花算法</h4><p>雪花算法简单介绍下：</p>
-<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/Image.png"></p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/snowflake.png"></p>
+<p>1 第一位，符号位，永远不用。永远为0，为了兼容长整型格式<br>2 41bit时间戳，时间范围69.73年不重复，毫秒时间<br>3 10bit工作机器id，用来记录工作机器的id。5位datacenterId和5位workId。也就是最多部署1024个机器(2^10)<br>4 12bit序列号，用来记录同一毫秒内产生的不同的Id，也就是一台机器一毫秒可以产生4095个(2^12)</p>
 <p>Twitter公司开源的一种生成分布式id的算法。<br>大致满足：<br>1 生产性能高，每秒生成26万个趋势自增的ID<br>2 稳定性高，不依赖其他第三方系统，分布式系统中不会产生ID碰撞<br>3 使用灵活，ID中包含时间戳、工作主机、数据中心等数据，可以自由配置</p>
 <p>缺点：<br>1 依赖机器时钟，如果机器时钟回拨，会产生重复ID<br>2 单机上递增，分布式环境每台机器时钟不可能完全同步，有时候会出现不是全局递增的情况<br>（分布式Id一般只要求趋势递增，所以这个缺点可以忽略）</p>
-<p>其他分布式ID算法：<br>1 百度 UidGenerator<br>2 美团 Leaf<br><strong>上面这两种算法没有时钟回拨问题，有兴趣可以自行了解</strong></p>
+<p>其他分布式ID算法：<br>1 百度 UidGenerator</p>
+<blockquote>
+<p>解决方式：<br>内部维护了一个AtomicLong来模拟时间戳，cas自增。但是与真正的时间稍有区别（最彻底解决时钟回拨问题）</p>
+</blockquote>
+<p>2 美团 Leaf </p>
+<blockquote>
+<p>解决方式：校验每次周期性上传的本机时间必须大于以前上传的时间<br>如果失败，并没有任何动作（只是简单的return）<br>如果成功，直接上报。并不会得到leaf_temporary下所有节点，然后得到各个正在服务的机器时间并做平均值校验</p>
+</blockquote>
 <a id="more"></a>
 
 <h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>1 建议引入:</p>
