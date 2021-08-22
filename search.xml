@@ -167,7 +167,7 @@
     
     
     <entry>
-      <title>redis 工作模型</title>
+      <title>缓存 redis工作模型</title>
       <link href="2021/06/04/redis-work-mode/"/>
       <url>2021/06/04/redis-work-mode/</url>
       
@@ -477,7 +477,7 @@
     
     
     <entry>
-      <title>缓存架构概念篇</title>
+      <title>进程间缓存架构概念篇</title>
       <link href="2021/04/10/cache-structure/"/>
       <url>2021/04/10/cache-structure/</url>
       
