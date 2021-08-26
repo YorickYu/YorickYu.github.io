@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>HttpClient vs. OkHttp</title>
+      <link href="2021/08/27/http-ok-client/"/>
+      <url>2021/08/27/http-ok-client/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/httpclient.jpg"></p><p><a href="https://stackoverflow.com/questions/42392778/okhttp-or-httpclient-which-offers-better-functionality-and-more-efficiency">stackoverflow</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>feignClient异步调用时header传递问题</title>
       <link href="2021/08/26/feign-client-async/"/>
       <url>2021/08/26/feign-client-async/</url>

@@ -201,7 +201,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-count">86</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -346,6 +346,73 @@
 <ul>
 <li>😄 <a target="_blank" rel="noopener" href="https://github.com/YorickYu/YYTODOLIST">YYTODOLIST</a></li>
 </ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/08/27/http-ok-client/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/27/http-ok-client/" class="post-title-link" itemprop="url">HttpClient vs. OkHttp</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-27 00:53:02 / 修改时间：00:54:41" itemprop="dateCreated datePublished" datetime="2021-08-27T00:53:02+08:00">2021-08-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/httpclient.jpg"></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/42392778/okhttp-or-httpclient-which-offers-better-functionality-and-more-efficiency">stackoverflow</a></p>
 
       
     </div>
@@ -984,82 +1051,6 @@
 <p><strong>定时任务，不断更新前几页的缓存（热）数据。可以搭配JetCache + SQL直接实现多级缓存</strong></p>
 <p>二、缓存整个列表的id（和关键信息），然后根据id获取对象<br>适用场景：<br>1 列表长度有限，且分页情况多变<br>2 对象数据或排序权重频繁更新</p>
 <p><strong>不同的缓存方案需要在性能和数据一致性之间寻找一个平衡点</strong></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/06/28/hash-detection/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="yloopdaed">
-      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yloopdaed">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/06/28/hash-detection/" class="post-title-link" itemprop="url">探测 - 单数组解决hash冲突问题</a>
-        </h2>
-
-        <div class="post-meta-container">
-          
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-06-28 22:14:49 / 修改时间：22:28:50" itemprop="dateCreated datePublished" datetime="2021-06-28T22:14:49+08:00">2021-06-28</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><strong>解决Hash冲突</strong></p>
-<p>Java中常见的HashMap使用 <strong><em>数组+链表/红黑树</em></strong> 的方式解决Hash冲突问题。</p>
-<p><strong>为什么依赖数组？</strong></p>
-<p><strong><em>无序数组</em></strong><br>操作                           时间复杂度<br>查询                           O(1)<br>插入(空间充足)                    O(1)<br>插入(空间不足)                    O(n)+O(1)=O(n)<br>删除(末尾元素)                    O(1)<br>删除(非末尾元素且元素个数&gt;1)     O(1)+O(n)=O(n)</p>
-<p>可见数组在查询、插入和删除时表现出的性能都非常优秀。存储数据时只需要将要存储的值的Hash值根据数组长度算出下标插入即可。</p>
-<p>但是数组的长度不可能无限扩容，在有限的数组中存储数据必定要解决Hash冲突的问题。所以才引入了 <strong><em>数组+链表/红黑树</em></strong> 的数据结构。</p>
-<p><strong>单数组解决Hash冲突</strong></p>
-<p><strong><em>探测</em></strong><br>1 相邻空位 - 线性探测<br>2 间隔1、4、9、16的空位 - 平方探测</p>
-<blockquote>
-<p>Java应用案例： ThreadLocal<br><a href="https://yloopdaed.icu/2020/12/10/threadlocal">尝试阅读ThreadLocal源码-基础部分</a><br><a href="https://yloopdaed.icu/2020/12/13/threadlocal2">尝试阅读ThreadLocal源码-Hash冲突、启动/探测式清理、扩容</a></p>
-</blockquote>
 
       
     </div>
