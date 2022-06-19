@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yloopdaed.icu","root":"/","scheme":"Pisces","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+
+  <meta name="description" content="可能是个非典型程序员吧 ^ ^">
+<meta property="og:type" content="website">
+<meta property="og:title" content="yloopdaed">
+<meta property="og:url" content="http://yloopdaed.icu/page/9/index.html">
+<meta property="og:site_name" content="yloopdaed">
+<meta property="og:description" content="可能是个非典型程序员吧 ^ ^">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="yloopdaed">
+<meta property="article:tag" content="iOS JAVA">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://yloopdaed.icu/page/9/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>yloopdaed</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">yloopdaed</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">YYYYYY iOS to Java. DON'T BE WILD</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="yloopdaed"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">yloopdaed</p>
+  <div class="site-description" itemprop="description">可能是个非典型程序员吧 ^ ^</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">112</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">132</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/YorickYu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;YorickYu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yykeepbreak@gmail.com" title="E-Mail → mailto:yykeepbreak@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/9901b7042663" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;9901b7042663" rel="noopener" target="_blank">简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/14337507/yloopdaed" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;14337507&#x2F;yloopdaed" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/YorickYu/YYTODOLIST" title="https:&#x2F;&#x2F;github.com&#x2F;YorickYu&#x2F;YYTODOLIST" rel="noopener" target="_blank">TODOLIST</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/YorickYu/IHAVEAQUESTION" title="https:&#x2F;&#x2F;github.com&#x2F;YorickYu&#x2F;IHAVEAQUESTION" rel="noopener" target="_blank">IHAVEAQUESTION</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://azh.ink/" title="http:&#x2F;&#x2F;azh.ink" rel="noopener" target="_blank">azh</a>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner index posts-expand">
+      
+
+      
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2020/12/24/sw-findsubwords/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/24/sw-findsubwords/" class="post-title-link" itemprop="url">LeeCode 30 串联所有单词的子串</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-12-24 11:39:09" itemprop="dateCreated datePublished" datetime="2020-12-24T11:39:09+08:00">2020-12-24</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h5 id="LeeCode-30-串联所有单词的子串"><a href="#LeeCode-30-串联所有单词的子串" class="headerlink" title="LeeCode 30 串联所有单词的子串"></a>LeeCode 30 串联所有单词的子串</h5><h5 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h5><p>给定一个字符串 s 和一些长度相同的单词 words。找出 s 中恰好可以由 words 中所有单词串联形成的子串的起始位置。</p>
+<p>注意子串要与 words 中的单词完全匹配，中间不能有其他字符，但不需要考虑 words 中单词串联的顺序。</p>
+<p> <br>示例 1：</p>
+<p>输入：<br>  s = “barfoothefoobarman”,<br>  words = [“foo”,”bar”]<br>输出：[0,9]<br>解释：<br>从索引 0 和 9 开始的子串分别是 “barfoo” 和 “foobar” 。<br>输出的顺序不重要, [9,0] 也是有效答案。</p>
+<p>示例 2：</p>
+<p>输入：<br>  s = “wordgoodgoodgoodbestword”,<br>  words = [“word”,”good”,”best”,”word”]<br>输出：[]</p>
+<h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p>1 words数组是无序的，所以考虑使用 <code>HashMap</code> 存储，key为word元素，value为出现的次数<br>2 循环次数，因为数组元素是等长的，最开始考虑每次递增 <code>words[0].length()</code> 长度，但是测试用例中有一些需要案例无法通过。所以改为 <code>+=1</code>。这里是主要损耗性能的来源，应该可以想办法优化。<br>3 比对方法，每次取出一个目标子串，然后将子串按单词的长度切分遍历，分别到 <code>HashMap</code> 中查找是否存在。如果存在相应的key，则把对应的value减1。如果key本身的value就是1，那么直接把这个key删除。<br>4 最终判断 <code>HashMap</code> 的 <code>size</code> 是否为 0 即可</p>
+<h5 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">findSubstring</span><span class="params">(String s, String[] words)</span> </span>&#123;</span><br><span class="line">    ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(); <span class="comment">// return list</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (s == <span class="keyword">null</span> || s.length() == <span class="number">0</span> || words == <span class="keyword">null</span> || words.length == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    HashMap&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> l = words[<span class="number">0</span>].length(); <span class="comment">// word 等长</span></span><br><span class="line">    <span class="keyword">int</span> pin = l * words.length;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (s.length() &lt; pin)</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> loop = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        String window = s.substring(loop, pin+loop);</span><br><span class="line">        map.clear();</span><br><span class="line">        <span class="keyword">for</span> (String w:words) &#123; <span class="comment">// words map</span></span><br><span class="line">            map.put(w, map.getOrDefault(w, <span class="number">0</span>)+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; window.length(); i += l) &#123;</span><br><span class="line"></span><br><span class="line">            String fakeWord = window.substring(i, i + l);</span><br><span class="line">            Integer count = map.getOrDefault(fakeWord, <span class="number">0</span>);</span><br><span class="line">            <span class="keyword">if</span> (count &gt; <span class="number">1</span>) &#123;</span><br><span class="line">                map.put(fakeWord, --count);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (count == <span class="number">1</span>) &#123;</span><br><span class="line">                map.remove(fakeWord);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (map.size() == <span class="number">0</span>)</span><br><span class="line">            list.add(loop);</span><br><span class="line">        loop += <span class="number">1</span>;</span><br><span class="line">    &#125;<span class="keyword">while</span> (loop &lt; s.length() - pin + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>176 / 176 个通过测试用例<br>执行用时: 291 ms<br>内存消耗: 39.2 MB</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2020/12/23/sw-findsubstring/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/23/sw-findsubstring/" class="post-title-link" itemprop="url">抖音面试题：是否存在无序子串</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-12-23 15:51:56" itemprop="dateCreated datePublished" datetime="2020-12-23T15:51:56+08:00">2020-12-23</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>题目：<br>存在一个较长的字符串a，检查a中是否包含一个较短字符串b的所有连续字符。顺序无所谓。<br>如果包含，返回字符串a中的起始下标。如果不包含返回-1。</p>
+<p>eg：<br>输入：s1 = “abcsadefgzxcvb”   s2 = “cas”<br>输出: 2<br>解释: s1字符串中存在子串 “csa”</p>
+<p>思路：滑动窗口<br>1 先记录b字符串字符出现次数，在count数组中<br>2 在长字符串中建立并保持一个窗口（长度与b字符串长度相等）<br>3 每当元素进入窗口时，查看count数组中有没有该元素，如果有，数量减1，如果没有，数量减1的同时，记录一个标志位。因为此时已经不满足题目的需求；元素移出窗口时，count数组中该元素的数量加1。如果数量本身小于0，那么标志位加1。<br>4 滑动过程中，如果出现标志位为0。即说明出现了满足条件的子串。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(String s, String a)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (s==<span class="keyword">null</span> || a==<span class="keyword">null</span> || s.length()&lt;a.length()) &#123;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">char</span>[] aim = a.toCharArray();</span><br><span class="line">    <span class="keyword">int</span>[] count = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">256</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; aim.length; i++) &#123; <span class="comment">// 记录 sub 字符串中的字符个数</span></span><br><span class="line">        count[aim[i]]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> M = aim.length;</span><br><span class="line">    <span class="keyword">char</span>[] str = s.toCharArray();</span><br><span class="line">    <span class="keyword">int</span> inValidTimes = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> R = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (; R &lt; M; R++) &#123; <span class="comment">// 建立窗口</span></span><br><span class="line">        <span class="keyword">if</span> (count[str[R]]-- &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            inValidTimes++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (; R &lt; str.length; R++) &#123; <span class="comment">// 滑动</span></span><br><span class="line">        <span class="keyword">if</span> (inValidTimes == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> R - M;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (count[str[R]]-- &lt;= <span class="number">0</span>) &#123; <span class="comment">// 窗口扩容</span></span><br><span class="line">            inValidTimes++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (count[str[R-M]]++ &lt; <span class="number">0</span>) &#123; <span class="comment">// 窗口收缩</span></span><br><span class="line">            inValidTimes--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> inValidTimes == <span class="number">0</span> ? R - M : -<span class="number">1</span>; <span class="comment">// 判断最后一个窗口</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2020/12/21/dynamic-programming/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/21/dynamic-programming/" class="post-title-link" itemprop="url">dynamic programming 动态规划</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-12-21 17:44:51" itemprop="dateCreated datePublished" datetime="2020-12-21T17:44:51+08:00">2020-12-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>输出中.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2020/12/13/threadlocal2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/13/threadlocal2/" class="post-title-link" itemprop="url">尝试阅读ThreadLocal源码-Hash冲突、启动/探测式清理、扩容</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-12-13 22:20:41" itemprop="dateCreated datePublished" datetime="2020-12-13T22:20:41+08:00">2020-12-13</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="Hash冲突"><a href="#Hash冲突" class="headerlink" title="Hash冲突"></a>Hash冲突</h4><p>因为ThreadLocalMap中的数据其实是存在Entry[]数组中的，一个纯数组的结构能存储值的数量是非常有限的，几遍在Hash算法中使用了黄金分割，但是不可避免的还是会产生Hash冲突。<br>当插入Entry[]数组时发生Hash冲突时，会进入for循环</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (Entry e = tab[i]; </span><br><span class="line">    e != <span class="keyword">null</span>;</span><br><span class="line">    e = tab[i = nextIndex(i, len)]) &#123;  <span class="comment">// Hash冲突</span></span><br><span class="line">    ThreadLocal&lt;?&gt; k = e.get();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (k == key) &#123;</span><br><span class="line">        e.value = value;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (k == <span class="keyword">null</span>) &#123;</span><br><span class="line">        replaceStaleEntry(key, value, i);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">nextIndex</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ((i + <span class="number">1</span> &lt; len) ? i + <span class="number">1</span> : <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>假如当前ThreadLocal计算出的下标是5，tab[5]对应的Entry不为null，则说明产生了Hash冲突。<br>进入for循环：<br>1 判断这个Entry的key是否等于传入的ThreadLocal，如果相等，替换并返回<br>2 判断这个Entry的key是否为null（说明key已经过期），开始探测式清理<br>3 循环过程中，数组下标通过 <code>nextIndex(i, len)]</code> 累加，如果发现新下标对应数组位置为空，那么会插入在新的位置</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/12/13/threadlocal2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2020/12/12/java-boxing-unboxing/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/12/java-boxing-unboxing/" class="post-title-link" itemprop="url">自动装箱和拆箱的发生场景</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-12-12 01:02:01" itemprop="dateCreated datePublished" datetime="2020-12-12T01:02:01+08:00">2020-12-12</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="自动装箱拆箱的常见使用场景"><a href="#自动装箱拆箱的常见使用场景" class="headerlink" title="自动装箱拆箱的常见使用场景"></a>自动装箱拆箱的常见使用场景</h3><ul>
+<li>自动装箱: 就是将基本数据类型自动转换成对应的包装类。</li>
+<li>自动拆箱：就是将包装类自动转换成对应的基本数据类型。</li>
+</ul>
+<h4 id="反编译"><a href="#反编译" class="headerlink" title="反编译"></a>反编译</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer a &#x3D; 10;  &#x2F;&#x2F;自动装箱</span><br><span class="line">int b &#x3D; a;      &#x2F;&#x2F;自动拆箱</span><br></pre></td></tr></table></figure>
+<p>我在JDK1.8环境下，反编译结果与原代码没有差别</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer a &#x3D; 10;</span><br><span class="line">int b &#x3D; a;</span><br></pre></td></tr></table></figure>
+<p>阿里手册中提到反编译的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer a&#x3D;Integer.valueOf(10); </span><br><span class="line">int i&#x3D;a.intValue(); </span><br></pre></td></tr></table></figure>
+<p>说明自动装箱底层实际是 <code>Integer.valueOf()</code> ，自动拆箱底层实际是 <code>a.intVakue()</code></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/12/12/java-boxing-unboxing/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2020/12/11/Ryan-Dahl/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/11/Ryan-Dahl/" class="post-title-link" itemprop="url">CODING EVERYDAY</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-12-11 22:07:03" itemprop="dateCreated datePublished" datetime="2020-12-11T22:07:03+08:00">2020-12-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/ryan%20dahl.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2020/12/10/threadlocal/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/10/threadlocal/" class="post-title-link" itemprop="url">尝试阅读ThreadLocal源码-基础部分</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-12-10 22:41:05" itemprop="dateCreated datePublished" datetime="2020-12-10T22:41:05+08:00">2020-12-10</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>更新于：2020-12-14 22:25 内容补充</p>
+</blockquote>
+<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>起初了解 <code>ThreadLocal</code> 这个类还是从阿里手册的一篇文章过来的。他的源码中通篇没有一个<code>lock</code>、也没有出现 <code> synchronized</code> 关键字。但是他却利用一些巧妙的方法保证了并发下数据的安全。</p>
+<p>带着下面这几个问题尝试着从 <code>ThreadLocal</code> 的源码中找找答案？</p>
+<p>1 ThreadLocal 和 Thread 有什么联系？<br>2 ThreadLocal 底层的数据结构是什么？<br>3 ThreadLocal 存储数据有没有大小限制？<br>4 什么情况下 ThreadLocal 会发生内存泄漏？<br>5 已知 Entry 继承于 WeakReference，那么GC内存回收时会不会导致存储的内容丢失？<br>6 Entry[] 数组发生Hash冲突如何解决？<br>7 如何清理陈旧的Entry对象？何时清理？<br>8 ThreadLocalMap中数组扩容机制？几个步骤？阈值到底是多少？</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/12/10/threadlocal/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2020/12/09/how-to-checkout-running-port/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/09/how-to-checkout-running-port/" class="post-title-link" itemprop="url">我的tomcat为什么启不起来？</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-12-09 23:39:40" itemprop="dateCreated datePublished" datetime="2020-12-09T23:39:40+08:00">2020-12-09</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/centos/" itemprop="url" rel="index"><span itemprop="name">centos</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>在测试服务器的使用过程，由于大家的使用没有非常规范，所以经常会出现服务启动不起来的问题。这类问题的产生经常是因为你配置的服务端口号被其他程序占用了。</p>
+<p>那么如何定位一台服务器中端口的使用情况呢？这里推荐两个非常好用的命令</p>
+<h4 id="查看正在使用的端口"><a href="#查看正在使用的端口" class="headerlink" title="查看正在使用的端口"></a>查看正在使用的端口</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -tnlp   </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>-t : 指明显示TCP端口<br>-u : 指明显示UDP端口<br>-l : 显示监听套接字<br>-p : 显示进程标识符和程序名称，每一个套接字都属于一个程序<br>-n : 不进行DNS轮询，显示IP(可以加速操作)<br>-a : 显示全部（包括ESTABLISHED）</p>
+</blockquote>
+<p>套接字就是socket，表示一对IP/PORT的组合。每个套接字对应一个PID，相当于给一个应用程序赋予了收发通讯协议的能力<br>网关，用于匹配目标IP于掩码的与运算结果，网络层完成，寻找下一跳<br>这里关于套接字和网关的信息不展开，等我完全理解以后可能会整理一篇博客</p>
+<p>这里 <code>-u</code> 不是很常用。</p>
+<p>查询结果以我自己的一台服务器为例：</p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/netstat.jpg"></p>
+<blockquote>
+<p>上图中本地地址和远端地址的组合对应一个PID，其中本地地址和远端地址的组合就是一个socket。多个socket指向同一个PID，就是多路复用。</p>
+</blockquote>
+<p>上图中本地地址 <code>Local Address</code> 一栏中显示出了目前所有正在监听的端口号。</p>
+<p>以tomcat为例，从最右侧 <code>Program name</code> 为 java 的就是 tomcat。因为它是由 java 开发的一款 servlet 容器。</p>
+<p>通常可以通过 <code>jps</code> 命令查看tomcat的PID。名称为 Bootstrap 。</p>
+<blockquote>
+<p>为什么 tomcat 启动叫 Bootstrap？给大家留个问题，答案在/bin/startup.sh 和 /bin/catalina.sh 中</p>
+</blockquote>
+<p>从上面的图可以看出，我这台机器的tomcat占用了两个端口：8005和8080，前者是用来监听SHUTDOWN指令的。</p>
+<h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4><p>这篇博客没有太多内容，就是分享一个好用的命令行工具，便于大家查看服务器中已经占用的端口号。这样在配置新服务的过程中可以避免因为端口被占用而浪费时间。</p>
+<p>文章中途有一些发散的知识和问题，都是跟网络编程相关的。等我学习完成后再输出。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2020/12/07/whatis-happensbefore/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/07/whatis-happensbefore/" class="post-title-link" itemprop="url">说说我对happens-before原则和as-if-serial语义的理解</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-12-07 21:06:21" itemprop="dateCreated datePublished" datetime="2020-12-07T21:06:21+08:00">2020-12-07</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>对于 happens-before原则 和 as-if-serial语义 到底是什么意思？为什么会出现？解决什么问题？简短的说下我自己的理解</p>
+<h4 id="as-if-serial语义"><a href="#as-if-serial语义" class="headerlink" title="as-if-serial语义"></a>as-if-serial语义</h4><p>如果单一线程中操作之间不存在数据依赖关系，这些操作就可能被编译器和处理器重排序</p>
+<p>这个重排序的过程并不会影响程序运行的结果，对程序员来说是无感的。所以叫做 as-if-serial “看上去像是连续的”</p>
+<blockquote>
+<p>证明重排序的存在：<a href="https://yloopdaed.icu/2020/10/19/CPU-Out-of-Order/">CPU 乱序执行反证</a></p>
+</blockquote>
+<h4 id="happens-before原则"><a href="#happens-before原则" class="headerlink" title="happens-before原则"></a>happens-before原则</h4><p>JMM中定义的 跨线程内存可见性的规则：对于两个操作A和B，这两个操作可以在不同的线程中执行。如果 A happens-before B，那么可以保证，当A操作执行完后，A操作的执行结果对B操作是可见的</p>
+<blockquote>
+<p>JMM：Java内存模型(Java Memory Model)<br>屏蔽掉不同硬件和操作系统的内存模型差异，以实现让Java程序在各种平台下都能达到一致的内存访问结果。所以对于Java程序员，无需了解底层硬件和操作系统内存模型的知识，只要关注Java自己的内存模型，就能够解决Java语言中的内存可见性问题了</p>
+</blockquote>
+<h4 id="为什么会出现？"><a href="#为什么会出现？" class="headerlink" title="为什么会出现？"></a>为什么会出现？</h4><p>因为 CPU缓存和重排序 可能会在多线程并发时导致程序执行结果与程序员代码的执行语义不符</p>
+<p><strong>所以JMM定义了一套规则，CPU重排序时需要遵守这些规则</strong></p>
+<p><strong>这些规则可以指导程序员写出正确的代码，让程序正确执行</strong></p>
+<h4 id="具体规则"><a href="#具体规则" class="headerlink" title="具体规则"></a>具体规则</h4><p>共有8项：<br>1 程序顺序规则：一个线程中的每个操作，happens-before于该线程中的任意后续操作。<br>2 监视器锁规则：对一个锁的解锁，happens-before于随后对这个锁的加锁。<br>3 volatile变量规则：对一个volatile域的写，happens-before于任意后续对这个volatile域的读。<br>4 传递性：如果A happens-before B，且B happens-before C，那么A happens-before C。<br>5 start()规则：如果线程A执行操作ThreadB.start()（启动线程B），那么A线程的ThreadB.start()操作happens-before于线程B中的任意操作。<br>6 join()规则：如果线程A执行操作ThreadB.join()并成功返回，那么线程B中的任意操作happens-before于线程A从ThreadB.join()操作成功返回。<br>7 程序中断规则：对线程interrupted()方法的调用先行于被中断线程的代码检测到中断时间的发生。<br>8 对象finalize规则：一个对象的初始化完成（构造函数执行结束）先行于发生它的finalize()方法的开始。</p>
+<h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4><p>可以理解为：<br>1 as-if-serial，单线程程序是按程序的顺序来执行的（可能发生指令重排序，但是程序员无感知）<br>2 happens-before，**<em>正确同步**</em>的多线程程序是按执行顺序执行的（正确同步的操作需要程序员完成）<br>3 as-if-serial语义和happens-before原则，都是为了在不改变程序执行结果的前提下，尽可能地提高程序的执行效率</p>
+<p>参考：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/ThinkWon/article/details/102074107?utm_medium=distribute.pc_relevant_download.none-task-blog-searchFromBaidu-1.nonecase&depth_1-utm_source=distribute.pc_relevant_download.none-task-blog-searchFromBaidu-1.nonecas">as-if-serial规则和happens-before规则的区别</a><br><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000011458941">从Java多线程可见性谈Happens-Before原则</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2020/11/30/interrupt/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/30/interrupt/" class="post-title-link" itemprop="url">thread.interrupt() 线程中断</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-11-30 23:55:41" itemprop="dateCreated datePublished" datetime="2020-11-30T23:55:41+08:00">2020-11-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>首先，一个线程不应该由其他线程来强制中断或停止，而是应该由线程自己自行停止。<br>所以，Thread.stop, Thread.suspend, Thread.resume 都已经被废弃了。而 Thread.interrupt 的作用其实也不是中断线程，而是「通知线程应该中断了」，具体到底中断还是继续运行，应该由被通知的线程自己处理。</p>
+<p>具体来说，当对一个线程，调用 interrupt() 时，<br>① 如果线程处于被阻塞状态（例如处于sleep, wait, join 等状态），那么线程将立即退出被阻塞状态，并抛出一个InterruptedException异常。仅此而已。<br>② 如果线程处于正常活动状态，那么会将该线程的中断标志设置为 true，仅此而已。被设置中断标志的线程将继续正常运行，不受影响。</p>
+<p>interrupt() 并不能真正的中断线程，需要被调用的线程自己进行配合才行。也就是说，一个线程如果有被中断的需求，那么就可以这样做。<br>① 在正常运行任务时，经常检查本线程的中断标志位，如果被设置了中断标志就自行停止线程。<br>② 在调用阻塞方法时正确处理InterruptedException异常。（例如，catch异常后就结束线程。）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Thread thread = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">    <span class="keyword">while</span> (!Thread.interrupted()) &#123;</span><br><span class="line">        <span class="comment">// do more work.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">thread.start();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 一段时间以后</span></span><br><span class="line">thread.interrupt();</span><br></pre></td></tr></table></figure>
+
+<p>具体到你的问题，Thread.interrupted()清除标志位是为了下次继续检测标志位。<br>如果一个线程被设置中断标志后，选择结束线程那么自然不存在下次的问题<br>如果一个线程被设置中断标识后，进行了一些处理后选择继续进行任务<br>而且这个任务也是需要被中断的，那么当然需要清除标志位了。</p>
+<p>以上内容摘自：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/41048032/answer/89431513">Intopass在知乎的回答</a></p>
+<h4 id="thread-interrupt-thread-isInterrupted-Thread-interrupted-三者区别"><a href="#thread-interrupt-thread-isInterrupted-Thread-interrupted-三者区别" class="headerlink" title="thread.interrupt()\thread.isInterrupted()\Thread.interrupted() 三者区别"></a>thread.interrupt()\thread.isInterrupted()\Thread.interrupted() 三者区别</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Thread thread = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123; <span class="comment">// while 循环</span></span><br><span class="line">            <span class="keyword">if</span> (Thread.interrupted()) &#123; <span class="comment">// false -&gt; true</span></span><br><span class="line">                System.err.println(<span class="string">&quot;线程中断&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">System.out.println(thread.isInterrupted()); <span class="comment">// false</span></span><br><span class="line">thread.start();</span><br><span class="line">Thread.sleep(<span class="number">100</span>);</span><br><span class="line">thread.interrupt(); <span class="comment">// 中断 thread</span></span><br><span class="line">Thread.sleep(<span class="number">100</span>);</span><br><span class="line">System.out.println(thread.isInterrupted()); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yloopdaed</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yloopdaed.icu","root":"/","scheme":"Pisces","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+
+  <meta name="description" content="Class Loader 和 双亲委派机制寻找类加载器： AppClassLoader -&gt; ExtClassLoader -&gt; BootstrapClassLoader(c++中)一直找到最上层的加载器后，检查能否加载当前这个类，如果可以则使用当前加载器。否则，抛出异常向下通知子加载器加载。如果没有加载器可以加载这个类，报异常 ClassNotFoundException  注意：向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM 类加载器 &amp; 运行时区域">
+<meta property="og:url" content="http://yloopdaed.icu/2021/02/09/java/index.html">
+<meta property="og:site_name" content="yloopdaed">
+<meta property="og:description" content="Class Loader 和 双亲委派机制寻找类加载器： AppClassLoader -&gt; ExtClassLoader -&gt; BootstrapClassLoader(c++中)一直找到最上层的加载器后，检查能否加载当前这个类，如果可以则使用当前加载器。否则，抛出异常向下通知子加载器加载。如果没有加载器可以加载这个类，报异常 ClassNotFoundException  注意：向">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/jvm.jpg">
+<meta property="og:image" content="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/1.6_intern.png">
+<meta property="og:image" content="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/1.7_intern.png">
+<meta property="article:published_time" content="2021-02-09T09:17:55.000Z">
+<meta property="article:modified_time" content="2022-06-19T16:42:53.913Z">
+<meta property="article:author" content="yloopdaed">
+<meta property="article:tag" content="JVM">
+<meta property="article:tag" content="Runtime Data Area">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/jvm.jpg">
+
+
+<link rel="canonical" href="http://yloopdaed.icu/2021/02/09/java/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>JVM 类加载器 & 运行时区域 | yloopdaed</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">yloopdaed</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">YYYYYY iOS to Java. DON'T BE WILD</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Class-Loader-%E5%92%8C-%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6"><span class="nav-number">1.</span> <span class="nav-text">Class Loader 和 双亲委派机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%88"><span class="nav-number">2.</span> <span class="nav-text">栈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A0%86"><span class="nav-number">3.</span> <span class="nav-text">堆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A0%86%E5%A4%96%E5%86%85%E5%AD%98-%E7%9B%B4%E6%8E%A5%E5%86%85%E5%AD%98"><span class="nav-number">4.</span> <span class="nav-text">堆外内存&#x2F;直接内存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA-%E5%85%83%E6%95%B0%E6%8D%AE%E5%8C%BA-JDK1-8-metaspace"><span class="nav-number">5.</span> <span class="nav-text">方法区&#x2F;元数据区(JDK1.8 metaspace)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#intern-%E5%B8%B8%E9%87%8F%E6%B1%A0%E5%8F%98%E5%8C%96"><span class="nav-number">5.1.</span> <span class="nav-text">intern 常量池变化</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E6%A0%88"><span class="nav-number">6.</span> <span class="nav-text">本地方法栈</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="yloopdaed"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">yloopdaed</p>
+  <div class="site-description" itemprop="description">可能是个非典型程序员吧 ^ ^</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">112</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">132</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/YorickYu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;YorickYu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yykeepbreak@gmail.com" title="E-Mail → mailto:yykeepbreak@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/9901b7042663" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;9901b7042663" rel="noopener" target="_blank">简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/14337507/yloopdaed" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;14337507&#x2F;yloopdaed" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/YorickYu/YYTODOLIST" title="https:&#x2F;&#x2F;github.com&#x2F;YorickYu&#x2F;YYTODOLIST" rel="noopener" target="_blank">TODOLIST</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/YorickYu/IHAVEAQUESTION" title="https:&#x2F;&#x2F;github.com&#x2F;YorickYu&#x2F;IHAVEAQUESTION" rel="noopener" target="_blank">IHAVEAQUESTION</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://azh.ink/" title="http:&#x2F;&#x2F;azh.ink" rel="noopener" target="_blank">azh</a>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/02/09/java/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JVM 类加载器 & 运行时区域
+        </h1>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-09 17:17:55" itemprop="dateCreated datePublished" datetime="2021-02-09T17:17:55+08:00">2021-02-09</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h4 id="Class-Loader-和-双亲委派机制"><a href="#Class-Loader-和-双亲委派机制" class="headerlink" title="Class Loader 和 双亲委派机制"></a>Class Loader 和 双亲委派机制</h4><p>寻找类加载器：</p>
+<p>AppClassLoader -&gt; ExtClassLoader -&gt; BootstrapClassLoader(c++中)<br>一直找到最上层的加载器后，检查能否加载当前这个类，如果可以则使用当前加载器。否则，抛出异常向下通知子加载器加载。<br>如果没有加载器可以加载这个类，报异常 <code>ClassNotFoundException</code></p>
+<blockquote>
+<p>注意：向上寻找加载器的过程中有一个判断这个类是否已经被加载的过程。如果加载过了就不用重复加载（保证数据安全）</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Student s = <span class="keyword">new</span> Student().getClass().getClassLoader();</span><br><span class="line">s.getClass() <span class="comment">// class com.yy.string.ClassLoaderTest</span></span><br><span class="line">s.getClass().getClassLoader() <span class="comment">// sun.misc.Launcher$AppClassLoader@18b4aac2</span></span><br><span class="line">s.getClass().getClassLoader().getParent() <span class="comment">// sun.misc.Launcher$ExtClassLoader@5ca881b5</span></span><br><span class="line">s.getClass().getClassLoader().getParent().getParent() <span class="comment">// null，在c++中，获取不到</span></span><br></pre></td></tr></table></figure>
+
+<p>双亲委派机制作用：<br>1 防止重复加载同一个class<br>2 保证源码的class文件不被覆盖篡改（例如:定义一个java.lang.String的类，实例化时依然会加载jdk中的String类）</p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/jvm.jpg"></p>
+<a id="more"></a>
+
+<h4 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h4><p>一种数据结构：先进后出<br>主管程序的运行，生命周期和线程同步，主线程结束，栈内存就释放了（不存在垃圾回收问题）<br>存放：基本数据类型（8个）、对象引用、实例的方法</p>
+<p><strong>运行原理：栈帧</strong>。先入栈的方法中有一个子栈帧指向后入栈的方法。后入栈的方法有一个父栈帧指向下面的方法。一个方法执行时，会先找子栈帧指向的方法执行。即栈的最上层的方法。<br>栈溢出：StackOverflowError</p>
+<h4 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h4><p>实例变量存在堆内存中<br>这块区域也是垃圾回收器重点管理的区域，由于大多数垃圾回收器都采用 <strong>分代回收算法</strong>，所以堆内存也分为 <code>新生代</code>、<code>老年代</code>，可以方便垃圾的准确回收</p>
+<p>常用参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-Xms64m 最小堆内存 64m.</span><br><span class="line">-Xmx128m 最大堆内存 128m.</span><br><span class="line">-XX:NewSize&#x3D;30m 新生代初始化大小为30m.</span><br><span class="line">-XX:MaxNewSize&#x3D;40m 新生代最大大小为40m.</span><br><span class="line">-Xss&#x3D;256k 线程栈大小。</span><br><span class="line">-XX:+PrintHeapAtGC 当发生 GC 时打印内存布局。</span><br><span class="line">-XX:+HeapDumpOnOutOfMemoryError 发送内存溢出时 dump 内存。</span><br><span class="line"></span><br><span class="line">新生代和老年代的默认比例为 1:2，也就是说新生代占用 1&#x2F;3的堆内存，而老年代占用 2&#x2F;3 的堆内存。</span><br><span class="line">-XX:NewRatio&#x3D;2 设置老年代&#x2F;新生代的比例。</span><br></pre></td></tr></table></figure>
+
+<h4 id="堆外内存-直接内存"><a href="#堆外内存-直接内存" class="headerlink" title="堆外内存/直接内存"></a>堆外内存/直接内存</h4><p>虚引用、零拷贝<br>堆外内存不受JVM直接管理，只能借助老年代的fullGC或者调用System.gc()方法回收。（没有配置 -XX:+DisableExplicitGC）</p>
+<p><strong>虚引用</strong>：来管理堆外内存，创建一个堆内的虚引用指向堆外内存的数据。虚引用不能单独使用，必须和引用队列联合使用。虚引用的主要作用是跟踪对象被垃圾回收的过程</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> List&lt;Object&gt; LIST = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> ReferenceQueue&lt;M&gt; QUEUE = <span class="keyword">new</span> ReferenceQueue&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    PhantomReference&lt;M&gt; phantomReference = <span class="keyword">new</span> PhantomReference&lt;&gt;(<span class="keyword">new</span> M(), QUEUE);</span><br><span class="line">    phantomReference.get(); <span class="comment">// get不到</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>那堆外内存什么时候回收？<br>堆内的虚引用被回收时会被加入到队列中，当系统检测到这个队列中有记录时，会调用Hotspot级别的回收方法（Cleaner类继承于PhantomReference，会有一个unsafe free方法）</p>
+</blockquote>
+<p><strong>零拷贝</strong>：例如在 Netty 中所有的 IO（nio） 操作都会通过 Native 函数直接分配堆外内存。<br>它是通过在堆内存中的 DirectByteBuffer 对象操作的堆外内存，避免了堆内存和堆外内存来回复制交换复制，这样的高效操作也称为零拷贝。</p>
+<h4 id="方法区-元数据区-JDK1-8-metaspace"><a href="#方法区-元数据区-JDK1-8-metaspace" class="headerlink" title="方法区/元数据区(JDK1.8 metaspace)"></a>方法区/元数据区(JDK1.8 metaspace)</h4><p>存放：静态变量static、常量final、类信息class（构造方法、接口定义）、运行时的常量池存在方法区中。<br>这块区域也被成为永久代（从JDK1.7开始，提出了“去永久代”概念。并在JDK1.8中完全使用元空间来代替永久代）</p>
+<blockquote>
+<p>1.8之前<br>可利用参数 <code>-XX:PermSize</code>,<code>-XX:MaxPermSize</code> 控制初始化方法区和最大方法区大小。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// -XX:PermSize=6M -XX:MaxPermSize=6M</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    HashSet&lt;String&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">    <span class="keyword">long</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">        System.out.println(i);</span><br><span class="line">        set.add(String.valueOf(i++ * <span class="number">1024</span>).intern());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的代码会导致运行时常量池内存溢出: java.lang.OutOfMemoryError: PermGen。</p>
+<blockquote>
+<p>JDK1.8之后<br>元数据区域会根据使用情况动态调整，避免了在 1.7 中由于加载类过多从而出现 java.lang.OutOfMemoryError: PermGen。<br>但也不能无限扩展，因此可以使用 -XX:MaxMetaspaceSize来控制最大内存。</p>
+</blockquote>
+<h5 id="intern-常量池变化"><a href="#intern-常量池变化" class="headerlink" title="intern 常量池变化"></a>intern 常量池变化</h5><p>先说结论：<br>在JDK1.6，常量池在永久代中分配，与堆是物理隔离的。<br>来到JDK1.7以后，常量池在堆中分配。</p>
+<p>这个结论可以通过过 <code>intern()</code> 方法来验证一下：<br>intern方法，会在字符串常量池中检查是否包含，如果包含则把池中的字符串引用返回，如果不包含就把字符串加进常量池中，并返回字符串实例对象的引用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder builder = <span class="keyword">new</span> StringBuilder(<span class="string">&quot;j&quot;</span>).append(<span class="string">&quot;avazs&quot;</span>);</span><br><span class="line">String s1 = builder.toString();</span><br><span class="line">System.out.println(s1 == s1.intern()); <span class="comment">// true，返回的&quot;javazs&quot;是s1对象的引用</span></span><br><span class="line"></span><br><span class="line">String s2 = <span class="keyword">new</span> String(<span class="string">&quot;javazs&quot;</span>);</span><br><span class="line">System.out.println(s2 == s2.intern()); <span class="comment">// false，返回的&quot;javazs&quot;是s1对象的引用</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>上面这个代码示例在JDK1.6和JDK1.7以后的结果不同：JDK1.6中前后两处都输出false，JDK1.7以后第一个输出true，第二个输出false。</strong></p>
+<p>原因分析：</p>
+<p>在JDK1.6中，s1创建的实例要存入常量池中，因为常量池与堆是物理隔离的。所以要进行一个复制操作。<br>最后intern方法返回的引用时常量池中的引用，而s1引用分配在堆中。所以必然是不等的。<br>同理第二次intern方法返回的是常量池中已存在的引用，与s2也必然是不等的。</p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/1.6_intern.png"></p>
+<p>在JDK1.7以后，常量池在堆中分配，所以第一次intern方法只要记录一下s1实例的引用并返回即可。所以第一次会返回true。<br>但是第二次intern方法依然是返回s1的引用。与s2也必然是不等的。</p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/1.7_intern.png"></p>
+<h4 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h4><p>登记native关键字修饰的方法。底层库中方法的调用，借助 <strong>本地库接口（JNI）</strong> </p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JVM/" rel="tag"># JVM</a>
+              <a href="/tags/Runtime-Data-Area/" rel="tag"># Runtime Data Area</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/02/04/jianshu-5years/" rel="prev" title="有感">
+                  <i class="fa fa-chevron-left"></i> 有感
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/02/11/jvm-gc/" rel="next" title="堆 & 垃圾回收机制">
+                  堆 & 垃圾回收机制 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yloopdaed</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

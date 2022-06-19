@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yloopdaed.icu","root":"/","scheme":"Pisces","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+
+  <meta name="description" content="可能是个非典型程序员吧 ^ ^">
+<meta property="og:type" content="website">
+<meta property="og:title" content="yloopdaed">
+<meta property="og:url" content="http://yloopdaed.icu/page/5/index.html">
+<meta property="og:site_name" content="yloopdaed">
+<meta property="og:description" content="可能是个非典型程序员吧 ^ ^">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="yloopdaed">
+<meta property="article:tag" content="iOS JAVA">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://yloopdaed.icu/page/5/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>yloopdaed</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">yloopdaed</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">YYYYYY iOS to Java. DON'T BE WILD</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="yloopdaed"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">yloopdaed</p>
+  <div class="site-description" itemprop="description">可能是个非典型程序员吧 ^ ^</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">112</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">132</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/YorickYu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;YorickYu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yykeepbreak@gmail.com" title="E-Mail → mailto:yykeepbreak@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/9901b7042663" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;9901b7042663" rel="noopener" target="_blank">简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/14337507/yloopdaed" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;14337507&#x2F;yloopdaed" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/YorickYu/YYTODOLIST" title="https:&#x2F;&#x2F;github.com&#x2F;YorickYu&#x2F;YYTODOLIST" rel="noopener" target="_blank">TODOLIST</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/YorickYu/IHAVEAQUESTION" title="https:&#x2F;&#x2F;github.com&#x2F;YorickYu&#x2F;IHAVEAQUESTION" rel="noopener" target="_blank">IHAVEAQUESTION</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://azh.ink/" title="http:&#x2F;&#x2F;azh.ink" rel="noopener" target="_blank">azh</a>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner index posts-expand">
+      
+
+      
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/06/04/fastjson-smart-match/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/04/fastjson-smart-match/" class="post-title-link" itemprop="url">fastjson smart match</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-06-04 20:32:14" itemprop="dateCreated datePublished" datetime="2021-06-04T20:32:14+08:00">2021-06-04</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="下划线转驼峰"><a href="#下划线转驼峰" class="headerlink" title="下划线转驼峰"></a>下划线转驼峰</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Data</span><br><span class="line">static class Demo &#123;</span><br><span class="line">	private String productId;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://github.com/alibaba/fastjson/issues/523">反序列化时属性能否支持下划线格式对驼峰格式的自动转换 #523</a></p>
+<h4 id="before-version-1-2-20"><a href="#before-version-1-2-20" class="headerlink" title="before version 1.2.20"></a>before version 1.2.20</h4><p>1 @JSONField</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@JSONField(name = &quot;product_id&quot;)</span></span><br><span class="line"><span class="keyword">private</span> String productId;</span><br></pre></td></tr></table></figure>
+
+<p>2 PropertyNamingStrategy</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ParserConfig.getGlobalInstance().propertyNamingStrategy = PropertyNamingStrategy.SnakeCase;</span><br><span class="line">JSON.parseObject(str, RespOrderDTO.class);</span><br></pre></td></tr></table></figure>
+
+<p>参考：<a target="_blank" rel="noopener" href="https://github.com/alibaba/fastjson/wiki/PropertyNamingStrategy_cn">PropertyNamingStrategy_cn</a></p>
+<h4 id="after-version-1-2-20"><a href="#after-version-1-2-20" class="headerlink" title="after version 1.2.20"></a>after version 1.2.20</h4><p>支持自动转换</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String json = <span class="string">&quot;&#123;\&quot;product_id\&quot;: \&quot;5ad557f3c0a1eab4458b45f1\&quot;&#125;&quot;</span>;</span><br><span class="line">JSON.parseObject(json, Demo.class);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="源码跟踪"><a href="#源码跟踪" class="headerlink" title="源码跟踪"></a>源码跟踪</h3><p>JSON.java -&gt; parseObject 方法 -&gt; line 395</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parseObject -&gt; T value = (T) parser.parseObject(clazz, <span class="keyword">null</span>);	</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/image-20210604145957990.png"></p>
+<p>DefaultJSONParser.java -&gt; parseObject 方法 -&gt; line 698</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (T) ((JavaBeanDeserializer) deserializer).deserialze(<span class="keyword">this</span>, type, fieldName, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/image-20210604150145774.png"></p>
+<h3 id="deserialze-方法"><a href="#deserialze-方法" class="headerlink" title="deserialze 方法"></a>deserialze 方法</h3><p>JavaBeanDeserializer.java -&gt; deserialze 方法 -&gt; line 545</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span>[] name_chars = fieldInfo.name_chars;</span><br></pre></td></tr></table></figure>
+
+<p>这里默认的规则是先根据类的字段名做反序列化</p>
+<p>JavaBeanDeserializer.java -&gt; deserialze 方法 -&gt; line 845</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">object = createInstance(parser, type);</span><br></pre></td></tr></table></figure>
+
+<p>这个方法会将将目标类的class还原成对象</p>
+<p>JavaBeanDeserializer.java -&gt; deserialze 方法 -&gt; line 892</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> match = parseField(parser, key, object, type,</span><br><span class="line">        fieldValues == <span class="keyword">null</span> ? <span class="keyword">new</span> HashMap&lt;String, Object&gt;(<span class="keyword">this</span>.fieldDeserializers.length) : fieldValues, setFlags);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="parseField-核心"><a href="#parseField-核心" class="headerlink" title="parseField (核心)"></a>parseField (核心)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fieldDeserializer = smartMatch(key, setFlags);</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/image-20210604141506608.png"></p>
+<p>JavaBeanDeserializer.java -&gt; smartMatch 方法调用 -&gt; line 1313</p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/image-20210604165042526.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public static long fnv1a_64_extract(String key)&#123;</span><br><span class="line">    long hashCode &#x3D; 0xcbf29ce484222325L;</span><br><span class="line">    for(int i &#x3D; 0; i &lt; key.length(); ++i)&#123;</span><br><span class="line">        char ch &#x3D; key.charAt(i);</span><br><span class="line">        if(ch &#x3D;&#x3D; &#39;_&#39; || ch &#x3D;&#x3D; &#39;-&#39;)&#123;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        if(ch &gt;&#x3D; &#39;A&#39; &amp;&amp; ch &lt;&#x3D; &#39;Z&#39;)&#123;</span><br><span class="line">            ch &#x3D; (char) (ch + 32);</span><br><span class="line">        &#125;</span><br><span class="line">        hashCode ^&#x3D; ch;</span><br><span class="line">        hashCode *&#x3D; 0x100000001b3L;</span><br><span class="line">    &#125;</span><br><span class="line">    return hashCode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>JavaBeanDeserializer.java -&gt; parseField 接口调用 -&gt; line 1277</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fieldDeserializer.parseField(parser, object, objectType, fieldValues);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>DefaultFieldDeserializer.java -&gt; parseField 方法 -&gt; line 86</p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/image-20210604145434459.png"></p>
+<p>将value取出</p>
+<p>DefaultFieldDeserializer.java -&gt; parseField 方法 -&gt; line 124</p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/image-20210604165608225.png"></p>
+<p>setValue装配</p>
+<h3 id="调用链路"><a href="#调用链路" class="headerlink" title="调用链路"></a>调用链路</h3><p>最后附上一张调用链路的断点图片，想要深入读源码的同学可以自己追踪一下</p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/image-20210604165752495.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/06/03/async-in-use/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/03/async-in-use/" class="post-title-link" itemprop="url">CompletableFuture + @Async 并行</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-06-03 22:56:07" itemprop="dateCreated datePublished" datetime="2021-06-03T22:56:07+08:00">2021-06-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>CompletableFuture + @Async 实现 <strong>串行改并行</strong> </p>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>1 配置一个自定义线程池</p>
+<p>注意标记上 <code>@EnableAsync</code>，表示这个配置类中的线程池可以配合 <code>@Async</code> 使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableAsync</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PoolConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean(&quot;pool&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Executor <span class="title">taskExecutor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ThreadPoolTaskExecutor executor = <span class="keyword">new</span> ThreadPoolTaskExecutor();</span><br><span class="line">        executor.setCorePoolSize(<span class="number">2</span>);</span><br><span class="line">        executor.setMaxPoolSize(<span class="number">2</span>);</span><br><span class="line">        executor.setQueueCapacity(<span class="number">500</span>);</span><br><span class="line">        executor.setThreadNamePrefix(<span class="string">&quot;GithubLookup-&quot;</span>);</span><br><span class="line">        executor.initialize();</span><br><span class="line">        <span class="keyword">return</span> executor;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>当然这里配置的线程池也可以直接通过 <code>spring</code> 使用</p>
+</blockquote>
+<p>2 异步任务层</p>
+<p>独立于 <code>Controller层</code> 和 <code>Service层</code> 做一个专门管理并行任务的类，可以将所有的并行操作放在这里。</p>
+<p>注意：<code>@Async</code> 修饰的方法必须与调用它的方法在不同类文件中并且一定要交给 <code>spring</code> 管理，否则相当于方法调用，并不会使用代理类产生异步的效果注意</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AsyncTestService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@SneakyThrows</span></span><br><span class="line">    <span class="meta">@Async(&quot;pool&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> CompletableFuture&lt;Integer&gt; <span class="title">testFutureTask</span><span class="params">(Integer idx)</span> </span>&#123;</span><br><span class="line">        Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">        <span class="keyword">return</span> CompletableFuture.completedFuture(idx);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3 用例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;Integer&gt; arrayList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">List&lt;Integer&gt; list = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>);</span><br><span class="line">CompletableFuture&lt;Integer&gt;[] completableFutureArray = <span class="keyword">new</span> CompletableFuture[list.size()];</span><br><span class="line"></span><br><span class="line">LocalTime startTime = LocalTime.now();</span><br><span class="line"><span class="keyword">for</span> (Integer integer : list) &#123;</span><br><span class="line">    <span class="keyword">if</span> (integer == <span class="number">5</span>) &#123;</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 串行改并行</span></span><br><span class="line">    CompletableFuture&lt;Integer&gt; integerCompletableFuture = asyncTestService.testFutureTask(integer);</span><br><span class="line">    completableFutureArray[list.indexOf(integer)] = integerCompletableFuture;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// future 数组健壮性处理</span></span><br><span class="line">CompletableFuture&lt;Integer&gt;[] futures = removeArrayEmptyElement(completableFutureArray);</span><br><span class="line">CompletableFuture.allOf(futures).join();</span><br><span class="line"></span><br><span class="line">LocalTime endTime = LocalTime.now();</span><br><span class="line">Duration between = Duration.between(startTime, endTime);</span><br><span class="line">System.out.println(<span class="string">&quot;测试耗时：&quot;</span> + between.toMillis());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 处理真实数据</span></span><br><span class="line"><span class="keyword">for</span> (CompletableFuture&lt;Integer&gt; future : futures) &#123;</span><br><span class="line">    Integer integer = future.get();</span><br><span class="line">    arrayList.add(integer);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://github.com/YorickYu/JPP/tree/main/src/main/java/com/yy/async">代码</a></p>
+<h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><p>1 循环调用 <code>@Async</code> 标记的方法。并将返回的 <code>CompletableFuture</code> 用数组接收。方便后续 <code>CompletableFuture&lt;Void&gt; allOf(CompletableFuture&lt;?&gt;... cfs)</code> 处理。</p>
+<p>2 在循环调用 <code>@Async</code> 标记的方法时难免做一些过滤处理。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (integer == <span class="number">5</span>) &#123;</span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例如在循环中，过滤掉integer数组中等于5的元素。</p>
+<p>那么在 arr[] 中就会空缺一个元素，那么交给 <code>CompletableFuture&lt;Void&gt; allOf(CompletableFuture&lt;?&gt;... cfs)</code> 处理时就会产生异常。</p>
+<p>解决：做一个 arr[] 空元素的过滤处理即可</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> CompletableFuture&lt;Integer&gt;[] removeArrayEmptyElement(CompletableFuture&lt;Integer&gt;[] arr) &#123;</span><br><span class="line">    List&lt;CompletableFuture&lt;Integer&gt;&gt; list = Arrays.asList(arr);</span><br><span class="line">    List&lt;CompletableFuture&lt;Integer&gt;&gt; listNew = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;list.size(); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (list.get(i)!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            listNew.add(list.get(i));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    CompletableFuture&lt;Integer&gt;[] arrayNew = listNew.toArray(<span class="keyword">new</span> CompletableFuture[listNew.size()]);</span><br><span class="line">    <span class="keyword">return</span> arrayNew;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3 如果在 <code>@Async</code> 标记的方法中嵌套执行并行操作，那么切记需要 <strong>使用不同的自定义线程池</strong>，否则会产生死锁</p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a target="_blank" rel="noopener" href="https://spring.io/guides/gs/async-method/">async-method</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/47351435/spring-async-with-completablefuture">spring-async-with-completablefuture</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/05/27/break-foreach/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/27/break-foreach/" class="post-title-link" itemprop="url">How to break; forEach in Stream</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-05-27 23:27:19" itemprop="dateCreated datePublished" datetime="2021-05-27T23:27:19+08:00">2021-05-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="forEach-中使用-return"><a href="#forEach-中使用-return" class="headerlink" title="forEach 中使用 return;"></a>forEach 中使用 return;</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">forEach</span><span class="params">(Consumer&lt;? <span class="keyword">super</span> T&gt; action)</span> </span>&#123;</span><br><span class="line">    Objects.requireNonNull(action);</span><br><span class="line">    <span class="keyword">for</span> (T t : <span class="keyword">this</span>) &#123;</span><br><span class="line">        action.accept(t);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/32654929/move-to-next-item-using-java-8-foreach-loop-in-stream">Move to next item using Java 8 foreach loop in stream</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = Arrays.asList(<span class="string">&quot;aaa&quot;</span>, <span class="string">&quot;bbb&quot;</span>, <span class="string">&quot;ccc&quot;</span>, <span class="string">&quot;ddd&quot;</span>);</span><br><span class="line"></span><br><span class="line">list.forEach(str -&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">&quot;bbb&quot;</span>.equals(str)) <span class="keyword">return</span>;</span><br><span class="line">    System.out.println(str);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">等价于</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (String str : list) &#123;</span><br><span class="line">    lambdaExpressionEquivalent(str);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">lambdaExpressionEquivalent</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">&quot;bbb&quot;</span>.equals(str)) <span class="keyword">return</span>;</span><br><span class="line">    System.out.println(str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="并行流中会发生运行时异常，建议使用iterator"><a href="#并行流中会发生运行时异常，建议使用iterator" class="headerlink" title="并行流中会发生运行时异常，建议使用iterator"></a>并行流中会发生运行时异常，建议使用iterator</h3><p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/D35128E7-6743-4D6C-99F6-F60E1EBF9154.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/05/27/list-distinctBy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/27/list-distinctBy/" class="post-title-link" itemprop="url">数组去重</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-05-27 23:18:55" itemprop="dateCreated datePublished" datetime="2021-05-27T23:18:55+08:00">2021-05-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><strong>数组多条件去重</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// predicate to filter the duplicates by the given key extractor.</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">Predicate&lt;T&gt; <span class="title">distinctByKey</span><span class="params">(Function&lt;? <span class="keyword">super</span> T, Object&gt; keyExtractor)</span> </span>&#123;</span><br><span class="line">    Map&lt;Object, Boolean&gt; uniqueMap = <span class="keyword">new</span> ConcurrentHashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">return</span> t -&gt; uniqueMap.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong><em>or</em></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// use Set interface</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">Predicate&lt;T&gt; <span class="title">distinctByKey</span><span class="params">(Function&lt;? <span class="keyword">super</span> T, ?&gt; keyExtractor)</span> </span>&#123;</span><br><span class="line">    Set&lt;Object&gt; seen = ConcurrentHashMap.newKeySet();</span><br><span class="line">    <span class="keyword">return</span> t -&gt; seen.add(keyExtractor.apply(t));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong><em>用例</em></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Animal pig = <span class="keyword">new</span> Animal().setName(<span class="string">&quot;pig&quot;</span>).setId(<span class="number">1</span>);</span><br><span class="line">Animal dog1 = <span class="keyword">new</span> Animal().setName(<span class="string">&quot;dog&quot;</span>).setId(<span class="number">2</span>);</span><br><span class="line">Animal dog2 = <span class="keyword">new</span> Animal().setName(<span class="string">&quot;dog&quot;</span>).setId(<span class="number">4</span>);</span><br><span class="line">Animal cat1 = <span class="keyword">new</span> Animal().setName(<span class="string">&quot;cat1&quot;</span>).setId(<span class="number">3</span>);</span><br><span class="line">Animal cat2 = <span class="keyword">new</span> Animal().setName(<span class="string">&quot;cat2&quot;</span>).setId(<span class="number">3</span>);</span><br><span class="line">List&lt;Animal&gt; list = Arrays.asList(pig, dog1, dog2, cat1, cat2);</span><br><span class="line"></span><br><span class="line">List&lt;Animal&gt; res = list.stream().filter(distinctByKey(Animal::getId)).filter(distinctByKey(Animal::getName)).collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
+
+<p><strong><em>result</em></strong>: [Animal(id=1, name=pig), Animal(id=2, name=dog), Animal(id=3, name=cat1)]</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/05/26/what-is-serverless/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/26/what-is-serverless/" class="post-title-link" itemprop="url">serverless、FaaS/BaaS、laaS/PaaS/SaaS</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-05-26 23:34:59" itemprop="dateCreated datePublished" datetime="2021-05-26T23:34:59+08:00">2021-05-26</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="serverless"><a href="#serverless" class="headerlink" title="serverless"></a>serverless</h3><p>用户无需关注支撑应用服务运行的底层机制<br>1 降低运维复杂度，无需监控和维护单服务器的状态<br>2 降低运营成本，按需加载<br>3 降低迭代成本，应用的功能被解构成若干个细粒度的无状态函数。边界清晰、低耦合<br>4 提升创新效率，开发者可以投入更多的精力尝试新的想法和需求</p>
+<h3 id="无服务实现通常分为两类"><a href="#无服务实现通常分为两类" class="headerlink" title="无服务实现通常分为两类"></a>无服务实现通常分为两类</h3><h4 id="FaaS：function-as-a-service-功能即服务"><a href="#FaaS：function-as-a-service-功能即服务" class="headerlink" title="FaaS：function as a service 功能即服务"></a>FaaS：function as a service 功能即服务</h4><p>FaaS是一种构建和部署服务端软件的新方式，面向部署单个的函数或者操作<br>在一个服务器进程中，函数不是一直处于运行状态的，它们只会在需要的时候才运行，其他时间都是空闲状态。一旦这个函数执行完毕，FaaS平台就可以随意销毁它。</p>
+<h4 id="BaaS：backend-as-a-service-后端即服务"><a href="#BaaS：backend-as-a-service-后端即服务" class="headerlink" title="BaaS：backend as a service 后端即服务"></a>BaaS：backend as a service 后端即服务</h4><p>服务商提供领域通用的后端服务，开发者自己开发前端部分。在概念上它更接近SaaS，而BaaS则是要把应用拆分为更小的颗粒</p>
+<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><p>从表面上看，BaaS和FaaS是两码事——前者是把应用中的各个部分完全外包出去，后者是一种新的运行代码的托管环境。那么，为什么要把它们都划归为Serverless呢？关键在于，它们都不需要你管理自己的服务器主机或者服务器进程。一个完全Serverless的app不需要你考虑架构中的任何东西。你的应用逻辑——不管是自己编程实现，还是使用第三方服务集成——运行在一个完全弹性的操作环境里。你的状态也是以同样弹性的形式存储的。<br>Serverless并不意味着没有服务器，而是你不需要操心服务器相关的事情。</p>
+<h3 id="云计算的三个层次"><a href="#云计算的三个层次" class="headerlink" title="云计算的三个层次"></a>云计算的三个层次</h3><p><strong>laaS基础设施在最末端，PaaS平台处在中间，SaaS软件则处在最顶层</strong></p>
+<h4 id="laaS：infrastructure-as-a-service-基础设施即服务"><a href="#laaS：infrastructure-as-a-service-基础设施即服务" class="headerlink" title="laaS：infrastructure as a service 基础设施即服务"></a>laaS：infrastructure as a service 基础设施即服务</h4><p>面向公司：提供IT基础架构（存储、网络和服务器）的云计算形式，与无服务息息相关</p>
+<h4 id="PaaS：platform-as-a-service-平台即服务"><a href="#PaaS：platform-as-a-service-平台即服务" class="headerlink" title="PaaS：platform as a service 平台即服务"></a>PaaS：platform as a service 平台即服务</h4><p>面向开发者：旨在为用户提供一个平台，用来开发、运行和管理自己的应用，而无需构建和维护通常与该流程相关联的基础架构。云平台就是一种 PaaS。例如：阿里云、Google Cloud</p>
+<h4 id="SaaS：software-as-a-service-软件即服务"><a href="#SaaS：software-as-a-service-软件即服务" class="headerlink" title="SaaS：software as a service 软件即服务"></a>SaaS：software as a service 软件即服务</h4><p>面向用户：将软件直接交付给用户的服务。服务会持续为用户提供更新、漏洞修复以及常规的软件维护工作，用户直接使用即可。通常通过web浏览器直接访问，消除了用户安装应用的必要</p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/Image.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/05/25/refactor-service/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/25/refactor-service/" class="post-title-link" itemprop="url">服务重构 SOP</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-05-25 21:33:26" itemprop="dateCreated datePublished" datetime="2021-05-25T21:33:26+08:00">2021-05-25</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SOP/" itemprop="url" rel="index"><span itemprop="name">SOP</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="什么服务需要重构？"><a href="#什么服务需要重构？" class="headerlink" title="什么服务需要重构？"></a>什么服务需要重构？</h3><p>当现有服务的扩展性、可维护性、易用性无法满足逐渐膨胀的业务增长时，就需要把服务重构提上日程了。</p>
+<p><strong>大致流程梳理如下</strong></p>
+<h3 id="服务梳理阶段"><a href="#服务梳理阶段" class="headerlink" title="服务梳理阶段"></a>服务梳理阶段</h3><p>1 数据库表结构梳理<br>2 redis架构方案、相关key梳理<br>3 功能梳理，前后端接口统计（流量统计）<br>4 项目中潜在的问题梳理</p>
+<p>这个阶段算是一个前期准备阶段，就是对将要重构的项目有一个初步的了解。<br>一方面，了解的越深入，后期遇到的风险就越可控。另一方面，也需要正确的预估一个迭代周期和工时。</p>
+<h3 id="外部依赖梳理、边界划分"><a href="#外部依赖梳理、边界划分" class="headerlink" title="外部依赖梳理、边界划分"></a>外部依赖梳理、边界划分</h3><p>这里需要明确重构后该项目的职责，把原本依赖的外部服务整理出来，把边界划分好。冗余的功能可以评估拆分成下层服务。可以以接口为单位进行整理，提升重构代码的效率。</p>
+<h3 id="代码重构"><a href="#代码重构" class="headerlink" title="代码重构"></a>代码重构</h3><p>代码优化、降级，限流方案优化</p>
+<p>重构的过程中尽可能把第一个阶段中整理的潜在问题解决掉。为了保证后续业务的发展，加入基础的降级、限流方案。</p>
+<h3 id="冒烟测试"><a href="#冒烟测试" class="headerlink" title="冒烟测试"></a>冒烟测试</h3><p>出入参数对齐</p>
+<p>对原有项目进行抓包，相同环境下，用抓包的请求参数访问新接口，比对返回参数是否与老接口一致</p>
+<h3 id="测试介入"><a href="#测试介入" class="headerlink" title="测试介入"></a>测试介入</h3><p>用例测试、功能测试</p>
+<h3 id="运维介入"><a href="#运维介入" class="headerlink" title="运维介入"></a>运维介入</h3><p>1 上灰度环境，灰度验证。数据验证、交叉写入测试、流量比对（goReplay流量回放）<br>2 上生产环境，监控服务接入(日志 ELK、QPS grafana、CAT)、压测、蓝绿切换（网关控制）</p>
+<h3 id="全量切换完成重构"><a href="#全量切换完成重构" class="headerlink" title="全量切换完成重构"></a>全量切换完成重构</h3><h3 id="数据验证（游标）"><a href="#数据验证（游标）" class="headerlink" title="数据验证（游标）"></a>数据验证（游标）</h3><p>统计（清洗）异常数据</p>
+<p>写一套数据校验的接口，将生产环境的数据依次读取并完成序列化操作。<br>如果是数据库，以数据表为单位。如果是redis，那么以key为单位。注意是只读</p>
+<h3 id="交叉测试流程"><a href="#交叉测试流程" class="headerlink" title="交叉测试流程"></a>交叉测试流程</h3><p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/C87CF8C6-863A-41DA-9CB2-0D00799C1989.png"></p>
+<p>重构项目在生产环境写入数据前需要做必要的数据备份，以防比对不通过时进行数据回滚</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/05/21/list-to-map/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/21/list-to-map/" class="post-title-link" itemprop="url">list to map</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-05-21 00:55:58" itemprop="dateCreated datePublished" datetime="2021-05-21T00:55:58+08:00">2021-05-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>根据一定的规则将 list 转成 map</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Accessors(chain = true)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Java8之前</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;Integer, Animal&gt; <span class="title">convertListBeforeJava8</span><span class="params">(List&lt;Animal&gt; list)</span> </span>&#123;</span><br><span class="line">    Map&lt;Integer, Animal&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (Animal animal : list) &#123;</span><br><span class="line">        map.put(animal.getId(), animal);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> map;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Java8之后</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;Integer, Animal&gt; <span class="title">convertListAfterJava8</span><span class="params">(List&lt;Animal&gt; list)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> list.stream().collect(Collectors.toMap(Animal::getId, animal -&gt; animal));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Java8之后 处理key冲突 - IllegalStateException</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;Integer, Animal&gt; <span class="title">convertListAfterJava8_conflict</span><span class="params">(List&lt;Animal&gt; list)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> list.stream().collect(Collectors.toMap(Animal::getId, animal -&gt; animal, (ov, nv) -&gt; nv));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Guava Maps</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;Integer, Animal&gt; <span class="title">convertListWithGuava</span><span class="params">(List&lt;Animal&gt; list)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Maps.uniqueIndex(list, Animal::getId);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// MapUtils</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;Integer, Animal&gt; <span class="title">convertListWithApacheCommons2</span><span class="params">(List&lt;Animal&gt; list)</span> </span>&#123;</span><br><span class="line">    Map&lt;Integer, Animal&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    MapUtils.populateMap(map, list, Animal::getId);</span><br><span class="line">    <span class="keyword">return</span> map;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// MapUtils 处理key冲突 - IllegalStateException</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;Integer, Animal&gt; <span class="title">convertListWithApacheCommons2_conflict</span><span class="params">(List&lt;Animal&gt; list)</span> </span>&#123;</span><br><span class="line">    Map&lt;Integer, Animal&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    MapUtils.populateMap(map, list, Animal::getId, animal -&gt; animal);</span><br><span class="line">    <span class="keyword">return</span> map;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码示例：<a target="_blank" rel="noopener" href="https://github.com/YorickYu/JPP/blob/main/src/main/java/com/yy/collection/ListToMap.java">ArrayMerge.java</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/05/09/microservices/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/09/microservices/" class="post-title-link" itemprop="url">微服务拆分和搭建 SOP</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-05-09 19:17:49" itemprop="dateCreated datePublished" datetime="2021-05-09T19:17:49+08:00">2021-05-09</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SOP/" itemprop="url" rel="index"><span itemprop="name">SOP</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="微服务拆分维度"><a href="#微服务拆分维度" class="headerlink" title="微服务拆分维度"></a>微服务拆分维度</h3><p>1 按系统维度：例如前后台拆分<br>2 按功能维度：例如用户服务、价格服务、商品库存服务<br>3 按读写维度：例如搜索和信息流服务、注册和下单服务</p>
+<p><strong>每个服务也可以由若干服务支持构成</strong></p>
+<h3 id="微服务架构搭建"><a href="#微服务架构搭建" class="headerlink" title="微服务架构搭建"></a>微服务架构搭建</h3><p>一般随着公司业务体量的增长，需要考虑从单体服务拆分成微服务架构。</p>
+<p>微服务架构需要考虑下面几个方面：没有优先级之分（不一定完整）</p>
+<h4 id="数据异构"><a href="#数据异构" class="headerlink" title="数据异构"></a>数据异构</h4><p>1 分库分表：以id分表、以用户分表、以数据热度分表<br>2 数据聚合：请求合并，数据闭环</p>
+<h4 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h4><p>本地缓存、缓存架构、集群、负载</p>
+<h4 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h4><p>异步处理、流量削峰、应用解耦<br>考虑消费失败和重复消费场景，需要数据校验和补偿机制<br>最终一致性</p>
+<h4 id="高可用"><a href="#高可用" class="headerlink" title="高可用"></a>高可用</h4><p>1 降级、限流、分组和故障隔离<br>降级要做开关，需要动态配置<br>2 流量治理和监控<br>监控不合法的流量来源并隔离治理。如果非法流量无法控制，保留版本回退的能力</p>
+<h4 id="业务安全性"><a href="#业务安全性" class="headerlink" title="业务安全性"></a>业务安全性</h4><p>1 接口幂等<br>2 防重设计<br>3 状态机：正向逆向流程</p>
+<h4 id="监控和预警"><a href="#监控和预警" class="headerlink" title="监控和预警"></a>监控和预警</h4><p>发现问题、定位问题和解决问题<br>全链路埋点：每一个操作经过网络、服务层、中间层都要监控</p>
+<h4 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h4><p>1 动态负载<br>2 服务依赖和治理（优化）</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/04/27/tomap-mergemap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/27/tomap-mergemap/" class="post-title-link" itemprop="url">Map拼接</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-27 22:39:46" itemprop="dateCreated datePublished" datetime="2021-04-27T22:39:46+08:00">2021-04-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><strong>准备工作</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// constructor, getters, setters</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>map.merge()</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Description</span> merge</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 该方法接收三个参数，一个 key 值，一个 value，一个 BiFunction&lt;? super V, ? super V, ? extends V&gt; remappingFunction</span></span><br><span class="line"><span class="comment">* 如果给定的 key 不存在，它就变成了 put(key, value) 。</span></span><br><span class="line"><span class="comment">* 如果 key 已经存在一些值，那么 remappingFunction 可以选择合并的方式，然后将合并得到的 newValue 赋值给原先的 key。</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Author</span> yloopdaed</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Date</span> 11:04 2021/4/27</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Map&lt;String, Employee&gt; map3 = <span class="keyword">new</span> HashMap&lt;&gt;(map1);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">for (Map.Entry&lt;String, Employee&gt; entry : map2.entrySet()) &#123;</span></span><br><span class="line"><span class="comment">    String key = entry.getKey();</span></span><br><span class="line"><span class="comment">    Employee value = entry.getValue();</span></span><br><span class="line"><span class="comment">    map3.merge(key, value, (v1, v2) -&gt; new Employee(v1.getId(), v2.getName()));</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">map2.forEach((key, value) -&gt; map3.merge(key, value, (v1, v2) -&gt; <span class="keyword">new</span> Employee(v1.getId(),v2.getName())));</span><br><span class="line">System.out.println(map3);</span><br></pre></td></tr></table></figure>
+
+<p><strong>Collectors.toMap()</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Description</span> Stream.concat()</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* toMap() 接收三个参数，一个 key 值，一个 value，一个 BinaryOperator&lt;U&gt; mergeFunction</span></span><br><span class="line"><span class="comment">* 如果 key 不存在，它就变成了 put(key, value) - 这种情况下可以 通过(v1, v2) -&gt; v1, TreeMap::new 进行默认排序</span></span><br><span class="line"><span class="comment">* 如果 key 已经存在，那么 mergeFunction 可以处理</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Author</span> yloopdaed</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Date</span> 11:04 2021/4/27</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Map&lt;String, Employee&gt; result = Stream.concat(map1.entrySet().stream(), map2.entrySet().stream())</span><br><span class="line">    .collect(Collectors.toMap(</span><br><span class="line">            Map.Entry::getKey,</span><br><span class="line">            Map.Entry::getValue,</span><br><span class="line">            (value1, value2) -&gt; <span class="keyword">new</span> Employee(value2.getId(), value1.getName())));</span><br></pre></td></tr></table></figure>
+
+
+<p>代码示例：<a target="_blank" rel="noopener" href="https://github.com/YorickYu/JPP/blob/main/src/main/java/com/yy/collection/InitializeMap.java">InitializeMap.java</a><br>代码示例：<a target="_blank" rel="noopener" href="https://github.com/YorickYu/JPP/blob/main/src/main/java/com/yy/collection/MapMerge.java">MapMerge.java</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/04/26/array-merge/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/26/array-merge/" class="post-title-link" itemprop="url">数组拼接</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-26 22:53:11" itemprop="dateCreated datePublished" datetime="2021-04-26T22:53:11+08:00">2021-04-26</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><strong>10种方式拼接两个数组</strong></p>
+<h4 id="List-addAll-amp-Collections-addAll"><a href="#List-addAll-amp-Collections-addAll" class="headerlink" title="List.addAll() &amp; Collections.addAll()"></a>List.addAll() &amp; Collections.addAll()</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Description</span> before 8</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Author</span> yloopdaed</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Date</span> 21:01 2021/4/26</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">// Generic method to join two lists in Java</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span>&lt;T&gt; List&lt;T&gt; <span class="title">merge1</span><span class="params">(List&lt;T&gt; list1, List&lt;T&gt; list2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    List&lt;T&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    list.addAll(list1);</span><br><span class="line">    list.addAll(list2);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Generic method to join two lists in Java</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span>&lt;T&gt; List&lt;T&gt; <span class="title">merge2</span><span class="params">(List&lt;T&gt; list1, List&lt;T&gt; list2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    List&lt;T&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(list1);</span><br><span class="line">    list.addAll(list2);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Generic method to join two lists in Java</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span>&lt;T&gt; List&lt;T&gt; <span class="title">merge3</span><span class="params">(List&lt;T&gt; list1, List&lt;T&gt; list2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;T&gt;() &#123;&#123;</span><br><span class="line">        addAll(list1);</span><br><span class="line">        addAll(list2);</span><br><span class="line">    &#125;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Method to join two lists in Java</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;String&gt; <span class="title">merge4</span><span class="params">(List&lt;String&gt; list1, List&lt;String&gt; list2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    Collections.addAll(list, list1.toArray(<span class="keyword">new</span> String[<span class="number">0</span>]));</span><br><span class="line">    Collections.addAll(list, list2.toArray(<span class="keyword">new</span> String[<span class="number">0</span>]));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Java-8-Stream"><a href="#Java-8-Stream" class="headerlink" title="Java 8 Stream"></a>Java 8 Stream</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Description</span> Java 8</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Author</span> yloopdaed</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Date</span> 21:02 2021/4/26</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">// Generic method to join two lists in Java</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span>&lt;T&gt; List&lt;T&gt; <span class="title">merge5</span><span class="params">(List&lt;T&gt; list1, List&lt;T&gt; list2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Stream.of(list1, list2)</span><br><span class="line">            .flatMap(x -&gt; x.stream())</span><br><span class="line">            .collect(Collectors.toList());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Generic method to join two lists in Java</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span>&lt;T&gt; List&lt;T&gt; <span class="title">merge6</span><span class="params">(List&lt;T&gt; list1, List&lt;T&gt; list2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    List&lt;T&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    Stream.of(list1, list2).forEach(list::addAll);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Generic method to join two lists in Java</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span>&lt;T&gt; List&lt;T&gt; <span class="title">merge7</span><span class="params">(List&lt;T&gt; list1, List&lt;T&gt; list2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Stream.concat(list1.stream(), list2.stream())</span><br><span class="line">            .collect(Collectors.toList());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Generic method to join two lists in Java</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span>&lt;T&gt; List&lt;T&gt; <span class="title">merge8</span><span class="params">(List&lt;T&gt; list1, List&lt;T&gt; list2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    List&lt;T&gt; list = list1.stream().collect(Collectors.toList());</span><br><span class="line">    list.addAll(list2);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Guava"><a href="#Guava" class="headerlink" title="Guava"></a>Guava</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Description</span> Guava</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Author</span> yloopdaed</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Date</span> 21:05 2021/4/26</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">// Generic method to join two lists in Java</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span>&lt;T&gt; List&lt;T&gt; <span class="title">merge9</span><span class="params">(List&lt;T&gt; list1, List&lt;T&gt; list2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Lists.newArrayList(Iterables.concat(list1, list2));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Generic method to join two lists in Java</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span>&lt;T&gt; List&lt;T&gt; <span class="title">merge10</span><span class="params">(List&lt;T&gt; list1, List&lt;T&gt; list2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    List&lt;T&gt; list = Lists.newArrayList();</span><br><span class="line"></span><br><span class="line">    Iterables.addAll(list, list1);</span><br><span class="line">    Iterables.addAll(list, list2);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码示例：<a target="_blank" rel="noopener" href="https://github.com/YorickYu/JPP/blob/main/src/main/java/com/yy/collection/ArrayMerge.java">ArrayMerge.java</a></p>
+<p>引用：<a target="_blank" rel="noopener" href="https://www.techiedelight.com/join-two-lists-java/">10 ways to join two lists in Java</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yloopdaed</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

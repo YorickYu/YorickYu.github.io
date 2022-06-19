@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yloopdaed.icu","root":"/","scheme":"Pisces","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+
+  <meta name="description" content="可能是个非典型程序员吧 ^ ^">
+<meta property="og:type" content="website">
+<meta property="og:title" content="yloopdaed">
+<meta property="og:url" content="http://yloopdaed.icu/page/11/index.html">
+<meta property="og:site_name" content="yloopdaed">
+<meta property="og:description" content="可能是个非典型程序员吧 ^ ^">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="yloopdaed">
+<meta property="article:tag" content="iOS JAVA">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://yloopdaed.icu/page/11/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>yloopdaed</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">yloopdaed</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">YYYYYY iOS to Java. DON'T BE WILD</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="yloopdaed"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">yloopdaed</p>
+  <div class="site-description" itemprop="description">可能是个非典型程序员吧 ^ ^</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">112</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">132</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/YorickYu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;YorickYu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yykeepbreak@gmail.com" title="E-Mail → mailto:yykeepbreak@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/9901b7042663" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;9901b7042663" rel="noopener" target="_blank">简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/14337507/yloopdaed" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;14337507&#x2F;yloopdaed" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/YorickYu/YYTODOLIST" title="https:&#x2F;&#x2F;github.com&#x2F;YorickYu&#x2F;YYTODOLIST" rel="noopener" target="_blank">TODOLIST</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/YorickYu/IHAVEAQUESTION" title="https:&#x2F;&#x2F;github.com&#x2F;YorickYu&#x2F;IHAVEAQUESTION" rel="noopener" target="_blank">IHAVEAQUESTION</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://azh.ink/" title="http:&#x2F;&#x2F;azh.ink" rel="noopener" target="_blank">azh</a>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner index posts-expand">
+      
+
+      
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2020/11/03/reverse-words/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/03/reverse-words/" class="post-title-link" itemprop="url">LeetCode reverse-words</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-11-03 22:23:14" itemprop="dateCreated datePublished" datetime="2020-11-03T22:23:14+08:00">2020-11-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>LeetCode p151 逐个翻转字符串中的每个单词</p>
+<p>相关代码可以在 <a target="_blank" rel="noopener" href="https://github.com/YorickYu/JPP"><strong><em>JPP</em></strong></a>/ReverseWords类中查看。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 给定一个字符串，逐个翻转字符串中的每个单词。 </span><br><span class="line">&#x2F;&#x2F;</span><br><span class="line">&#x2F;&#x2F; 说明： </span><br><span class="line">&#x2F;&#x2F; </span><br><span class="line">&#x2F;&#x2F; 无空格字符构成一个 单词 。 </span><br><span class="line">&#x2F;&#x2F; 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。 </span><br><span class="line">&#x2F;&#x2F; 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。 </span><br><span class="line">&#x2F;&#x2F; </span><br><span class="line">&#x2F;&#x2F;</span><br><span class="line">&#x2F;&#x2F; 示例 1： </span><br><span class="line">&#x2F;&#x2F; 输入：&quot;the sky is blue&quot;</span><br><span class="line">&#x2F;&#x2F;输出：&quot;blue is sky the&quot;</span><br><span class="line">&#x2F;&#x2F; </span><br><span class="line">&#x2F;&#x2F; 示例 2： </span><br><span class="line">&#x2F;&#x2F; 输入：&quot;  hello world!  &quot;</span><br><span class="line">&#x2F;&#x2F;输出：&quot;world! hello&quot;</span><br><span class="line">&#x2F;&#x2F;解释：输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。</span><br><span class="line">&#x2F;&#x2F; </span><br><span class="line">&#x2F;&#x2F;</span><br><span class="line">&#x2F;&#x2F; 示例 3： </span><br><span class="line">&#x2F;&#x2F; 输入：&quot;a good   example&quot;</span><br><span class="line">&#x2F;&#x2F;输出：&quot;example good a&quot;</span><br><span class="line">&#x2F;&#x2F;解释：如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。</span><br><span class="line">&#x2F;&#x2F; </span><br><span class="line">&#x2F;&#x2F;</span><br><span class="line">&#x2F;&#x2F; 示例 4： </span><br><span class="line">&#x2F;&#x2F; 输入：s &#x3D; &quot;  Bob    Loves  Alice   &quot;</span><br><span class="line">&#x2F;&#x2F;输出：&quot;Alice Loves Bob&quot;</span><br><span class="line">&#x2F;&#x2F; </span><br><span class="line">&#x2F;&#x2F;</span><br><span class="line">&#x2F;&#x2F; 示例 5： </span><br><span class="line">&#x2F;&#x2F; 输入：s &#x3D; &quot;Alice does not even like bob&quot;</span><br><span class="line">&#x2F;&#x2F;输出：&quot;bob like even not does Alice&quot;</span><br><span class="line">&#x2F;&#x2F; </span><br><span class="line">&#x2F;&#x2F;</span><br><span class="line">&#x2F;&#x2F; </span><br><span class="line">&#x2F;&#x2F;</span><br><span class="line">&#x2F;&#x2F; 提示： </span><br><span class="line">&#x2F;&#x2F; 1 &lt;&#x3D; s.length &lt;&#x3D; 104 </span><br><span class="line">&#x2F;&#x2F; s 包含英文大小写字母、数字和空格 &#39; &#39; </span><br><span class="line">&#x2F;&#x2F; s 中 至少存在一个 单词 </span><br><span class="line">&#x2F;&#x2F; </span><br><span class="line">&#x2F;&#x2F; 进阶：  </span><br><span class="line">&#x2F;&#x2F; 请尝试使用 O(1) 额外空间复杂度的原地解法。 </span><br><span class="line">&#x2F;&#x2F; </span><br><span class="line">&#x2F;&#x2F; Related Topics 字符串 </span><br><span class="line">&#x2F;&#x2F; 👍 240 👎 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">import java.util.HashMap;</span><br><span class="line"></span><br><span class="line">class Solution &#123;</span><br><span class="line">    public String reverseWords(String s) &#123;</span><br><span class="line">        StringBuffer sb &#x3D; new StringBuffer();</span><br><span class="line">        String[] strings &#x3D; s.split(&quot;\\s+&quot;);</span><br><span class="line">        HashMap m &#x3D; new HashMap();</span><br><span class="line">        int modCount &#x3D; 0;</span><br><span class="line"></span><br><span class="line">        for (int i &#x3D; 0; i &lt; strings.length; i++) &#123;</span><br><span class="line">            String innerstring &#x3D; strings[i];</span><br><span class="line">            if (!innerstring.equals(&quot;&quot;)) &#123;</span><br><span class="line">                m.put(modCount++, innerstring);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for (;modCount&gt;0;) &#123;</span><br><span class="line">            sb.append(m.get(--modCount));</span><br><span class="line">            if (modCount !&#x3D; 0)</span><br><span class="line">                sb.append(&quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>解题思路就是用Java现有的API配合正则去拆分传入的字符串s，得到一个字符串数组</p>
+<p>然后利用HashMap查找O(1)的特性，将value值按序存入key，并记录key值</p>
+<p>最后倒序key值，取出value即可。</p>
+<blockquote>
+<p>这里其实一次for循环逆序遍历也可以得出答案，时间复杂度不会有太大差别，因为本身字符串数组长度不会很大。<br>我只是单纯的像仿照HashMap源码中modCount的想法记录一下编辑次数，所以for了两次。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public String reverseWords(String s) &#123;</span><br><span class="line">    String[] words &#x3D; s.trim().split(&quot;\\s+&quot;);</span><br><span class="line">    int len &#x3D; words.length;</span><br><span class="line">    StringBuilder ans &#x3D; new StringBuilder();</span><br><span class="line">    ans.append(words[len - 1]);</span><br><span class="line">    for (int i &#x3D; len - 2; i &gt;&#x3D; 0; i --) &#123;</span><br><span class="line">        if (words[i].equals(&quot;&quot;))</span><br><span class="line">            continue;</span><br><span class="line">        ans.append(&quot; &quot; + words[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    return ans.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后，学了一下网上一些时间复杂度很低的解法，耗时的步骤都来源于数组的 <code>split</code> 方法。</p>
+<p>想要突破的可以自定义一个数组拆分的方法。</p>
+<p>还有，基本可以确定的是，使用 <code>StringBuilder</code> 的API拼接数组比直接使用 String 速度要快。</p>
+<blockquote>
+<p>关于String拼接的性能，阿里手册中有专门收录：<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/756752?spm=a2c6h.12873639.0.0.6fee1e8brXp7fY">为什么不建议在 for 循环中使用“+”进行字符串拼接？</a></p>
+</blockquote>
+<p>for循环中5万次字符串拼接性能差别：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+ cost:5119</span><br><span class="line">StringBuilder cost:3</span><br><span class="line">StringBuffer cost:4</span><br><span class="line">concat cost:3623</span><br><span class="line">StringUtils.join cost:25726</span><br></pre></td></tr></table></figure>
+
+
+<p>先后提交了2次，结果如下：</p>
+<p>11 分钟前    通过    10 ms    38.9 MB    Java<br>20 分钟前    通过    12 ms    39.3 MB    Java</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2020/11/03/concurrenthashmap-two-array-index/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/03/concurrenthashmap-two-array-index/" class="post-title-link" itemprop="url">JDK1.7 ConcurrentHashMap 两次数组下标计算问题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-11-03 21:05:24" itemprop="dateCreated datePublished" datetime="2020-11-03T21:05:24+08:00">2020-11-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ConcurrentHashMap结构如下:</p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/ConcurrentHashMap.jpg" alt="ConcurrentHashMap"></p>
+<p>Segment[]数组的长度在ConcurrentHashMap的构造方法中由并发级别 <code> DEFAULT_CONCURRENCY_LEVEL</code> 计算得出</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> sshift = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> ssize = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span> (ssize &lt; concurrencyLevel) &#123;</span><br><span class="line">    ++sshift;</span><br><span class="line">    ssize &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>并且初始化完成后，Segment[]数组不会再扩容。</p>
+<p>HashEntry[]数组的长度在ConcurrentHashMap的构造方法中由初始化容量 <code> DEFAULT_INITIAL_CAPACITY</code> 和并发级别 <code> DEFAULT_CONCURRENCY_LEVEL</code> 计算得出，且最小值为2，向上取值时为2的整数幂</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int c &#x3D; initialCapacity &#x2F; ssize;</span><br><span class="line">if (c * ssize &lt; initialCapacity)</span><br><span class="line">    ++c;</span><br><span class="line">int cap &#x3D; MIN_SEGMENT_TABLE_CAPACITY; &#x2F;&#x2F; 最小值2</span><br><span class="line">while (cap &lt; c) &#x2F;&#x2F; 保证取值是2的整数幂</span><br><span class="line">    cap &lt;&lt;&#x3D; 1;</span><br></pre></td></tr></table></figure>
+
+<p>初始化完成后，HashEntry[]数组会扩容。而且由自旋锁和volatile保证了线程安全性</p>
+<p>由此可见，ConcurrentHashMap元素插入需要两次计算数组下标，让我们分析一下源码中是如何设计的。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/11/03/concurrenthashmap-two-array-index/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2020/11/01/hashmap-modCount/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/01/hashmap-modCount/" class="post-title-link" itemprop="url">HashMap modCount fast-fail X原子性</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-11-01 14:30:23" itemprop="dateCreated datePublished" datetime="2020-11-01T14:30:23+08:00">2020-11-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>HashMap源码中定义的成员变量并不多，其中我们最不熟悉的应该就是modCount，那么它到底是做什么的呢？</p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/modcount.jpg"></p>
+<p><font color=red>如果你没时间思考这篇文章，你可以直接跳转到 <a href="#%E7%BB%93%E8%AE%BA">9.结论</a> 处</font></p>
+<h2 id="modCount"><a href="#modCount" class="headerlink" title="modCount"></a>modCount</h2><p>modCount在HashMap中记录的是HashMap对象被修改的次数，这里专业的说法是集合在结构上修改时被会记录在modCount中。</p>
+<blockquote>
+<p>文中源码版本为 JDK1.7，modCount的部分在JDK1.8中作用是相同的。只因为JDK1.7中源码比较简洁，所以本文选用JDK1.7来缩减篇幅。</p>
+</blockquote>
+<p>在源码中记录到的modCount++的方法包括：</p>
+<ul>
+<li>HashMap put方法</li>
+<li>HashMap的remove-&gt;removeEntryForKey方法 通过key移除元素</li>
+<li>HashMap的removeMapping方法，通过object移除元素</li>
+<li>HashMap的clear方法</li>
+</ul>
+<p>从这里可以看出，结构上的修改主要是添加和删除两部分。</p>
+<h2 id="线程不安全"><a href="#线程不安全" class="headerlink" title="线程不安全"></a>线程不安全</h2><p>我们都知道在JDK1.7中HashMap是线程不安全的，这个 <strong>不安全</strong> 我是分两方面理解的：</p>
+<p><strong>1 多线程数组扩容时出现循环链表问题</strong></p>
+<p>因为扩容时链表顺序会反转，所以多线程操作时可能会出现循环链表的情况，那么在get方法时就会死循环</p>
+<blockquote>
+<p>JDK1.8中也修复了这个问题</p>
+</blockquote>
+<p><strong>2 多线程读写时造成数据混乱的问题</strong></p>
+<p>HashMap中有引入了一个 <strong>fast-fail</strong> 的概念，目的是避免高并发读写造成的数据错乱的隐患。</p>
+<h2 id="expectedModCount"><a href="#expectedModCount" class="headerlink" title="expectedModCount"></a>expectedModCount</h2><p>expectedModCount这个变量被记录在HashIterator迭代器中。顾名思义，表示期望的修改次数，当期望修改的次数不等于实际修改的次数时，就会触发 <strong>fast-fail</strong> 快速失败的容错处理</p>
+<h2 id="fast-fail"><a href="#fast-fail" class="headerlink" title="fast-fail"></a>fast-fail</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">final Entry&lt;K,V&gt; nextEntry() &#123;</span><br><span class="line">    if (modCount !&#x3D; expectedModCount)</span><br><span class="line">        throw new ConcurrentModificationException();</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>迭代器调用 next() 方法时会调用 nextEntry() 方法，方法中首先会判断 modCount 与 expectedModCount 是否相等</p>
+<p>如果不相等直接抛出 java.util.ConcurrentModificationException 异常</p>
+<blockquote>
+<p><strong>GeeksForGeeks中的解释为：</strong></p>
+<p>In multi threaded environment, if during the detection of the resource, any method finds that there is a concurrent modification of that object which is not permissible, then this ConcurrentModificationException might be thrown.</p>
+<ol>
+<li>If this exception is detected, then the results of the iteration are undefined.</li>
+<li>Generally, some iterator implementations choose to throw this exception as soon as it is encountered, called fail-fast iterators.</li>
+</ol>
+<p>For example: If we are trying to modify any collection in the code using a thread, but some another thread is already using that collection, then this will not be allowed.</p>
+</blockquote>
+<p>在多线程环境中，如果在检测资源期间，任何方法发现该对象存在并发修改，而这是不允许的，则可能会抛出此ConcurrentModificationException。</p>
+<p>1 如果检测到此异常，则迭代结果不确定。</p>
+<p>2 通常，某些迭代器实现选择将遇到此异常的异常立即抛出，称为快速失败迭代器。</p>
+<p>例如：如果我们试图使用一个线程来修改代码中的一个集合，但是另一个线程已经在使用该集合，这种做法是不被允许的</p>
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><p>相关代码可以在 <a target="_blank" rel="noopener" href="https://github.com/YorickYu/JPP"><strong><em>JPP</em></strong></a>/ConcurrentModificationExceptionDemo类中查看。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">HashMap m &#x3D; new HashMap();</span><br><span class="line">for (int i &#x3D; 0; i &lt;100 ; i++) &#123;</span><br><span class="line">    m.put(String.valueOf(i), &quot;value&quot;+i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">new Thread(new Runnable() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        Iterator iterator &#x3D; m.keySet().iterator();</span><br><span class="line">        while (iterator.hasNext()) &#123;</span><br><span class="line">            String next &#x3D; (String) iterator.next();</span><br><span class="line">            if (Integer.parseInt(next) % 2 &#x3D;&#x3D; 0) &#123;</span><br><span class="line">                System.out.println(&quot;thread 1&quot;);</span><br><span class="line">                iterator.remove();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).start();</span><br><span class="line"></span><br><span class="line">new Thread(new Runnable() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        Iterator iterator  &#x3D; m.keySet().iterator();</span><br><span class="line">        while (iterator.hasNext()) &#123;</span><br><span class="line">            String next &#x3D; (String) iterator.next();</span><br><span class="line">            System.out.println(m.get(next));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).start();</span><br></pre></td></tr></table></figure>
+
+<p>这里第一个线程中的 <code>System.out.println(&quot;thread 1&quot;);</code> 的作用是 <strong><em>触发数据和内存同步</em></strong>。</p>
+<blockquote>
+<p>这部分内容和寄存器的 <strong><em>缓存行</em></strong> 知识有关，如果不触发数据和内存同步，第二个线程无法正确获取modCount。</p>
+</blockquote>
+<h2 id="单线程错误案例"><a href="#单线程错误案例" class="headerlink" title="单线程错误案例"></a>单线程错误案例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">HashMap m &#x3D; new HashMap();</span><br><span class="line">m.put(&quot;key1&quot;, &quot;value2&quot;);</span><br><span class="line">m.put(&quot;key2&quot;, &quot;value2&quot;);</span><br><span class="line">for (String key: m.keySet()) &#123;</span><br><span class="line">    if (key.equals(&quot;key2&quot;)) &#123;</span><br><span class="line">        m.remove(key);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个代码块也有可能发生 fast-fail</p>
+<p>我们来看一下上面代码块编译后的class文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HashMap m &#x3D; new HashMap();</span><br><span class="line">m.put(&quot;key1&quot;, &quot;value2&quot;);</span><br><span class="line">m.put(&quot;key2&quot;, &quot;value2&quot;);</span><br><span class="line">Iterator i$ &#x3D; m.keySet().iterator();</span><br><span class="line">while(i$.hasNext()) &#123;</span><br><span class="line">    Object key &#x3D; i$.next();</span><br><span class="line">    if (key.equals(&quot;key2&quot;)) &#123;</span><br><span class="line">        m.remove(key);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这么看应该就很容易理解了，而且这个错误也很容易发生。</p>
+<p>在迭代器遍历的过程中，会将key值为“key2”的元素移除。移除时调用的HashMap的remove方法会对modCount值+1，但是这个方法并不会同步expectedModCount的值。所以在下一次迭代器调用i$.next();方法时，会发生异常。</p>
+<p>expectedModCount // For fast-fail：在以下方法会同步modCount值</p>
+<ul>
+<li>HashIterator的构造方法</li>
+<li>HashIterator的remove方法</li>
+</ul>
+<p>所以将上面移除元素的代码。替换为 <code>i$.remove();</code> 就可以了。</p>
+<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><p>关于 i++ 计算不是原子性的怀疑：</p>
+<p>HashMap源码记录modCount++这个计算方式在多线程操作时如果不能保证原子性，那么岂不是也有可能触发ConcurrentModificationException异常？</p>
+<p>验证过程：<br>1 因为HashMap的put操作会进行modCount++<br>2 modCount声明时也没有指明<strong>volatile</strong><br>那么多线程put是否会造成modCount的值不准确？</p>
+<p>相关代码可以在 <a target="_blank" rel="noopener" href="https://github.com/YorickYu/JPP"><strong><em>JPP</em></strong></a>/ConcurrentModificationExceptionDemo类中查看。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">static void atomicTest() throws InterruptedException &#123;</span><br><span class="line"></span><br><span class="line">    HashMap m &#x3D; new HashMap();</span><br><span class="line"></span><br><span class="line">    new Thread(new Runnable() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            for (int i &#x3D; 0; i &lt; 10000; i++) &#123;</span><br><span class="line">                &#x2F;&#x2F; System.out.println(i);</span><br><span class="line">                m.put(i, String.valueOf(i).hashCode());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).start();</span><br><span class="line"></span><br><span class="line">    new Thread(new Runnable() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            for (int i &#x3D; 10000; i &lt; 20000; i++) &#123;</span><br><span class="line">                &#x2F;&#x2F; System.out.println(i);</span><br><span class="line">                m.put(i, String.valueOf(i).hashCode());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).start();</span><br><span class="line"></span><br><span class="line">    Thread.sleep(5000);</span><br><span class="line">    Iterator iterator &#x3D; m.keySet().iterator();</span><br><span class="line">    iterator.next(); &#x2F;&#x2F; 对比modCount</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><del>运行的结果是，如果循环次数不多，最后可以保证modCount的数值正确。但是提升循环插入的次数，会锁住一个线程，导致其他线程的数据没有插入成功，但是modCount的值依然是正确的。</del></p>
+<p><del>具体这个魂循环次数设定的阈值，我也没有过多尝试。至少目前我没有因为++计算不是原子性的原因出现过fast-fail</del></p>
+<p>运行结果有意外收获:</p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/modcount%2B%2B%2B.jpg"></p>
+<p>从上图可以看出，不仅在多线程写入的时候modCount的值无法保证（从expectedModCount看出），而且HashMap的size也不满足期望（因为多线程put时，两个线程的key不重复）</p>
+<p>为了再次证明我的猜测，可以在多线程中添加 <code>System.out.println(i);</code> 代码，来达到内存同步的目的</p>
+<p>结果不出所料：</p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/sysmodcount%2B%2B.jpg"></p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>1 HashMap多线程读写时可能会抛出ConcurrentModificationException异常，这是fast-fail快速失败机制。</p>
+<p>2 fast-fail实现的原理是判断modCount和expectedModCount是否相等</p>
+<p>3 modCount++在多线程操作时无法保证原子性，甚至HashMap整个put方法都出现了问题</p>
+<blockquote>
+<p>PS：所以在JDK1.7的ConcurrentHashMap中出现大量 <strong><em>UNSAFE</em></strong> 和 <strong><em>volatile</em></strong> 关键字，同时加入了ReentrantLock（在JDK1.8中由于 <code>synchronized</code>的性能得到优化，将锁换成了<code>synchronized</code>）。</p>
+</blockquote>
+<blockquote>
+<p>PS：fast-fail的问题，不仅仅出现在HashMap中，Java中很多集合类型都有这个机制。<br>同时，这个问题也被收录在阿里开发手册中：<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/756753?spm=a2c6h.12873639.0.0.6fee1e8bz6HCIu">为什么阿里巴巴禁止在 foreach 循环里进行元素的 remove/add 操作</a></p>
+</blockquote>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>上文所有代码片段都是基于JDK1.7，虽然JDK1.8中对HashMap做了较大的改动。但是文章的思路和结论都是相同的。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2020/10/31/question-of-hashmap-put/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/31/question-of-hashmap-put/" class="post-title-link" itemprop="url">IHAVEAQUESTION - JDK1.7 HashMap 链表头插疑问？</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-10-31 09:45:40" itemprop="dateCreated datePublished" datetime="2020-10-31T09:45:40+08:00">2020-10-31</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="IHAVEAQUESTION"><a href="#IHAVEAQUESTION" class="headerlink" title="IHAVEAQUESTION"></a>IHAVEAQUESTION</h2><p>为什么JDK1.7中HashMap链表插入时要在 <strong>遍历完一遍链表</strong> 后，再采用头插法？</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>HashMap在JDK1.7中采用 数组+链表 的存储结构。</p>
+<p>数组的角标是在key值hashCode()的基础上进行多次高位移动的扰动后尽量保持散列，代码片段如下：</p>
+<p>1 hash</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">final int hash(Object k) &#123;</span><br><span class="line">    int h &#x3D; hashSeed;</span><br><span class="line">    if (0 !&#x3D; h &amp;&amp; k instanceof String) &#123;</span><br><span class="line">        return sun.misc.Hashing.stringHash32((String) k);</span><br><span class="line">    &#125;</span><br><span class="line">    h ^&#x3D; k.hashCode();</span><br><span class="line">    &#x2F;&#x2F; 多次让高位参与运算，扰动函数</span><br><span class="line">    h ^&#x3D; (h &gt;&gt;&gt; 20) ^ (h &gt;&gt;&gt; 12);</span><br><span class="line">    return h ^ (h &gt;&gt;&gt; 7) ^ (h &gt;&gt;&gt; 4);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2 % -&gt; &amp;</p>
+<p>采用更搞笑的 &amp;运算。这里length为数组的长度，源码中巧妙的设计数组的长度必须保持2的整数幂。这样设计才能保证length-1计算后得到 <strong>全1</strong> 的的二进制序列。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">static int indexFor(int h, int length) &#123;</span><br><span class="line">    return h &amp; (length-1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><p>数组的index确认后，就可以将键值对插入相应位置的链表了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public V put(K key, V value) &#123;</span><br><span class="line">    ... </span><br><span class="line">    int hash &#x3D; hash(key); &#x2F;&#x2F; hash</span><br><span class="line">    int i &#x3D; indexFor(hash, table.length); &#x2F;&#x2F; %</span><br><span class="line">    &#x2F;&#x2F; 判断hashmap中有没有存在相同的key，如果有的话将这个key原来的value覆盖，并返回</span><br><span class="line">    for (Entry&lt;K,V&gt; e &#x3D; table[i]; e !&#x3D; null; e &#x3D; e.next) &#123;</span><br><span class="line">        Object k;</span><br><span class="line">        if (e.hash &#x3D;&#x3D; hash &amp;&amp; ((k &#x3D; e.key) &#x3D;&#x3D; key || key.equals(k))) &#123;</span><br><span class="line">            V oldValue &#x3D; e.value;</span><br><span class="line">            e.value &#x3D; value;</span><br><span class="line">            e.recordAccess(this);</span><br><span class="line">            return oldValue;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">    &#x2F;&#x2F; 扩容，头插</span><br><span class="line">    addEntry(hash, key, value, i);</span><br><span class="line">    return null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上面的源码部分只保留了关键部分</p>
+</blockquote>
+<p>我们都知道JDK1.7中链表的插入方式是头插。头插与尾插相比是节省了一次链表全遍历的时间。直接采用下面代码即可完成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 链表头插</span><br><span class="line">table[bucketIndex] &#x3D; new Entry&lt;&gt;(hash, key, value, table[bucketIndex]);</span><br></pre></td></tr></table></figure>
+
+<p>这部分代码在put方法的addEntry()中，addEntry()方法在链表头插之前做了扩容操作。</p>
+<p>但是奇怪的是，在上面put方法中有一段循环遍历链表的代码，这段代码的目的只是检查要插入的Key值是否已经存在在HashMap中，如果存在就修改，同时将原来的值返回。</p>
+<p><strong><em>这我就很疑惑了，为什么这里明明已经遍历过一遍链表了，为什么不多写一个else，如果没有找到存在的Key值，直接将目标键值对插入在链表尾部呢？都已经遍历完了，插个值咋了？</em></strong></p>
+<p>可能的原因只能是扩容时机不好把握？</p>
+<p>HashMap的扩容机制是键值对size超过阈值后，数组长度扩充至之前的两倍，然后将原本下标的全部链表迁移（这个迁移的过程会倒序链表，也可能分散链表中的数据，以缩短链表的长度）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void transfer(Entry[] newTable, boolean rehash) &#123;</span><br><span class="line">    int newCapacity &#x3D; newTable.length;</span><br><span class="line">    for (Entry&lt;K,V&gt; e : table) &#123;</span><br><span class="line">        while(null !&#x3D; e) &#123;</span><br><span class="line">            Entry&lt;K,V&gt; next &#x3D; e.next;</span><br><span class="line">            ...</span><br><span class="line">            &#x2F;&#x2F; 同一个元素转移后的下标有两种情况。</span><br><span class="line">            &#x2F;&#x2F; 1 与原来相同 2 在原来下标基础上加原数组长度</span><br><span class="line">            int i &#x3D; indexFor(e.hash, newCapacity);</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; 这样遍历头插后，链表的顺序与之前相反</span><br><span class="line">            e.next &#x3D; newTable[i];</span><br><span class="line">            newTable[i] &#x3D; e;</span><br><span class="line">            e &#x3D; next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>了解HashMap源码的朋友可能都知道，这个扩容和迁移的代码在高并发时并不是线程安全的。可能出现循环链表，以至于get时陷入死循环。</p>
+<p>也许正因如此，需要将链表插入和扩容的代码从之前的循环中独立出来。并采用头插的方式，尽量再循环一次链表。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>以上都是我在阅读HashMap源码后产生疑问，独立思考，自我解答的过程。</p>
+<p>可能是很少有人产生跟我相似的疑问，所以我在网上也没能查找到准确的资料和答案。</p>
+<p>所以以上全是自己的推断和猜测。毕竟HashMap源码不论是在数据结构还是算法思想层面都是非常优雅的。别人这么设计肯定是有原因的。哈哈</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2020/10/29/memory-layout-of-java-object/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/29/memory-layout-of-java-object/" class="post-title-link" itemprop="url">Java对象的内存布局</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-10-29 20:45:35" itemprop="dateCreated datePublished" datetime="2020-10-29T20:45:35+08:00">2020-10-29</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h3><p>对象的存储涉及内存的三部分：<strong>方法栈</strong>（存储指针）、<strong>方法区</strong>（存储类信息、常量、静态变量）、<strong>堆</strong>（存储对象的实例数据）。</p>
+<p>对象在内存中存储的结构由三部分组成：<strong>对象头</strong>、<strong>实例数据</strong>、<strong>对齐填充</strong>。</p>
+<h3 id="Java对象在内存中存储布局"><a href="#Java对象在内存中存储布局" class="headerlink" title="Java对象在内存中存储布局"></a>Java对象在内存中存储布局</h3><h4 id="结构图"><a href="#结构图" class="headerlink" title="结构图"></a>结构图</h4><p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/Java%E5%AF%B9%E8%B1%A1%E7%BB%93%E6%9E%84.jpg" alt="Java对象在内存中存储布局"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/29/memory-layout-of-java-object/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2020/10/21/Tri-colour-marking/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/21/Tri-colour-marking/" class="post-title-link" itemprop="url">Tri-colour marking</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-10-21 16:39:47" itemprop="dateCreated datePublished" datetime="2020-10-21T16:39:47+08:00">2020-10-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/gc-1.gif"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2020/10/19/CPU-Out-of-Order/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/19/CPU-Out-of-Order/" class="post-title-link" itemprop="url">CPU 乱序执行反证</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-10-19 09:20:49" itemprop="dateCreated datePublished" datetime="2020-10-19T09:20:49+08:00">2020-10-19</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="循序运行"><a href="#循序运行" class="headerlink" title="循序运行"></a>循序运行</h3><p>主条目：指令周期<br>在早期的处理器中，指令的执行一般在以下的步骤中完成：</p>
+<p>1 指令获取。<br>2 如果输入的运算对象是可以获取的（比如已经存在于寄存器中），这条指令会被发送到合适的功能单元。如果一个或者更多的运算对象在当前的时钟周期中是不可获取的（通常需要从主存获取），处理器会开始等待直到它们是可以获取的。<br>3 指令在合适的功能单元中被执行。<br>4 功能单元将运算结果写回寄存器。</p>
+<h3 id="乱序执行"><a href="#乱序执行" class="headerlink" title="乱序执行"></a>乱序执行</h3><p>这种范式通过以下步骤挑选可执行的指令先运行：</p>
+<p>1 指令获取。<br>2 指令被发送到一个指令序列中（也称执行缓冲区或者保留站）。<br>3 指令将在序列中等待直到它的数据运算对象是可以获取的。然后指令被允许在先进入的、旧的指令之前离开序列缓冲区。<br>4 指令被分配给一个合适的功能单元并由之执行。<br>5 结果被放到一个序列中。<br>6 仅当所有在该指令之前的指令都将他们的结果写入寄存器后，这条指令的结果才会被写入寄存器中。这个过程被称为毕业或者退休周期。</p>
+<p>乱序执行的重要概念是实现了<strong>避免计算机在用于运算的对象不可获取时的大量等待。</strong>在上述文字的要点中，乱序执行处理器避免了在顺序执行处理器处理过程第二步中当指令由于运算数据未到位所造成的等待。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">b &#x3D; a * 5</span><br><span class="line">v &#x3D; b++</span><br><span class="line">c &#x3D; a + 3</span><br></pre></td></tr></table></figure>
+<p>由于1与3可并发运行，而2之b无法随即获得，因此可以先计算乘法1与加法3，再运行2。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/19/CPU-Out-of-Order/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2020/10/12/slide-windows/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/12/slide-windows/" class="post-title-link" itemprop="url">sliding window algorithm 滑动窗口</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-10-12 11:56:08" itemprop="dateCreated datePublished" datetime="2020-10-12T11:56:08+08:00">2020-10-12</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:52:28" itemprop="dateModified" datetime="2022-06-20T00:52:28+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>滑动窗口本质上来源于单调性，一般可以理解为，随着左端点位置的增加，其最优决策的右端点位置单调不减。</p>
+<p>事实上是利用决策单调性来实现复杂度优化。</p>
+<p>时间复杂度：O(n)</p>
+<p>可以解决的问题有：求最小区间、区间最大值、最小子串等</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/12/slide-windows/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2020/10/10/git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/10/git/" class="post-title-link" itemprop="url">git command</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-10-10 17:23:40" itemprop="dateCreated datePublished" datetime="2020-10-10T17:23:40+08:00">2020-10-10</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:48:55" itemprop="dateModified" datetime="2022-06-20T00:48:55+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>虽然现在常用sourcetree或者直接在IDE中通过图形界面操作，但是开发中难免遇到一些棘手的问题需要使用git命令去管理项目</p>
+<p>这里列出一些常用的命令，方便查询 <a href="#%E6%9C%AC%E5%9C%B0%E6%93%8D%E4%BD%9C">命令集</a></p>
+<p><strong><em>&lt;更新20201114&gt;</em></strong></p>
+<h2 id="常见场景"><a href="#常见场景" class="headerlink" title="常见场景"></a>常见场景</h2><h3 id="1-撤销本地-暂存区代码"><a href="#1-撤销本地-暂存区代码" class="headerlink" title="1 撤销本地\暂存区代码"></a>1 撤销本地\暂存区代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD &lt;filename&gt;</span><br><span class="line">git checkout -- &lt;filename&gt;</span><br><span class="line">批量撤销：</span><br><span class="line">git reset HEAD</span><br><span class="line">git checkout .</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-撤销已提交的代码"><a href="#2-撤销已提交的代码" class="headerlink" title="2 撤销已提交的代码"></a>2 撤销已提交的代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard commit_id 回到上一个提交的节点（清楚本地代码库）</span><br><span class="line">git reset --soft commit_id 回到上一个提交的节点（保留本地代码库）</span><br><span class="line">查看commit_id（查看命令历史）：git reflog </span><br></pre></td></tr></table></figure>
+
+<h3 id="3-原本版本退回"><a href="#3-原本版本退回" class="headerlink" title="3 原本版本退回"></a>3 原本版本退回</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard commit_id</span><br><span class="line">git push -f origin master</span><br><span class="line">查看commit_id（查看命令历史）：git log</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-创建分支并提交到远程"><a href="#4-创建分支并提交到远程" class="headerlink" title="4 创建分支并提交到远程"></a>4 创建分支并提交到远程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b dev</span><br><span class="line">git push origin dev</span><br><span class="line">删除远端分支：</span><br><span class="line">git push origin --delete dev</span><br><span class="line">删除本地分支：</span><br><span class="line">git branch -d dev</span><br><span class="line">查看本地、远端分支：</span><br><span class="line">git branch -a</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>963a106b8fa91b853649d148ced800ee357d2733</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/10/git/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2020/10/07/money-management/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/07/money-management/" class="post-title-link" itemprop="url">理财营-学习笔记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-10-07 18:04:46" itemprop="dateCreated datePublished" datetime="2020-10-07T18:04:46+08:00">2020-10-07</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:48:53" itemprop="dateModified" datetime="2022-06-20T00:48:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/management/" itemprop="url" rel="index"><span itemprop="name">management</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <!-- ## 小白理财营学习笔记 -->
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>国庆期间形成安排比较满，前半段安排了家庭短途自驾旅行，后半段要去外地参加朋友的婚礼。</p>
+<p>没有太多大块的时间可以学习和整理，于是报名参加了一个基础的理财知识的训练营，利用晚上睡前的时间了解一下理财相关的知识、丰富一下自己的知识库。</p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>课程共12天，所以我也会按每天的内容进行更新。全部学习结束后争取写一写自己的收获和感悟。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/07/money-management/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yloopdaed</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

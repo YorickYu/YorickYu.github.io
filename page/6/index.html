@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yloopdaed.icu","root":"/","scheme":"Pisces","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+
+  <meta name="description" content="可能是个非典型程序员吧 ^ ^">
+<meta property="og:type" content="website">
+<meta property="og:title" content="yloopdaed">
+<meta property="og:url" content="http://yloopdaed.icu/page/6/index.html">
+<meta property="og:site_name" content="yloopdaed">
+<meta property="og:description" content="可能是个非典型程序员吧 ^ ^">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="yloopdaed">
+<meta property="article:tag" content="iOS JAVA">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://yloopdaed.icu/page/6/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>yloopdaed</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">yloopdaed</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">YYYYYY iOS to Java. DON'T BE WILD</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="yloopdaed"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">yloopdaed</p>
+  <div class="site-description" itemprop="description">可能是个非典型程序员吧 ^ ^</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">112</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">132</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/YorickYu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;YorickYu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yykeepbreak@gmail.com" title="E-Mail → mailto:yykeepbreak@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/9901b7042663" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;9901b7042663" rel="noopener" target="_blank">简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/14337507/yloopdaed" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;14337507&#x2F;yloopdaed" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/YorickYu/YYTODOLIST" title="https:&#x2F;&#x2F;github.com&#x2F;YorickYu&#x2F;YYTODOLIST" rel="noopener" target="_blank">TODOLIST</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/YorickYu/IHAVEAQUESTION" title="https:&#x2F;&#x2F;github.com&#x2F;YorickYu&#x2F;IHAVEAQUESTION" rel="noopener" target="_blank">IHAVEAQUESTION</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://azh.ink/" title="http:&#x2F;&#x2F;azh.ink" rel="noopener" target="_blank">azh</a>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner index posts-expand">
+      
+
+      
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/04/23/inner-stream/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/23/inner-stream/" class="post-title-link" itemprop="url">Stream 底层实现</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-23 22:05:44" itemprop="dateCreated datePublished" datetime="2021-04-23T22:05:44+08:00">2021-04-23</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="Java的演变"><a href="#Java的演变" class="headerlink" title="Java的演变"></a>Java的演变</h3><p>一直致力于让并发编程更容易、出错更少。<br><strong>Java1</strong>：线程和锁<br><strong>Java5</strong>：线程池和并发集合<br><strong>Java7</strong>：Fork/Join 分支合并框架<br><strong>Java8</strong>：Stream 流（并行）</p>
+<h3 id="Stream并行流"><a href="#Stream并行流" class="headerlink" title="Stream并行流"></a>Stream并行流</h3><p>parallelStream，就是把内容分成多个数据块，并用不同的线程分别处理每个数据块的流</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">parallelSum</span><span class="params">(<span class="keyword">long</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Stream.iterate(<span class="number">1L</span>, i -&gt; i + <span class="number">1</span>)</span><br><span class="line">            .limit(n)</span><br><span class="line">            .parallel() <span class="comment">// 在内部实际上就是设了一个boolean标志，调用后开始并行执行</span></span><br><span class="line">            .reduce(<span class="number">0L</span>, Long::sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>内部使用了默认的 <code>ForkJoinPool</code>，<strong>默认线程数量是你处理器的数量</strong></p>
+<blockquote>
+<p>通过 Runtime.getRuntime().availableProcessors()得到处理器数<br>通过 System.setProperty(“java.util.concurrent.ForkJoinPool.common.parallelism”,”12”); 修改系统默认线程池大小</p>
+</blockquote>
+<p><strong>分支/合并框架</strong> 中通过RecursiveTask进行任务切分。</p>
+<h3 id="性能和安全性"><a href="#性能和安全性" class="headerlink" title="性能和安全性"></a>性能和安全性</h3><p>并行化并不是没有代价的。并行化过程本身需要对流做递归划分，把每个子流的归纳操作分配到不同的线程，然后把这些操作的结果合并成一个值。但在多个内核之间移动数据的代价也可能比你想的要大，所以很重要的一点是要保证在内核中并行执行工作的时间比在内核之间传输数据的时间长。</p>
+<h3 id="parallel建议"><a href="#parallel建议" class="headerlink" title="parallel建议"></a>parallel建议</h3><p>1 测量。并行流不一定比顺序流块。最重要的建议就是用适当的基准来测量性能<br>2 留意装箱。自动装箱和拆箱操作会大大降低性能。可以用原始类型流（数值流）<br>3 熟悉方法的使用场景。limit和findFirst这种依赖顺序的操作不适合在并行流使用。findAny可以在并行中使用<br>4 考虑流中的数据结构是否易于拆分。ArrayList拆分效率比LinkedList高得多</p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/stream-2.png"></p>
+<h3 id="fork-join建议"><a href="#fork-join建议" class="headerlink" title="fork/join建议"></a>fork/join建议</h3><p>1 对一个任务调用join方法会阻塞调用方，直到该任务做出结果。<br>2 不应该在RecursiveTask内部使用ForkJoinPool的invoke方法。<br>3 对子任务调用fork方法可以把它排进ForkJoinPool。</p>
+<h3 id="工作窃取"><a href="#工作窃取" class="headerlink" title="工作窃取"></a>工作窃取</h3><p>划分并行任务时，应该让每个任务都用完全相同的时间完成，让所有的CPU内核都同样繁忙</p>
+<p><strong>分支/合并框架</strong> 工程用一种称为 <strong>工作窃取（work stealing）</strong> 的技术来解决这个问题</p>
+<blockquote>
+<p>工作窃取（work stealing）<br>之前在 RabbitMq 的学习中，有一种消息模型 - Task Queues。这种模型下也可以设置一种模式叫：能者多劳。和工作窃取的原理类似。</p>
+</blockquote>
+<h3 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h3><h4 id="RecursiveTask-递归"><a href="#RecursiveTask-递归" class="headerlink" title="RecursiveTask 递归"></a>RecursiveTask<R> 递归</h4><p>需要手动编写逻辑，相关代码 <a target="_blank" rel="noopener" href="https://github.com/YorickYu/JPP/tree/main/src/main/java/com/yy/forkjoin">Task</a></p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/stream-1.png"></p>
+<h4 id="Spliterator-可分迭代器"><a href="#Spliterator-可分迭代器" class="headerlink" title="Spliterator 可分迭代器"></a>Spliterator 可分迭代器</h4><p>parallel并行流中拆分机制</p>
+<p>Java 8已经为集合框架中包含的所有数据结构提供了一个默认的Spliterator实现。集合实现了Spliterator接口，接口提供了一个spliterator方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Spliterator</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">tryAdvance</span><span class="params">(Consumer&lt;? <span class="keyword">super</span> T&gt; action)</span></span>;</span><br><span class="line">    <span class="function">Spliterator&lt;T&gt; <span class="title">trySplit</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="title">estimateSize</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">characteristics</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/stream-3.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/04/22/Fibonacci/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/22/Fibonacci/" class="post-title-link" itemprop="url">Stream生成斐波那契数列（无限流）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-22 22:16:35" itemprop="dateCreated datePublished" datetime="2021-04-22T22:16:35+08:00">2021-04-22</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>斐波那契数列（Fibonacci sequence），又称黄金分割数列。</p>
+<p>在数学上，斐波那契数列以如下被以递推的方法定义：F(0)=0，F(1)=1, F(n)=F(n - 1)+F(n - 2)（n ≥ 2，n ∈ N*）</p>
+<p>即 <strong>这个数列从第3项开始，每一项都等于前两项之和</strong></p>
+<h3 id="Stream实现"><a href="#Stream实现" class="headerlink" title="Stream实现"></a>Stream实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list = Stream.iterate(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">0</span>, <span class="number">1</span>&#125;, t -&gt; <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;t[<span class="number">1</span>], t[<span class="number">0</span>] + t[<span class="number">1</span>]&#125;)</span><br><span class="line">        .limit(<span class="number">10</span>)</span><br><span class="line">        .map(t -&gt; t[<span class="number">0</span>]).collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
+
+<p>仅取了数列前10个元素。</p>
+<p>用了一个小技巧，如果有兴趣的话我之后把过程再更新出来。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/04/20/diff-of-java8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/20/diff-of-java8/" class="post-title-link" itemprop="url">面试官：Java8到底有什么新特性？</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-20 00:12:13" itemprop="dateCreated datePublished" datetime="2021-04-20T00:12:13+08:00">2021-04-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h3><p>先罗列一下相关的关键字吧。</p>
+<p><strong>行为参数化</strong>、<strong>函数式编程</strong>、<strong>Lambda</strong>、<strong>Stream</strong>、<strong>模式匹配</strong>、<strong>Optional</strong>、<strong>默认方法（接口多继承）</strong> 等</p>
+<p>如果面试真的遇到这个问题，任选上面几点展现一下理解的深度。</p>
+<h3 id="行为参数化"><a href="#行为参数化" class="headerlink" title="行为参数化"></a>行为参数化</h3><p>就是一个方法接受多个不同的行为作为参数，并在内部使用它们，完成不同行为的能力，可以让代码更适应不断变化的需求，减轻未来的工作量</p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/java8-1.png"></p>
+<h3 id="代码传递"><a href="#代码传递" class="headerlink" title="代码传递"></a>代码传递</h3><p>Java8之前实现起来很复杂</p>
+<p>编程语言的目的就在于操作值，值作为一等公民。Java8可以将方法看成值一样传递</p>
+<p><strong>演变过程：传值-&gt; 类（实现接口） -&gt; 匿名类 -&gt; Lamdba（函数式接口）-&gt; 方法引用</strong></p>
+<p>上面的函数式接口、匿名类、Lambda都属于 <strong>行为参数化</strong> 的范畴</p>
+<p>例：void sort(Comparator&lt;? super E&gt; c) 演变</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">inventory是Apple数组，Apple类中有一个weight属性</span><br><span class="line">需求是按照苹果的重量排序</span><br><span class="line"><span class="number">1</span> 类</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppleComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Apple</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Apple a1, Apple a2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a1.getWeight().compareTo(a2.getWeight());</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">inventory.sort(<span class="keyword">new</span> AppleComparator());</span><br><span class="line"><span class="number">2</span> 匿名类</span><br><span class="line">inventory.sort(<span class="keyword">new</span> Comparator&lt;Apple&gt;() &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Apple a1, Apple a2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a1.getWeight().compareTo(a2.getWeight());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="number">3</span> Lambda</span><br><span class="line">inventory.sort((a1, a2) -&gt; a1.getWeight().compareTo(a2.getWeight()));</span><br><span class="line">静态导入 Comparator.comparing</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.util.Comparator.comparing;</span><br><span class="line">inventory.sort(comparing((a) -&gt; a.getWeight()));</span><br><span class="line"><span class="number">4</span> 方法引用</span><br><span class="line">inventory.sort(comparing(Apple::getWeight));</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/04/20/diff-of-java8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/04/15/i-dont-know-java/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/15/i-dont-know-java/" class="post-title-link" itemprop="url">Java 2年的感受</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-15 23:16:08" itemprop="dateCreated datePublished" datetime="2021-04-15T23:16:08+08:00">2021-04-15</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>全投入转向Java开发已经差不多2年多了。</p>
+<p>分享谈不上，说有一些感触。</p>
+<hr>
+<p>跟面试中造的卫星来比，工作中确实很少有机会去解决核心并棘手的问题。但是即便如此，日常的工作也不会像几年前那么容易摸鱼了。</p>
+<p>互联网最珍贵的就是开源思想。随着大厂成熟解决方案的下放和真实业务场景复杂度的提高，对开发者的要求也会越来越高。</p>
+<p>尤为重要的是大数据，高并发，高可用的解决方案。除此之外目前你应该熟悉：</p>
+<p><strong>服务发现与注册、流量控制和统计、降级与熔断、安全控制、分布式存储和计算、机器学习模型等</strong></p>
+<p>每天都有相关框架的演变和更替。这也是对开发者高要求的体现。</p>
+<p>我之前提到过，要做一个 <a href="https://yloopdaed.icu/2021/03/08/all-life-study">终生学习者</a>。不断更新自己的技术栈，挖掘自己的技术深度和高度。</p>
+<p>最后，享受这个过程。反正你也改变不了它</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/04/11/high-performance-mysql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/11/high-performance-mysql/" class="post-title-link" itemprop="url">《高性能MySQL》 归纳整理</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-11 00:09:15" itemprop="dateCreated datePublished" datetime="2021-04-11T00:09:15+08:00">2021-04-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/" itemprop="url" rel="index"><span itemprop="name">数据持久化</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="逻辑架构"><a href="#逻辑架构" class="headerlink" title="逻辑架构"></a>逻辑架构</h2><p>1 连接/线程处理<br>2 查询缓存+解析器+优化器<br>3 存储引擎</p>
+<h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><p>每个客户端连接都是mysql服务器中的一个线程，服务端会缓存这些线程，因此每个新建的连接不需要创建或销毁线程</p>
+<h3 id="优化-amp-缓存"><a href="#优化-amp-缓存" class="headerlink" title="优化&amp;缓存"></a>优化&amp;缓存</h3><p>优化器不关心表的存储引擎<br>优化包括：重写查询，改变表的读取顺序，选择合适的索引<br>缓存：解析sql前会先检查缓存</p>
+<h2 id="并发控制"><a href="#并发控制" class="headerlink" title="并发控制"></a>并发控制</h2><p>1 读写锁：共享读锁，排他写锁。写锁比读锁有更高的优先级（所以写锁可能插队到读锁前）<br>加锁这个操作本身也需要消耗资源</p>
+<p>2 锁粒度<br>锁定的数据量，锁定的数据量越少，系统并发程度越高<br>2.1 表锁<br>开销小，会锁定整张表<br>2.2 行级锁<br>最大程度支持并发</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/04/11/high-performance-mysql/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/04/10/cache-structure/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/10/cache-structure/" class="post-title-link" itemprop="url">进程间缓存架构概念篇</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-10 22:10:41" itemprop="dateCreated datePublished" datetime="2021-04-10T22:10:41+08:00">2021-04-10</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/" itemprop="url" rel="index"><span itemprop="name">数据持久化</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>随着业务场景复杂度的提高和数据存储量的膨胀，为了保证整体服务平稳运行，缓存系统的地位也越来越高。</p>
+<p>今天就近期对缓存架构的理解，梳理成一篇浅显的文章</p>
+<h2 id="Redis缓存架构分类"><a href="#Redis缓存架构分类" class="headerlink" title="Redis缓存架构分类"></a>Redis缓存架构分类</h2><p>根据日常C端面临的实际情况，Redis 做缓存时，大体分为两种模式，分别是<strong>只读缓存</strong>和<strong>读写缓存</strong>。</p>
+<h3 id="只读缓存（读多写少）"><a href="#只读缓存（读多写少）" class="headerlink" title="只读缓存（读多写少）"></a>只读缓存（读多写少）</h3><p>修改数据时先删除缓存，下次读请求再写入。例如：<strong>旁路型缓存</strong></p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/cache1.png"></p>
+<p>当我们需要缓存图片、短视频这些用户只读的数据时，就可以使用只读缓存这个类型了</p>
+<h3 id="读写缓存"><a href="#读写缓存" class="headerlink" title="读写缓存"></a>读写缓存</h3><p>修改数据时不删除缓存，最新的数据是在 Redis 中，通过回写策略同步数据库。例如：<strong>穿透型缓存</strong></p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/cache2.png"></p>
+<blockquote>
+<p>回写策略<br>1 同步直写策略，写请求发给缓存的同时，也会发给后端数据库进行处理，等到缓存和数据库都写完数据，才给客户端返回。<br>同步直写会降低缓存的访问性能<br>2 异步写回策略，优先考虑了响应延迟。此时，所有写请求都先在缓存中处理。等到这些增改的数据要被从缓存中淘汰出来时，缓存将它们写回后端数据库。<br>异步写回有数据丢失的风险</p>
+</blockquote>
+<p><strong>同步直写模式侧重于保证数据可靠性，而异步写回模式则侧重于提供低延迟访问</strong></p>
+<h2 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h2><p>关于是选择只读缓存，还是读写缓存，主要看我们 <strong>对写请求是否有加速的需求</strong></p>
+<p>1 如果需要对写请求进行加速，我们选择读写缓存<br>2 如果写请求很少，或者是只需要提升读请求的响应速度的话，我们选择只读缓存</p>
+<hr>
+<p>缓存可以放到基础架构中任何存在数据传输瓶颈的地方。</p>
+<h2 id="展开"><a href="#展开" class="headerlink" title="展开"></a>展开</h2><h3 id="旁路型缓存-Look-Aside-Caching"><a href="#旁路型缓存-Look-Aside-Caching" class="headerlink" title="旁路型缓存 (Look-Aside Caching)"></a>旁路型缓存 (Look-Aside Caching)</h3><p>旁路型缓存是避免微服务从后端存储中访问数据的高性能替代方案<br>1 应用读取数据时，需要先读取 Redis；<br>2 发生缓存缺失时，需要从数据库读取数据；<br>3 发生缓存缺失时，还需要更新缓存。</p>
+<p>这些操作都要放在应用程序中来完成。所以，<br>有一个地方就需要注意了：因为需要新增程序代码来使用缓存，所以，Redis 并不适用于那些无法获得源码的应用，例如一些很早之前开发的应用程序，它们的源码已经没有再维护了，或者是第三方供应商开发的应用，没有提供源码，所以，我们就没有办法在这些应用中进行缓存操作。</p>
+<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>伴随业务膨胀，缓存的一致性维护难度上涨<br>思考：<br>数据读写方的沟通难题<br>解决方案：<br>1 AOP注解，更新缓存时通知<br>2 Mybatis 触发器<br>3 binlog 处理<br>4 MQ 最终一致性</p>
+<h3 id="穿透型缓存"><a href="#穿透型缓存" class="headerlink" title="穿透型缓存"></a>穿透型缓存</h3><p>穿透型缓存的设计原则是将缓存与后端数据库的交互细节对应用层服务隐藏<br>应用层服务所有的读写请求均请求缓存，读请求 miss 后，缓存向后端数据服务器请求数据，先更新缓存后返回<br>而写请求也是同样的，先写入缓存服务器，随后在合适的时间同步给后端服务器</p>
+<h3 id="思考-1"><a href="#思考-1" class="headerlink" title="思考"></a>思考</h3><p>实现复杂度和数据一致性的问题<br>思考：<br>选择合适的回写时间节点，和回写策略<br>合理规划缓存中的键值关系<br>解决方案：<br>1 实现复杂性无法避免，为了追求高频读写场景的缓存最大化利用<br>2 一致性问题考虑配合脚本语言，触发器等实现一个回写服务，当然还要保证缓存服务的高可用（这也不算不上解决方案）</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>其实缓存架构的思想内嵌是无处不在的。MySQL本身也有<code>buffer pool</code>的概念。redis中也有批处理指令和pipeline管道的概念。甚至于寄存器与系统内存之间的3级缓存概念。</p>
+<p>硬件的定位差距总需要通过软件去弥补，协同工作</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/04/01/cavil/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/01/cavil/" class="post-title-link" itemprop="url">吹毛求疵</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-01 10:40:19" itemprop="dateCreated datePublished" datetime="2021-04-01T10:40:19+08:00">2021-04-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>虽说吹毛求疵看似是个贬义词，但是技术上的吹毛求疵往往是有必要的。</p>
+<p>这里会不定时更新一些日常编码中 <code>吹毛求疵</code> 的写法。目的也是为了养成一个良好的编码习惯。</p>
+<h3 id="循环中的size判断"><a href="#循环中的size判断" class="headerlink" title="循环中的size判断"></a>循环中的size判断</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, ~~<span class="keyword">int</span>~~ length = list.size; i &lt; length; i++)&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修正：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, length = list.size; i &lt; length; i++)&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>list.size 有一定的资源消耗</p>
+<h3 id="返回空集合"><a href="#返回空集合" class="headerlink" title="返回空集合"></a>返回空集合</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Result&gt; <span class="title">get</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// TODO.</span></span><br><span class="line">    <span class="keyword">return</span> Collections.EMPTY_LIST;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果查询数据为空时，也需要返回一个空集合，而不是null。防止调用方空指针异常</p>
+<h3 id="DCL单例"><a href="#DCL单例" class="headerlink" title="DCL单例"></a>DCL单例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singlenton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Singlenton INSTANCE; <span class="comment">// JIT</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singlenton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    <span class="comment">// DCL</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singlenton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (INSTANCE == <span class="keyword">null</span>) &#123; <span class="comment">// double check 1</span></span><br><span class="line">            <span class="keyword">synchronized</span> (Singlenton.class) &#123; <span class="comment">// LOCK</span></span><br><span class="line">                <span class="keyword">if</span> (INSTANCE == <span class="keyword">null</span>) &#123; <span class="comment">// double check 2</span></span><br><span class="line">                    INSTANCE = <span class="keyword">new</span> Singlenton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>避免对象半初始化状态</p>
+<h3 id="局部变量赋值"><a href="#局部变量赋值" class="headerlink" title="局部变量赋值"></a>局部变量赋值</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> oldThr = threshold;</span><br><span class="line"><span class="keyword">int</span> oldCap = (oldTab == <span class="keyword">null</span>) ? <span class="number">0</span> : oldTab.length;    </span><br><span class="line"><span class="keyword">int</span> newCap, newThr = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">if</span> ((newCap = oldCap &lt;&lt; <span class="number">1</span>) &lt; MAXIMUM_CAPACITY &amp;&amp; oldCap &gt;= DEFAULT_INITIAL_CAPACITY)</span><br><span class="line">    newThr = oldThr &lt;&lt; <span class="number">1</span>; <span class="comment">// double threshold</span></span><br></pre></td></tr></table></figure>
+
+<p>这种写法在源码中比较常见</p>
+<h3 id="O-n-gt-O-1"><a href="#O-n-gt-O-1" class="headerlink" title="O(n) -&gt; O(1)"></a>O(n) -&gt; O(1)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Accessors(chain = true)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Model</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String detail;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">List&lt;Model&gt; origin = <span class="keyword">new</span> ArrayList&lt;Model&gt;() &#123;&#123;</span><br><span class="line">    add(<span class="keyword">new</span> Model().setId(<span class="number">1</span>).setDetail(<span class="string">&quot;a&quot;</span>));</span><br><span class="line">    add(<span class="keyword">new</span> Model().setId(<span class="number">2</span>).setDetail(<span class="string">&quot;b&quot;</span>));</span><br><span class="line">    add(<span class="keyword">new</span> Model().setId(<span class="number">3</span>).setDetail(<span class="string">&quot;c&quot;</span>));</span><br><span class="line">    add(<span class="keyword">new</span> Model().setId(<span class="number">4</span>).setDetail(<span class="string">&quot;d&quot;</span>));</span><br><span class="line">    add(<span class="keyword">new</span> Model().setId(<span class="number">5</span>).setDetail(<span class="string">&quot;e&quot;</span>));</span><br><span class="line">&#125;&#125;;</span><br><span class="line"></span><br><span class="line">List&lt;String&gt; filter = Arrays.asList(<span class="string">&quot;b&quot;</span>, <span class="string">&quot;k&quot;</span>, <span class="string">&quot;t&quot;</span>);</span><br><span class="line">List&lt;Model&gt; result1 = origin.stream().filter(item -&gt; filter.contains(item.detail)).collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line">Set&lt;String&gt; setFilter = <span class="keyword">new</span> HashSet&lt;&gt;(filter);</span><br><span class="line">List&lt;Model&gt; result2 = origin.stream().filter(item -&gt; setFilter.contains(item.detail)).collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
+
+<p>使用Set而不是List</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/03/29/mysql-innodb-hash/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/29/mysql-innodb-hash/" class="post-title-link" itemprop="url">MySQL Innodb 自定义Hash索引</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-29 09:24:16" itemprop="dateCreated datePublished" datetime="2021-03-29T09:24:16+08:00">2021-03-29</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>MySQL中，索引是在存储引擎实现的<br>MySQL中，只有 Memory 引擎显式支持哈希索引（非唯一）<br>MySQL中，默认的Innodb引擎是不支持 Hash 索引的</p>
+<h3 id="哈希索引"><a href="#哈希索引" class="headerlink" title="哈希索引"></a>哈希索引</h3><p>哈希索引的数据结构：槽 Slot、值 Value</p>
+<p>每个槽的编号是顺序的，但是值不是。<strong>值存储的是指向 行 的指针</strong></p>
+<p>优点：<br>因为索引自身只需存储对应的哈希值，所以索引的结构十分紧凑，这也让哈希索引查找的速度非常快。</p>
+<p>缺点：<br>1 哈希值是无序的，无法用于排序<br>2 哈希索引只支持等值比较，不支持任何范围查询<br>3 哈希冲突，索引维护操作代价很高<br>4 不支持部分列匹配查找。例如：对数据列（A,B）建立哈希索引，此时查询A列，无法使用该索引</p>
+<p><strong>因为这些限制，哈希索引只适用于某些特定的场合</strong>。而一旦适合哈希索引 ，则它带来性能提升将非常显著。</p>
+<h3 id="大字符串类型索引"><a href="#大字符串类型索引" class="headerlink" title="大字符串类型索引"></a>大字符串类型索引</h3><blockquote>
+<p>这里基于 Innodb 数据引擎讨论</p>
+</blockquote>
+<p>由于索引本身在 Innodb 中是以 B+Tree 的数据结构存在的。如果对于大字符串类型直接建立索引显然是不合理的。（这里不展开介绍 B+ 树在 MySQL 中的相关知识）</p>
+<p>那么，假如现在要对数据列 email 或者 url 这类数据列建立索引。应该如何保证空间和效率？</p>
+<h4 id="前缀索引"><a href="#前缀索引" class="headerlink" title="前缀索引"></a>前缀索引</h4><p>这是一种常见的思路，取大字符串类型的前缀建立索引，节省空间的同时尽可能过滤数据。</p>
+<p>难点在于需要合理定位一个前缀长度，尽可能过滤重复数据。</p>
+<p>此外需要注意的是，前缀索引会导致覆盖索引失效。这里就不详细展开了。</p>
+<h4 id="自定义-Hash-索引"><a href="#自定义-Hash-索引" class="headerlink" title="自定义 Hash 索引"></a>自定义 Hash 索引</h4><p>这个概念其实一直存在于 Innodb 引擎中。</p>
+<blockquote>
+<p>innodb内部做了很多优化：<br>1 读：可预测性预读，自动在内存中创建 <strong>自适应Hash索引</strong> 以加速读操作<br>2 写：加入缓冲区。加速插入操作</p>
+</blockquote>
+<p>上面的内容了解即可，本文中提到的 自定义Hash索引 是在 B+树 的基础上创建一个 <strong>伪哈希索引</strong>。</p>
+<p>思路就是新增一列记录大字符串哈希算法的结（删除原来字符串的索引）。</p>
+<h5 id="哈希算法的选择"><a href="#哈希算法的选择" class="headerlink" title="哈希算法的选择"></a>哈希算法的选择</h5><p>不要使用 SHA1() 和 MD5() 作为哈希函数。因为这两个函数是强加密函数。计算出来的哈希值非常长，浪费空间，索引过程也更慢。他们得设计目的是加密。</p>
+<p>CRC32() 是一个比较好的选择，计算结果较小。但是随着数据量的增多会出现明显的哈希冲突问题。可以在此基础上优化得到适合自己项目需求的哈希算法。</p>
+<h5 id="如何维护哈希值"><a href="#如何维护哈希值" class="headerlink" title="如何维护哈希值"></a>如何维护哈希值</h5><p>由于新增了一列伪哈希数据列。所以对于行数据的更新的插入操作。都是进行相应的哈希操作。</p>
+<p>当然这一列哈希值的维护可以进行手动维护，也可以使用触发器实现。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER // </span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TRIGGER</span> pseudohash_crc_in s <span class="keyword">BEFORE</span> <span class="keyword">INSERT</span> <span class="keyword">ON</span> pseudohash <span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="keyword">ROW</span> <span class="keyword">BEGIN</span> </span><br><span class="line"><span class="keyword">SET</span> NEW.url_crc=<span class="keyword">crc32</span>(NEW.url); </span><br><span class="line"><span class="keyword">END</span>; </span><br><span class="line">// </span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TRIGGER</span> pseudohash_crc_upd <span class="keyword">BEFORE</span> <span class="keyword">UPDATE</span> <span class="keyword">ON</span> pseudohash <span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="keyword">ROW</span> <span class="keyword">BEGIN</span> </span><br><span class="line"><span class="keyword">SET</span> NEW.url_crc=<span class="keyword">crc32</span>(NEW.url); </span><br><span class="line"><span class="keyword">END</span>; </span><br><span class="line">//</span><br></pre></td></tr></table></figure>
+
+<h5 id="sql改写"><a href="#sql改写" class="headerlink" title="sql改写"></a>sql改写</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT id FROM url WHERE url=&quot;http://www.mysql.com&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>改进为:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT id FROM url WHERE url=&quot;http://www.mysql.com&quot; AND url_crc=CRC32(&quot;http://www.mysql.com&quot;);</span><br></pre></td></tr></table></figure>
+<p>由于哈希冲突。所以还是需要带有原条件，在伪哈希索引之后再扫描少量的数据。</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>本篇文章只是对于大字符串索引优化提供另一种思路。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/03/21/redisson-watchdog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/21/redisson-watchdog/" class="post-title-link" itemprop="url">redisson 锁续期</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-21 13:29:28" itemprop="dateCreated datePublished" datetime="2021-03-21T13:29:28+08:00">2021-03-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>redisson 默认加锁有效期 30s</p>
+<p>watchdog 调用频率 10s，每次调用会将锁有效期更新为 30s。</p>
+<p>如果redis服务宕机，那么锁和watchdog都会停止服务。即，锁到期会正常过期，没有死锁。</p>
+<p>相关源码如下：</p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/redisson%E9%94%81%E7%BB%AD%E6%9C%9F.jpg"></p>
+<p>参考：</p>
+<p>简书作者，花神子 - <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/0d3f5395ceaf">缓存Redis 分布式锁的续期</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/03/20/redis-pipelines/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/20/redis-pipelines/" class="post-title-link" itemprop="url">redis pipelines</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-20 22:28:09" itemprop="dateCreated datePublished" datetime="2021-03-20T22:28:09+08:00">2021-03-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="什么是pipelines"><a href="#什么是pipelines" class="headerlink" title="什么是pipelines"></a>什么是pipelines</h3><p>redis pipelines，管道，是redis客户端提供的一个批量处理命令。</p>
+<p>管道操作的本质是客户端通过对管道中的指令 <code>重排序</code> 执行。这样做可以大幅节省IO时间。</p>
+<blockquote>
+<p>我们知道redis的工作模型是基于单线程的，我个人认为他之所以这样设计，是因为CPU的性能不是redis性能瓶颈的关键因素。而是IO。<br>redis pipelines可以通过改变命令的读写顺序，将读指令合并执行、写指令合并执行。减少IO的频率从而减少网络通信的花费。</p>
+</blockquote>
+<h3 id="与原生批量命令-mget-mset-的区别"><a href="#与原生批量命令-mget-mset-的区别" class="headerlink" title="与原生批量命令 mget mset 的区别"></a>与原生批量命令 mget mset 的区别</h3><p>原生批量命令是redis服务端实现的。而pipelines是redis客户端实现的。</p>
+<p>当key的数目过多时，mget和mset的执行效率会大于pipelines</p>
+<p><em>pipelines不会阻塞其他客户端，而mget会。</em></p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/pipevsmget.jpg"></p>
+<h3 id="pipelines-底层"><a href="#pipelines-底层" class="headerlink" title="pipelines 底层"></a>pipelines 底层</h3><p>依靠 <code>网络协议栈</code> 深入内核</p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/pipelinesker.jpg"></p>
+<p>流程简述：<br>客户端请求 -&gt; send buffer -&gt; 网卡（客户端） -&gt; 路由网关 -&gt; 网卡（服务器）-&gt;  recv buffer -&gt; 服务器处理<br>一个客户端请求被服务器处理完成后，原路返回。</p>
+<p>总结：<br>1 写操作几乎没有耗时，写入客户端 send buffer 就直接返回<br>2 读操作需要经历完整的流程，最终从 recv buffer 中获取数据，这是真正耗时的操作</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>去探索一下redis单机性能的极限在哪里？</p>
+<p>1 如果没有管道，最大承受qps是多少？<br>2 通过管道，最大承受qps是多少？</p>
+<p>证实一下为什么redis性能瓶颈不取决于CPU，而是IO。<br>这也能换个角度更好的理解为什么redis要使用单线程模型。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yloopdaed</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

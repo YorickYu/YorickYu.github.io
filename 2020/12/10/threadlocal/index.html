@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yloopdaed.icu","root":"/","scheme":"Pisces","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+
+  <meta name="description" content="更新于：2020-12-14 22:25 内容补充  前言起初了解 ThreadLocal 这个类还是从阿里手册的一篇文章过来的。他的源码中通篇没有一个lock、也没有出现  synchronized 关键字。但是他却利用一些巧妙的方法保证了并发下数据的安全。 带着下面这几个问题尝试着从 ThreadLocal 的源码中找找答案？ 1 ThreadLocal 和 Thread 有什么联系？2 T">
+<meta property="og:type" content="article">
+<meta property="og:title" content="尝试阅读ThreadLocal源码-基础部分">
+<meta property="og:url" content="http://yloopdaed.icu/2020/12/10/threadlocal/index.html">
+<meta property="og:site_name" content="yloopdaed">
+<meta property="og:description" content="更新于：2020-12-14 22:25 内容补充  前言起初了解 ThreadLocal 这个类还是从阿里手册的一篇文章过来的。他的源码中通篇没有一个lock、也没有出现  synchronized 关键字。但是他却利用一些巧妙的方法保证了并发下数据的安全。 带着下面这几个问题尝试着从 ThreadLocal 的源码中找找答案？ 1 ThreadLocal 和 Thread 有什么联系？2 T">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/threadlocal.png">
+<meta property="og:image" content="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/ThreadLocal-entry.png">
+<meta property="og:image" content="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/threadloacl-defaultvalues.png">
+<meta property="og:image" content="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/threadlocal-weak.png">
+<meta property="article:published_time" content="2020-12-10T14:41:05.000Z">
+<meta property="article:modified_time" content="2022-06-19T16:42:53.960Z">
+<meta property="article:author" content="yloopdaed">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="thread">
+<meta property="article:tag" content="WeakReference">
+<meta property="article:tag" content="ThreadLocal">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/threadlocal.png">
+
+
+<link rel="canonical" href="http://yloopdaed.icu/2020/12/10/threadlocal/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>尝试阅读ThreadLocal源码-基础部分 | yloopdaed</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">yloopdaed</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">YYYYYY iOS to Java. DON'T BE WILD</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ThreadLocal"><span class="nav-number">3.</span> <span class="nav-text">ThreadLocal</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#set"><span class="nav-number">3.1.</span> <span class="nav-text">set</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#get"><span class="nav-number">3.2.</span> <span class="nav-text">get</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#remove"><span class="nav-number">3.3.</span> <span class="nav-text">remove</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#threadLocalHashCode"><span class="nav-number">3.4.</span> <span class="nav-text">threadLocalHashCode</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ThreadLocalMap"><span class="nav-number">4.</span> <span class="nav-text">ThreadLocalMap</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#set-1"><span class="nav-number">4.1.</span> <span class="nav-text">set</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#getEntry"><span class="nav-number">4.2.</span> <span class="nav-text">getEntry</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Entry%E4%B8%AD%E7%9A%84key%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%8F%98%E4%B8%BAnull%EF%BC%9F"><span class="nav-number">4.3.</span> <span class="nav-text">Entry中的key为什么会变为null？</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="yloopdaed"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">yloopdaed</p>
+  <div class="site-description" itemprop="description">可能是个非典型程序员吧 ^ ^</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">112</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">132</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/YorickYu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;YorickYu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yykeepbreak@gmail.com" title="E-Mail → mailto:yykeepbreak@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/9901b7042663" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;9901b7042663" rel="noopener" target="_blank">简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/14337507/yloopdaed" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;14337507&#x2F;yloopdaed" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/YorickYu/YYTODOLIST" title="https:&#x2F;&#x2F;github.com&#x2F;YorickYu&#x2F;YYTODOLIST" rel="noopener" target="_blank">TODOLIST</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/YorickYu/IHAVEAQUESTION" title="https:&#x2F;&#x2F;github.com&#x2F;YorickYu&#x2F;IHAVEAQUESTION" rel="noopener" target="_blank">IHAVEAQUESTION</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://azh.ink/" title="http:&#x2F;&#x2F;azh.ink" rel="noopener" target="_blank">azh</a>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2020/12/10/threadlocal/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          尝试阅读ThreadLocal源码-基础部分
+        </h1>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-12-10 22:41:05" itemprop="dateCreated datePublished" datetime="2020-12-10T22:41:05+08:00">2020-12-10</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+<p>更新于：2020-12-14 22:25 内容补充</p>
+</blockquote>
+<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>起初了解 <code>ThreadLocal</code> 这个类还是从阿里手册的一篇文章过来的。他的源码中通篇没有一个<code>lock</code>、也没有出现 <code> synchronized</code> 关键字。但是他却利用一些巧妙的方法保证了并发下数据的安全。</p>
+<p>带着下面这几个问题尝试着从 <code>ThreadLocal</code> 的源码中找找答案？</p>
+<p>1 ThreadLocal 和 Thread 有什么联系？<br>2 ThreadLocal 底层的数据结构是什么？<br>3 ThreadLocal 存储数据有没有大小限制？<br>4 什么情况下 ThreadLocal 会发生内存泄漏？<br>5 已知 Entry 继承于 WeakReference，那么GC内存回收时会不会导致存储的内容丢失？<br>6 Entry[] 数组发生Hash冲突如何解决？<br>7 如何清理陈旧的Entry对象？何时清理？<br>8 ThreadLocalMap中数组扩容机制？几个步骤？阈值到底是多少？</p>
+<a id="more"></a>
+
+<h4 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h4><p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/threadlocal.png"></p>
+<p>1 每个Thread线程中都有一个threadlocals属性，他的类型是ThreadLocal.ThreadLocalMap<br>2 ThreadLocalMap是ThreadLocal的静态内部类，被ThreadLocal类管理<br>3 ThreadLocalMap底层的数据结构是一个弱引用的数组Entry[]<br>4 Entry继承于WeakReference，在这里可以简单的理解成他是一个key-value的形式</p>
+<blockquote>
+<p>他的‘key’就是ThreadLocal对象，value就是我们需要保存的值<br>但是Entry实际是一个Reference，将‘key’保存在referent引用中</p>
+</blockquote>
+<blockquote>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/ThreadLocal-entry.png"></p>
+</blockquote>
+<p><strong>此外，在源码调试过程中，我有两个疑问没得到解答：</strong><br>1 为什么我们不能直接像Thread类中那样创建ThreadLocalMap的对象？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ThreadLocal.ThreadLocalMap map &#x3D; null; &#x2F;&#x2F; 编译不通过</span><br></pre></td></tr></table></figure>
+<p>2 程序启动时会默认在主线程的threadlocals中添加几个值？一个Object和两个软引用？</p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/threadloacl-defaultvalues.png"></p>
+<h4 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h4><p>简单看下ThreadLocal中的 <code>set</code>，<code>get</code>，<code>remove</code> 方法<br>方法本身也比较简单，思路就是通过ThreadLocal的方法来关联 Thread类 和 ThreadLocalMap类</p>
+<blockquote>
+<p>你也许会问：为什么Thread不自己管理ThreadLocalMap呢？<br>这是一个比较巧妙的设计，上面也讲过 ThreadLocalMap 中的数据结构是 Entry[] 数组，数组中每个Entry可以理解成一个key-value键值对。<br>首先，ThreadLocal将自身this指针作为Entry的key。其次，Entry是一个弱引用对象，这样用户只需要控制ThreadLocal对象就可以回收保存的value值了。（这个说法不严禁，后面再补充）</p>
+</blockquote>
+<h5 id="set"><a href="#set" class="headerlink" title="set"></a>set</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public void set(T value) &#123;</span><br><span class="line">    Thread t &#x3D; Thread.currentThread();</span><br><span class="line">    ThreadLocalMap map &#x3D; getMap(t);</span><br><span class="line">    if (map !&#x3D; null)</span><br><span class="line">        map.set(this, value);</span><br><span class="line">    else</span><br><span class="line">        createMap(t, value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个方法很简单，需要注意的是，ThreadLocalMap是在这个方法中创建的。</p>
+<h5 id="get"><a href="#get" class="headerlink" title="get"></a>get</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public T get() &#123;</span><br><span class="line">    Thread t &#x3D; Thread.currentThread();</span><br><span class="line">    ThreadLocalMap map &#x3D; getMap(t);</span><br><span class="line">    if (map !&#x3D; null) &#123;</span><br><span class="line">        ThreadLocalMap.Entry e &#x3D; map.getEntry(this);</span><br><span class="line">        if (e !&#x3D; null) &#123;</span><br><span class="line">            @SuppressWarnings(&quot;unchecked&quot;)</span><br><span class="line">            T result &#x3D; (T)e.value;</span><br><span class="line">            return result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return setInitialValue();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里解释下 <code>@SuppressWarnings(&quot;unchecked&quot;)</code> 是做什么的？<br>简单来说就是让编译器忽略 泛型T 产生的警告。告诉编译器这个写法是合法的。<br>可以通过 <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/1129795/what-is-suppresswarnings-unchecked-in-java">What is SuppressWarnings (“unchecked”) in Java?</a> 了解更多</p>
+<h5 id="remove"><a href="#remove" class="headerlink" title="remove"></a>remove</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public void remove() &#123;</span><br><span class="line">	ThreadLocalMap m &#x3D; getMap(Thread.currentThread());</span><br><span class="line">	if (m !&#x3D; null)</span><br><span class="line">		m.remove(this);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="threadLocalHashCode"><a href="#threadLocalHashCode" class="headerlink" title="threadLocalHashCode"></a>threadLocalHashCode</h5><p>因为ThreadLocal将自身作为Entry的key保存<br>这个threadLocalHashCode仅用于在Entry[]数组中计算下标使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">private final int threadLocalHashCode &#x3D; nextHashCode();</span><br><span class="line"></span><br><span class="line">private static AtomicInteger nextHashCode &#x3D; new AtomicInteger();</span><br><span class="line"></span><br><span class="line">private static final int HASH_INCREMENT &#x3D; 0x61c88647;</span><br><span class="line"></span><br><span class="line">private static int nextHashCode() &#123;</span><br><span class="line">    return nextHashCode.getAndAdd(HASH_INCREMENT);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>threadLocalHashCode的产生是由一个 <code>AtomicInteger</code> 对象每次累加一个 <code>HASH_INCREMENT</code> 的值得出。<br>这个值很特殊，它是 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97"><strong>斐波那契数</strong></a> 也叫 黄金分割数。<br>大概的作用就是尽量避免Hash冲突。</p>
+<h4 id="ThreadLocalMap"><a href="#ThreadLocalMap" class="headerlink" title="ThreadLocalMap"></a>ThreadLocalMap</h4><p>上面也提到过，ThreadLocal主要是用来联系Thread类和管理ThreadLocalMap的。<br>所以关键的代码都是在ThreadLocalMap中</p>
+<h5 id="set-1"><a href="#set-1" class="headerlink" title="set"></a>set</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">private void set(ThreadLocal&lt;?&gt; key, Object value) &#123;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; We don&#39;t use a fast path as with get() because it is at</span><br><span class="line">    &#x2F;&#x2F; least as common to use set() to create new entries as</span><br><span class="line">    &#x2F;&#x2F; it is to replace existing ones, in which case, a fast</span><br><span class="line">    &#x2F;&#x2F; path would fail more often than not.</span><br><span class="line"></span><br><span class="line">    Entry[] tab &#x3D; table;</span><br><span class="line">    int len &#x3D; tab.length;</span><br><span class="line">    int i &#x3D; key.threadLocalHashCode &amp; (len-1); &#x2F;&#x2F; 通过ThreadLocal的threadLocalHashCode计算下标</span><br><span class="line"></span><br><span class="line">    for (Entry e &#x3D; tab[i]; </span><br><span class="line">         e !&#x3D; null;</span><br><span class="line">         e &#x3D; tab[i &#x3D; nextIndex(i, len)]) &#123;  &#x2F;&#x2F; Hash冲突</span><br><span class="line">        ThreadLocal&lt;?&gt; k &#x3D; e.get();</span><br><span class="line"></span><br><span class="line">        if (k &#x3D;&#x3D; key) &#123;</span><br><span class="line">            e.value &#x3D; value;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (k &#x3D;&#x3D; null) &#123;</span><br><span class="line">            replaceStaleEntry(key, value, i);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    tab[i] &#x3D; new Entry(key, value);</span><br><span class="line">    int sz &#x3D; ++size;</span><br><span class="line">    if (!cleanSomeSlots(i, sz) &amp;&amp; sz &gt;&#x3D; threshold)</span><br><span class="line">        rehash();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1 这个方法的最开始，有一段注释，提到一个 <code>fast path</code> 的概念。<br>大概的意思就是，通常我们定义的 <code>set</code> 方法都类似于：<code>public void setA(int a) &#123;    this.a = a; &#125;</code><br>但是这里的set方法需要传入key和value两个值。<br>我能理解注释的前半段，因为与以往的set方法不同，这里传入的ThreadLocal作为key，需要进行数组下标的计算等等。<br>但是后半段注释中 <code>a fast path would fail more often than not</code> 提到的这种写法失败概率更低我并不是很理解。<br>这个疑惑我也在 <a target="_blank" rel="noopener" href="https://github.com/YorickYu/IHAVEAQUESTION">I HAVE A QUESTION</a> 中的第11个问题中指出，希望有大神看到可以发个 <code>Issues</code> 告知一下。感激不尽</p>
+<p>2 通过ThreadLocal的threadLocalHashCode计算下标，使用按位与的方法提升效率</p>
+<p>3 for循环，这个for循环做了几件事：<br>3.1 判断数组中原本要插入的下标位置是否为null，如果不为空则进入循环<br>3.2 循环中通过 Entry的get()方法 获取Entry对象中的key-ThreadLocal 对象，命名为 k<br>3.3 如果这次传入的ThreadLocal与k相等，那么替换value并返回<br>3.4 如果k为null，则调用 <code>replaceStaleEntry(key, value, i);</code> 方法（<strong>这里说明原本存在这个位置的Entry中的key-ThreadLocal已经被系统GC，会触发探测式清理</strong>）<br>3.5 如果这个k即不是传入的ThreadLocal，又不是null，那么会通过 <code>nextIndex(i, len)</code> 方法继续循环寻找下一个下标（<strong>如果遍历过程中，在找到相同的key或者key为null的情况之前，找到Entry[]数组中对应的下标是空的，那么带着新的下标跳出循环，创建一个Entry对象，插入在这里。这里说明发生了Hash冲突</strong>）</p>
+<p>4 如果方法执行到这里，说明Entry[]数组中对应的下标是空的，那么直接创建一个 Entry对象插入即可（这里插入的下标有可能在上面的for循环中发生了改变）</p>
+<p>5 清理 &amp; 扩容，<code>threshold = len * 2 / 3;</code> </p>
+<blockquote>
+<p>这里会先进行 <code>cleanSomeSlots(i, sz) </code> 启发式清理。</p>
+</blockquote>
+<p><strong>上面出现了几个概念：探测式清理、启发式清理和Hash冲突。这些过程较为复杂，放在下一篇详细介绍</strong><br>总之，这个set方法返回时，已经完成了value的插入。</p>
+<h5 id="getEntry"><a href="#getEntry" class="headerlink" title="getEntry"></a>getEntry</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">private Entry getEntry(ThreadLocal&lt;?&gt; key) &#123;</span><br><span class="line">    int i &#x3D; key.threadLocalHashCode &amp; (table.length - 1);</span><br><span class="line">    Entry e &#x3D; table[i];</span><br><span class="line">    if (e !&#x3D; null &amp;&amp; e.get() &#x3D;&#x3D; key)</span><br><span class="line">        return e;</span><br><span class="line">    else</span><br><span class="line">        return getEntryAfterMiss(key, i, e);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private Entry getEntryAfterMiss(ThreadLocal&lt;?&gt; key, int i, Entry e) &#123;</span><br><span class="line">    Entry[] tab &#x3D; table;</span><br><span class="line">    int len &#x3D; tab.length;</span><br><span class="line"></span><br><span class="line">    while (e !&#x3D; null) &#123;</span><br><span class="line">        ThreadLocal&lt;?&gt; k &#x3D; e.get();</span><br><span class="line">        if (k &#x3D;&#x3D; key)</span><br><span class="line">            return e;</span><br><span class="line">        if (k &#x3D;&#x3D; null)</span><br><span class="line">            expungeStaleEntry(i);</span><br><span class="line">        else</span><br><span class="line">            i &#x3D; nextIndex(i, len);</span><br><span class="line">        e &#x3D; tab[i];</span><br><span class="line">    &#125;</span><br><span class="line">    return null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果Entry不为空，并且Entry对象中的key就是获取的ThreadLocal key，那么就返回。<br>反之，就调用 <code>getEntryAfterMiss(key, i, e);</code> 方法，这个方法中有一个while循环，思路和上面set方法中的for循环差不多。</p>
+<p>当遍历发现数组中的Entry元素有key==null时，进入探测式循环</p>
+<h5 id="Entry中的key为什么会变为null？"><a href="#Entry中的key为什么会变为null？" class="headerlink" title="Entry中的key为什么会变为null？"></a>Entry中的key为什么会变为null？</h5><p>我们都知道，ThreadLocalMap底层的数据结构是Entry[]数组，Entry是弱引用类型的对象。</p>
+<blockquote>
+<p>这里关于Java的对象的引用类型不做展开了，分为 <code>强引用</code>、<code>软引用</code>、<code>弱引用</code>、<code>虚引用</code>。<br>弱引用使用WeakReference修饰，只要发生垃圾回收，若这个对象只被弱引用指向，那么就会被回收</p>
+</blockquote>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/threadlocal-weak.png"><br>他们得引用关系如图所示</p>
+<p>这里需要满足2个条件，Entry中的key就会变为null<br>1 在当前线程中失去了对ThreadLocal对象的强引用<br>2 发生了GC内存回收</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">new ThreadLocal&lt;&gt;().set(&quot;be GC&quot;);</span><br><span class="line">System.gc();</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">8 &#x3D; &#123;ThreadLocal$ThreadLocalMap$Entry@512&#125; </span><br><span class="line">    value &#x3D; &quot;be GC&quot;</span><br><span class="line">    referent &#x3D; null</span><br><span class="line">    queue &#x3D; &#123;ReferenceQueue$Null@515&#125; </span><br><span class="line">    next &#x3D; &#123;ThreadLocal$ThreadLocalMap$Entry@512&#125; </span><br><span class="line">    discovered &#x3D; null</span><br></pre></td></tr></table></figure>
+
+<p>从上面这个例子可以看出，由于 <code>new ThreadLocal&lt;&gt;().set(&quot;be GC&quot;);</code> 这种创建方式，不会再栈中保存一个ThreadLocal的强引用，所以当系统发生GC时，这个Entry的key就会被回收变成null</p>
+<hr>
+<p>下一篇详细看一下关于ThreadLocal的Hash冲突、探测式清理、启动时清理的源码</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"># java</a>
+              <a href="/tags/thread/" rel="tag"># thread</a>
+              <a href="/tags/WeakReference/" rel="tag"># WeakReference</a>
+              <a href="/tags/ThreadLocal/" rel="tag"># ThreadLocal</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/12/09/how-to-checkout-running-port/" rel="prev" title="我的tomcat为什么启不起来？">
+                  <i class="fa fa-chevron-left"></i> 我的tomcat为什么启不起来？
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/12/11/Ryan-Dahl/" rel="next" title="CODING EVERYDAY">
+                  CODING EVERYDAY <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yloopdaed</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
