@@ -13,11 +13,13 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<script id="hexo-configurations">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yloopdaed.icu","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yloopdaed.icu","root":"/","scheme":"Pisces","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
 
   <meta name="description" content="此文档在 百知 的RabbitMQ视频教程笔记基础上改动而来。  MQ引言什么是MQMQ(Message Quene) :  翻译为 消息队列,通过典型的 生产者和消费者模型,生产者不断向消息队列中生产消息，消费者不断的从队列中获取消息。因为消息的生产和消费都是异步的，而且只关心消息的发送和接收，没有业务逻辑的侵入,轻松的实现系统间解耦。别名为 消息中间件    通过利用高效可靠的消息传递机制进">
@@ -85,10 +87,11 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/image-20190925215603036-9419777.png">
 
+
 <link rel="canonical" href="http://yloopdaed.icu/2021/01/08/rabbitmq/">
 
 
-<script id="page-configurations">
+<script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
@@ -108,49 +111,61 @@
 
   <noscript>
   <style>
-  .use-motion .brand,
+  body { margin-top: 2rem; }
+
   .use-motion .menu-item,
-  .sidebar-inner,
+  .use-motion .sidebar,
   .use-motion .post-block,
   .use-motion .pagination,
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
 
   .use-motion .site-title,
-  .use-motion .site-subtitle {
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
     opacity: initial;
     top: initial;
   }
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
   </style>
 </noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
+  <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
+      <i class="logo-line"></i>
       <h1 class="site-title">yloopdaed</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">YYYYYY iOS to Java. DON'T BE WILD</p>
   </div>
@@ -163,9 +178,8 @@
 
 
 
-
 <nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
+  <ul class="main-menu menu">
         <li class="menu-item menu-item-home">
 
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
@@ -174,6 +188,11 @@
         <li class="menu-item menu-item-about">
 
     <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -188,6 +207,99 @@
 
 
 </div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MQ%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">MQ引言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFMQ"><span class="nav-number">1.1.</span> <span class="nav-text">什么是MQ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MQ%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="nav-number">1.2.</span> <span class="nav-text">MQ有哪些</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E5%90%8CMQ%E7%89%B9%E7%82%B9"><span class="nav-number">1.3.</span> <span class="nav-text">不同MQ特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RabbitMQ-%E7%9A%84%E5%BC%95%E8%A8%80"><span class="nav-number">2.</span> <span class="nav-text">RabbitMQ 的引言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RabbitMQ"><span class="nav-number">2.1.</span> <span class="nav-text">RabbitMQ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RabbitMQ-%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">2.2.</span> <span class="nav-text">RabbitMQ 的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD"><span class="nav-number">2.2.1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E7%9A%84%E5%AE%89%E8%A3%85%E5%8C%85"><span class="nav-number">2.2.2.</span> <span class="nav-text">下载的安装包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.2.3.</span> <span class="nav-text">安装步骤</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RabiitMQ-%E9%85%8D%E7%BD%AE"><span class="nav-number">2.3.</span> <span class="nav-text">RabiitMQ 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RabbitMQ-%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4%E8%A1%8C"><span class="nav-number">2.3.1.</span> <span class="nav-text">RabbitMQ 管理命令行</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web%E7%AE%A1%E7%90%86%E7%95%8C%E9%9D%A2%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.4.</span> <span class="nav-text">web管理界面介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#overview%E6%A6%82%E8%A7%88"><span class="nav-number">2.4.1.</span> <span class="nav-text">overview概览</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Admin%E7%94%A8%E6%88%B7%E5%92%8C%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E7%AE%A1%E7%90%86"><span class="nav-number">2.4.2.</span> <span class="nav-text">Admin用户和虚拟主机管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7"><span class="nav-number">2.4.2.1.</span> <span class="nav-text">添加用户</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA"><span class="nav-number">2.4.2.2.</span> <span class="nav-text">创建虚拟主机</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%91%E5%AE%9A%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E5%92%8C%E7%94%A8%E6%88%B7"><span class="nav-number">2.4.2.3.</span> <span class="nav-text">绑定虚拟主机和用户</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RabbitMQ-%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">RabbitMQ 的第一个程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AMQP%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%9B%9E%E9%A1%BE"><span class="nav-number">3.1.</span> <span class="nav-text">AMQP协议的回顾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RabbitMQ%E6%94%AF%E6%8C%81%E7%9A%84%E6%B6%88%E6%81%AF%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.2.</span> <span class="nav-text">RabbitMQ支持的消息模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="nav-number">3.3.</span> <span class="nav-text">引入依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8D%E6%A8%A1%E5%9E%8B-%E7%9B%B4%E8%BF%9E"><span class="nav-number">3.4.</span> <span class="nav-text">第一种模型(直连)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%94%9F%E4%BA%A7%E8%80%85"><span class="nav-number">3.4.1.</span> <span class="nav-text">开发生产者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85"><span class="nav-number">3.4.2.</span> <span class="nav-text">开发消费者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E7%9A%84%E8%AF%B4%E6%98%8E"><span class="nav-number">3.4.3.</span> <span class="nav-text">参数的说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D%E6%A8%A1%E5%9E%8B-work-quene"><span class="nav-number">3.5.</span> <span class="nav-text">第二种模型(work quene)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%94%9F%E4%BA%A7%E8%80%85-1"><span class="nav-number">3.5.1.</span> <span class="nav-text">开发生产者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-1"><span class="nav-number">3.5.2.</span> <span class="nav-text">开发消费者-1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-2"><span class="nav-number">3.5.3.</span> <span class="nav-text">开发消费者-2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C"><span class="nav-number">3.5.4.</span> <span class="nav-text">测试结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E8%87%AA%E5%8A%A8%E7%A1%AE%E8%AE%A4%E6%9C%BA%E5%88%B6"><span class="nav-number">3.5.5.</span> <span class="nav-text">消息自动确认机制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%9E%8B-fanout"><span class="nav-number">3.6.</span> <span class="nav-text">第三种模型(fanout)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%94%9F%E4%BA%A7%E8%80%85-2"><span class="nav-number">3.6.1.</span> <span class="nav-text">开发生产者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-1-1"><span class="nav-number">3.6.2.</span> <span class="nav-text">开发消费者-1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-2-1"><span class="nav-number">3.6.3.</span> <span class="nav-text">开发消费者-2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-3"><span class="nav-number">3.6.4.</span> <span class="nav-text">开发消费者-3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C-1"><span class="nav-number">3.6.5.</span> <span class="nav-text">测试结果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E7%A7%8D%E6%A8%A1%E5%9E%8B-Routing"><span class="nav-number">3.7.</span> <span class="nav-text">第四种模型(Routing)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Routing-%E4%B9%8B%E8%AE%A2%E9%98%85%E6%A8%A1%E5%9E%8B-Direct-%E7%9B%B4%E8%BF%9E"><span class="nav-number">3.7.1.</span> <span class="nav-text">Routing 之订阅模型-Direct(直连)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%94%9F%E4%BA%A7%E8%80%85-3"><span class="nav-number">3.7.1.1.</span> <span class="nav-text">开发生产者</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-1-2"><span class="nav-number">3.7.1.2.</span> <span class="nav-text">开发消费者-1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-2-2"><span class="nav-number">3.7.1.3.</span> <span class="nav-text">开发消费者-2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%94%9F%E4%BA%A7%E8%80%85%E5%8F%91%E9%80%81Route-key%E4%B8%BAerror%E7%9A%84%E6%B6%88%E6%81%AF%E6%97%B6"><span class="nav-number">3.7.1.4.</span> <span class="nav-text">测试生产者发送Route key为error的消息时</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%94%9F%E4%BA%A7%E8%80%85%E5%8F%91%E9%80%81Route-key%E4%B8%BAinfo%E7%9A%84%E6%B6%88%E6%81%AF%E6%97%B6"><span class="nav-number">3.7.1.5.</span> <span class="nav-text">测试生产者发送Route key为info的消息时</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Routing-%E4%B9%8B%E8%AE%A2%E9%98%85%E6%A8%A1%E5%9E%8B-Topic"><span class="nav-number">3.7.2.</span> <span class="nav-text">Routing 之订阅模型-Topic</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%94%9F%E4%BA%A7%E8%80%85-4"><span class="nav-number">3.7.2.1.</span> <span class="nav-text">开发生产者</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-1-3"><span class="nav-number">3.7.2.2.</span> <span class="nav-text">开发消费者-1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-2-3"><span class="nav-number">3.7.2.3.</span> <span class="nav-text">开发消费者-2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C-2"><span class="nav-number">3.7.2.4.</span> <span class="nav-text">测试结果</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringBoot%E4%B8%AD%E4%BD%BF%E7%94%A8RabbitMQ"><span class="nav-number">4.</span> <span class="nav-text">SpringBoot中使用RabbitMQ</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E5%88%9D%E5%A7%8B%E7%8E%AF%E5%A2%83"><span class="nav-number">4.1.</span> <span class="nav-text">搭建初始环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96-1"><span class="nav-number">4.1.1.</span> <span class="nav-text">引入依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">4.1.2.</span> <span class="nav-text">配置配置文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8Dhello-world%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8"><span class="nav-number">4.2.</span> <span class="nav-text">第一种hello world模型使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%94%9F%E4%BA%A7%E8%80%85-5"><span class="nav-number">4.2.1.</span> <span class="nav-text">开发生产者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-1"><span class="nav-number">4.2.2.</span> <span class="nav-text">开发消费者</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8Dwork%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8"><span class="nav-number">4.3.</span> <span class="nav-text">第二种work模型使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%94%9F%E4%BA%A7%E8%80%85-6"><span class="nav-number">4.3.1.</span> <span class="nav-text">开发生产者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-2"><span class="nav-number">4.3.2.</span> <span class="nav-text">开发消费者</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fanout-%E5%B9%BF%E6%92%AD%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.4.</span> <span class="nav-text">Fanout 广播模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%94%9F%E4%BA%A7%E8%80%85-7"><span class="nav-number">4.4.1.</span> <span class="nav-text">开发生产者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-3"><span class="nav-number">4.4.2.</span> <span class="nav-text">开发消费者</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Route-%E8%B7%AF%E7%94%B1%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.5.</span> <span class="nav-text">Route 路由模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%94%9F%E4%BA%A7%E8%80%85-8"><span class="nav-number">4.5.1.</span> <span class="nav-text">开发生产者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-4"><span class="nav-number">4.5.2.</span> <span class="nav-text">开发消费者</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Topic-%E8%AE%A2%E9%98%85%E6%A8%A1%E5%9E%8B-%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.6.</span> <span class="nav-text">Topic 订阅模型(动态路由模型)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%94%9F%E4%BA%A7%E8%80%85-9"><span class="nav-number">4.6.1.</span> <span class="nav-text">开发生产者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-5"><span class="nav-number">4.6.2.</span> <span class="nav-text">开发消费者</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MQ%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">5.</span> <span class="nav-text">MQ的应用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86"><span class="nav-number">5.1.</span> <span class="nav-text">异步处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E8%A7%A3%E8%80%A6"><span class="nav-number">5.2.</span> <span class="nav-text">应用解耦</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E9%87%8F%E5%89%8A%E5%B3%B0"><span class="nav-number">5.3.</span> <span class="nav-text">流量削峰</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RabbitMQ%E7%9A%84%E9%9B%86%E7%BE%A4"><span class="nav-number">6.</span> <span class="nav-text">RabbitMQ的集群</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%86%E7%BE%A4%E6%9E%B6%E6%9E%84"><span class="nav-number">6.1.</span> <span class="nav-text">集群架构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E9%9B%86%E7%BE%A4-%E5%89%AF%E6%9C%AC%E9%9B%86%E7%BE%A4"><span class="nav-number">6.1.1.</span> <span class="nav-text">普通集群(副本集群)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%B6%E6%9E%84%E5%9B%BE"><span class="nav-number">6.1.2.</span> <span class="nav-text">架构图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA"><span class="nav-number">6.1.3.</span> <span class="nav-text">集群搭建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%95%9C%E5%83%8F%E9%9B%86%E7%BE%A4"><span class="nav-number">6.1.4.</span> <span class="nav-text">镜像集群</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9B%86%E7%BE%A4%E6%9E%B6%E6%9E%84%E5%9B%BE"><span class="nav-number">6.1.4.1.</span> <span class="nav-text">集群架构图</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%9B%86%E7%BE%A4%E6%9E%B6%E6%9E%84"><span class="nav-number">6.1.4.2.</span> <span class="nav-text">配置集群架构</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="yloopdaed"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">yloopdaed</p>
+  <div class="site-description" itemprop="description">可能是个非典型程序员吧 ^ ^</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">112</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">132</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/YorickYu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;YorickYu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yykeepbreak@gmail.com" title="E-Mail → mailto:yykeepbreak@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/9901b7042663" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;9901b7042663" rel="noopener" target="_blank">简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/14337507/yloopdaed" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;14337507&#x2F;yloopdaed" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/YorickYu/YYTODOLIST" title="https:&#x2F;&#x2F;github.com&#x2F;YorickYu&#x2F;YYTODOLIST" rel="noopener" target="_blank">TODOLIST</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/YorickYu/IHAVEAQUESTION" title="https:&#x2F;&#x2F;github.com&#x2F;YorickYu&#x2F;IHAVEAQUESTION" rel="noopener" target="_blank">IHAVEAQUESTION</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://azh.ink/" title="http:&#x2F;&#x2F;azh.ink" rel="noopener" target="_blank">azh</a>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
     </header>
 
     
@@ -196,19 +308,24 @@
     <span>0%</span>
   </div>
 
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
 
-          <div class="content post posts-expand">
-            
+    <div class="main-inner post posts-expand">
+      
 
-    
+      
+
+  
+
+
+<div class="post-block">
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/01/08/rabbitmq/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -225,33 +342,36 @@
           RabbitMQ 查询笔记
         </h1>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-08 12:18:40" itemprop="dateCreated datePublished" datetime="2021-01-08T12:18:40+08:00">2021-01-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
-                </span>
-            </span>
-
+        <div class="post-meta-container">
           
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-01-08 12:18:40" itemprop="dateCreated datePublished" datetime="2021-01-08T12:18:40+08:00">2021-01-08</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+</div>
 
         </div>
       </header>
@@ -260,8 +380,6 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
         <blockquote>
 <p>此文档在 <a target="_blank" rel="noopener" href="https://www.baizhiedu.xin/front/index#/main">百知</a> 的RabbitMQ视频教程笔记基础上改动而来。</p>
 </blockquote>
@@ -554,7 +672,7 @@
     
     
 
-      <footer class="post-footer">
+    <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" rel="tag"># 消息队列</a>
               <a href="/tags/RabbitMQ/" rel="tag"># RabbitMQ</a>
@@ -563,29 +681,28 @@
 
         
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2021/01/08/cacheline-improve/" rel="prev" title="cacheline 伪共享">
-      <i class="fa fa-chevron-left"></i> cacheline 伪共享
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/01/19/custom-thread-pool/" rel="next" title="一个线程池封装背后">
-      一个线程池封装背后 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/01/08/cacheline-improve/" rel="prev" title="cacheline 伪共享">
+                  <i class="fa fa-chevron-left"></i> cacheline 伪共享
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/01/19/custom-thread-pool/" rel="next" title="一个线程池封装背后">
+                  一个线程池封装背后 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
           </div>
-          
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -594,7 +711,7 @@
       activeClass = localStorage.getItem('comments_active') || activeClass;
     }
     if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
       if (activeTab) {
         activeTab.click();
       }
@@ -603,95 +720,20 @@
   if (CONFIG.comments.storage) {
     window.addEventListener('tabs:click', event => {
       if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
+      const commentClass = event.target.classList[1];
       localStorage.setItem('comments_active', commentClass);
     });
   }
 </script>
 
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MQ%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">MQ引言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFMQ"><span class="nav-number">1.1.</span> <span class="nav-text">什么是MQ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MQ%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="nav-number">1.2.</span> <span class="nav-text">MQ有哪些</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E5%90%8CMQ%E7%89%B9%E7%82%B9"><span class="nav-number">1.3.</span> <span class="nav-text">不同MQ特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RabbitMQ-%E7%9A%84%E5%BC%95%E8%A8%80"><span class="nav-number">2.</span> <span class="nav-text">RabbitMQ 的引言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RabbitMQ"><span class="nav-number">2.1.</span> <span class="nav-text">RabbitMQ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RabbitMQ-%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">2.2.</span> <span class="nav-text">RabbitMQ 的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD"><span class="nav-number">2.2.1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E7%9A%84%E5%AE%89%E8%A3%85%E5%8C%85"><span class="nav-number">2.2.2.</span> <span class="nav-text">下载的安装包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.2.3.</span> <span class="nav-text">安装步骤</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RabiitMQ-%E9%85%8D%E7%BD%AE"><span class="nav-number">2.3.</span> <span class="nav-text">RabiitMQ 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RabbitMQ-%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4%E8%A1%8C"><span class="nav-number">2.3.1.</span> <span class="nav-text">RabbitMQ 管理命令行</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web%E7%AE%A1%E7%90%86%E7%95%8C%E9%9D%A2%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.4.</span> <span class="nav-text">web管理界面介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#overview%E6%A6%82%E8%A7%88"><span class="nav-number">2.4.1.</span> <span class="nav-text">overview概览</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Admin%E7%94%A8%E6%88%B7%E5%92%8C%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E7%AE%A1%E7%90%86"><span class="nav-number">2.4.2.</span> <span class="nav-text">Admin用户和虚拟主机管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7"><span class="nav-number">2.4.2.1.</span> <span class="nav-text">添加用户</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA"><span class="nav-number">2.4.2.2.</span> <span class="nav-text">创建虚拟主机</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%91%E5%AE%9A%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E5%92%8C%E7%94%A8%E6%88%B7"><span class="nav-number">2.4.2.3.</span> <span class="nav-text">绑定虚拟主机和用户</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RabbitMQ-%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">RabbitMQ 的第一个程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AMQP%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%9B%9E%E9%A1%BE"><span class="nav-number">3.1.</span> <span class="nav-text">AMQP协议的回顾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RabbitMQ%E6%94%AF%E6%8C%81%E7%9A%84%E6%B6%88%E6%81%AF%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.2.</span> <span class="nav-text">RabbitMQ支持的消息模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="nav-number">3.3.</span> <span class="nav-text">引入依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8D%E6%A8%A1%E5%9E%8B-%E7%9B%B4%E8%BF%9E"><span class="nav-number">3.4.</span> <span class="nav-text">第一种模型(直连)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%94%9F%E4%BA%A7%E8%80%85"><span class="nav-number">3.4.1.</span> <span class="nav-text">开发生产者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85"><span class="nav-number">3.4.2.</span> <span class="nav-text">开发消费者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E7%9A%84%E8%AF%B4%E6%98%8E"><span class="nav-number">3.4.3.</span> <span class="nav-text">参数的说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D%E6%A8%A1%E5%9E%8B-work-quene"><span class="nav-number">3.5.</span> <span class="nav-text">第二种模型(work quene)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%94%9F%E4%BA%A7%E8%80%85-1"><span class="nav-number">3.5.1.</span> <span class="nav-text">开发生产者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-1"><span class="nav-number">3.5.2.</span> <span class="nav-text">开发消费者-1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-2"><span class="nav-number">3.5.3.</span> <span class="nav-text">开发消费者-2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C"><span class="nav-number">3.5.4.</span> <span class="nav-text">测试结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E8%87%AA%E5%8A%A8%E7%A1%AE%E8%AE%A4%E6%9C%BA%E5%88%B6"><span class="nav-number">3.5.5.</span> <span class="nav-text">消息自动确认机制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%9E%8B-fanout"><span class="nav-number">3.6.</span> <span class="nav-text">第三种模型(fanout)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%94%9F%E4%BA%A7%E8%80%85-2"><span class="nav-number">3.6.1.</span> <span class="nav-text">开发生产者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-1-1"><span class="nav-number">3.6.2.</span> <span class="nav-text">开发消费者-1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-2-1"><span class="nav-number">3.6.3.</span> <span class="nav-text">开发消费者-2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-3"><span class="nav-number">3.6.4.</span> <span class="nav-text">开发消费者-3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C-1"><span class="nav-number">3.6.5.</span> <span class="nav-text">测试结果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E7%A7%8D%E6%A8%A1%E5%9E%8B-Routing"><span class="nav-number">3.7.</span> <span class="nav-text">第四种模型(Routing)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Routing-%E4%B9%8B%E8%AE%A2%E9%98%85%E6%A8%A1%E5%9E%8B-Direct-%E7%9B%B4%E8%BF%9E"><span class="nav-number">3.7.1.</span> <span class="nav-text">Routing 之订阅模型-Direct(直连)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%94%9F%E4%BA%A7%E8%80%85-3"><span class="nav-number">3.7.1.1.</span> <span class="nav-text">开发生产者</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-1-2"><span class="nav-number">3.7.1.2.</span> <span class="nav-text">开发消费者-1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-2-2"><span class="nav-number">3.7.1.3.</span> <span class="nav-text">开发消费者-2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%94%9F%E4%BA%A7%E8%80%85%E5%8F%91%E9%80%81Route-key%E4%B8%BAerror%E7%9A%84%E6%B6%88%E6%81%AF%E6%97%B6"><span class="nav-number">3.7.1.4.</span> <span class="nav-text">测试生产者发送Route key为error的消息时</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%94%9F%E4%BA%A7%E8%80%85%E5%8F%91%E9%80%81Route-key%E4%B8%BAinfo%E7%9A%84%E6%B6%88%E6%81%AF%E6%97%B6"><span class="nav-number">3.7.1.5.</span> <span class="nav-text">测试生产者发送Route key为info的消息时</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Routing-%E4%B9%8B%E8%AE%A2%E9%98%85%E6%A8%A1%E5%9E%8B-Topic"><span class="nav-number">3.7.2.</span> <span class="nav-text">Routing 之订阅模型-Topic</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%94%9F%E4%BA%A7%E8%80%85-4"><span class="nav-number">3.7.2.1.</span> <span class="nav-text">开发生产者</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-1-3"><span class="nav-number">3.7.2.2.</span> <span class="nav-text">开发消费者-1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-2-3"><span class="nav-number">3.7.2.3.</span> <span class="nav-text">开发消费者-2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C-2"><span class="nav-number">3.7.2.4.</span> <span class="nav-text">测试结果</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringBoot%E4%B8%AD%E4%BD%BF%E7%94%A8RabbitMQ"><span class="nav-number">4.</span> <span class="nav-text">SpringBoot中使用RabbitMQ</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E5%88%9D%E5%A7%8B%E7%8E%AF%E5%A2%83"><span class="nav-number">4.1.</span> <span class="nav-text">搭建初始环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96-1"><span class="nav-number">4.1.1.</span> <span class="nav-text">引入依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">4.1.2.</span> <span class="nav-text">配置配置文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8Dhello-world%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8"><span class="nav-number">4.2.</span> <span class="nav-text">第一种hello world模型使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%94%9F%E4%BA%A7%E8%80%85-5"><span class="nav-number">4.2.1.</span> <span class="nav-text">开发生产者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-1"><span class="nav-number">4.2.2.</span> <span class="nav-text">开发消费者</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8Dwork%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8"><span class="nav-number">4.3.</span> <span class="nav-text">第二种work模型使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%94%9F%E4%BA%A7%E8%80%85-6"><span class="nav-number">4.3.1.</span> <span class="nav-text">开发生产者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-2"><span class="nav-number">4.3.2.</span> <span class="nav-text">开发消费者</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fanout-%E5%B9%BF%E6%92%AD%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.4.</span> <span class="nav-text">Fanout 广播模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%94%9F%E4%BA%A7%E8%80%85-7"><span class="nav-number">4.4.1.</span> <span class="nav-text">开发生产者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-3"><span class="nav-number">4.4.2.</span> <span class="nav-text">开发消费者</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Route-%E8%B7%AF%E7%94%B1%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.5.</span> <span class="nav-text">Route 路由模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%94%9F%E4%BA%A7%E8%80%85-8"><span class="nav-number">4.5.1.</span> <span class="nav-text">开发生产者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-4"><span class="nav-number">4.5.2.</span> <span class="nav-text">开发消费者</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Topic-%E8%AE%A2%E9%98%85%E6%A8%A1%E5%9E%8B-%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.6.</span> <span class="nav-text">Topic 订阅模型(动态路由模型)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%94%9F%E4%BA%A7%E8%80%85-9"><span class="nav-number">4.6.1.</span> <span class="nav-text">开发生产者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B6%88%E8%B4%B9%E8%80%85-5"><span class="nav-number">4.6.2.</span> <span class="nav-text">开发消费者</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MQ%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">5.</span> <span class="nav-text">MQ的应用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86"><span class="nav-number">5.1.</span> <span class="nav-text">异步处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E8%A7%A3%E8%80%A6"><span class="nav-number">5.2.</span> <span class="nav-text">应用解耦</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E9%87%8F%E5%89%8A%E5%B3%B0"><span class="nav-number">5.3.</span> <span class="nav-text">流量削峰</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RabbitMQ%E7%9A%84%E9%9B%86%E7%BE%A4"><span class="nav-number">6.</span> <span class="nav-text">RabbitMQ的集群</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%86%E7%BE%A4%E6%9E%B6%E6%9E%84"><span class="nav-number">6.1.</span> <span class="nav-text">集群架构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E9%9B%86%E7%BE%A4-%E5%89%AF%E6%9C%AC%E9%9B%86%E7%BE%A4"><span class="nav-number">6.1.1.</span> <span class="nav-text">普通集群(副本集群)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%B6%E6%9E%84%E5%9B%BE"><span class="nav-number">6.1.2.</span> <span class="nav-text">架构图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA"><span class="nav-number">6.1.3.</span> <span class="nav-text">集群搭建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%95%9C%E5%83%8F%E9%9B%86%E7%BE%A4"><span class="nav-number">6.1.4.</span> <span class="nav-text">镜像集群</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9B%86%E7%BE%A4%E6%9E%B6%E6%9E%84%E5%9B%BE"><span class="nav-number">6.1.4.1.</span> <span class="nav-text">集群架构图</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%9B%86%E7%BE%A4%E6%9E%B6%E6%9E%84"><span class="nav-number">6.1.4.2.</span> <span class="nav-text">配置集群架构</span></a></li></ol></li></ol></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="yloopdaed"
-      src="/images/avatar.jpg">
-  <p class="site-author-name" itemprop="name">yloopdaed</p>
-  <div class="site-description" itemprop="description">可能是个非典型程序员吧 ^ ^</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">112</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-        <span class="site-state-item-count">10</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">132</span>
-        <span class="site-state-item-name">标签</span>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/YorickYu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;YorickYu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:yykeepbreak@gmail.com" title="E-Mail → mailto:yykeepbreak@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://stackoverflow.com/users/14337507/yloopdaed" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;14337507&#x2F;yloopdaed" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
-      </span>
-  </div>
-
-
-
-      </div>
-
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
+  </main>
 
+  <footer class="footer">
+    <div class="footer-inner">
+      
 
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
+      
 
 <div class="copyright">
   
@@ -702,39 +744,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">yloopdaed</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/muse.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
 
@@ -744,6 +762,18 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+  
 
 
 

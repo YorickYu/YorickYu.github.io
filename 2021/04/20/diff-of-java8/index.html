@@ -13,11 +13,13 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<script id="hexo-configurations">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yloopdaed.icu","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yloopdaed.icu","root":"/","scheme":"Pisces","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
 
   <meta name="description" content="关键字先罗列一下相关的关键字吧。 行为参数化、函数式编程、Lambda、Stream、模式匹配、Optional、默认方法（接口多继承） 等 如果面试真的遇到这个问题，任选上面几点展现一下理解的深度。 行为参数化就是一个方法接受多个不同的行为作为参数，并在内部使用它们，完成不同行为的能力，可以让代码更适应不断变化的需求，减轻未来的工作量  代码传递Java8之前实现起来很复杂 编程语言的目的就在于">
@@ -50,10 +52,11 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/java8-1.png">
 
+
 <link rel="canonical" href="http://yloopdaed.icu/2021/04/20/diff-of-java8/">
 
 
-<script id="page-configurations">
+<script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
@@ -73,49 +76,61 @@
 
   <noscript>
   <style>
-  .use-motion .brand,
+  body { margin-top: 2rem; }
+
   .use-motion .menu-item,
-  .sidebar-inner,
+  .use-motion .sidebar,
   .use-motion .post-block,
   .use-motion .pagination,
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
 
   .use-motion .site-title,
-  .use-motion .site-subtitle {
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
     opacity: initial;
     top: initial;
   }
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
   </style>
 </noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
+  <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
+      <i class="logo-line"></i>
       <h1 class="site-title">yloopdaed</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">YYYYYY iOS to Java. DON'T BE WILD</p>
   </div>
@@ -128,9 +143,8 @@
 
 
 
-
 <nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
+  <ul class="main-menu menu">
         <li class="menu-item menu-item-home">
 
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
@@ -139,6 +153,11 @@
         <li class="menu-item menu-item-about">
 
     <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -153,6 +172,99 @@
 
 
 </div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">1.</span> <span class="nav-text">关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8C%E4%B8%BA%E5%8F%82%E6%95%B0%E5%8C%96"><span class="nav-number">2.</span> <span class="nav-text">行为参数化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E4%BC%A0%E9%80%92"><span class="nav-number">3.</span> <span class="nav-text">代码传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3"><span class="nav-number">4.</span> <span class="nav-text">函数式接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">lambda表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%BC%95%E7%94%A8"><span class="nav-number">6.</span> <span class="nav-text">方法引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stream%E6%B5%81"><span class="nav-number">7.</span> <span class="nav-text">Stream流</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">7.1.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AD%9B%E9%80%89%E5%92%8C%E5%88%87%E7%89%87"><span class="nav-number">7.1.1.</span> <span class="nav-text">筛选和切片</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%98%A0%E5%B0%84"><span class="nav-number">7.1.2.</span> <span class="nav-text">映射</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8C%B9%E9%85%8D%E5%92%8C%E6%9F%A5%E6%89%BE"><span class="nav-number">7.1.3.</span> <span class="nav-text">匹配和查找</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BD%92%E7%BA%A6%EF%BC%9A%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E4%B8%AD%E5%8F%AB%E6%8A%98%E5%8F%A0"><span class="nav-number">7.1.4.</span> <span class="nav-text">归约：函数式编程中叫折叠</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F"><span class="nav-number">7.1.5.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%86%E5%8C%BA%E5%92%8C%E5%88%86%E7%BB%84"><span class="nav-number">7.1.6.</span> <span class="nav-text">分区和分组</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E6%B5%81"><span class="nav-number">7.2.</span> <span class="nav-text">数值流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E6%B5%81%E8%8C%83%E5%9B%B4"><span class="nav-number">7.3.</span> <span class="nav-text">数值流范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E7%9A%84%E6%9E%84%E5%BB%BA"><span class="nav-number">7.4.</span> <span class="nav-text">流的构建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">7.5.</span> <span class="nav-text">相关关键字</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E6%96%B9%E6%B3%95"><span class="nav-number">8.</span> <span class="nav-text">默认方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%BC%E5%AE%B9%E6%80%A7%E6%8B%93%E5%B1%95%EF%BC%9A%E4%BA%8C%E8%BF%9B%E5%88%B6%E3%80%81%E6%BA%90%E4%BB%A3%E7%A0%81%E5%92%8C%E5%87%BD%E6%95%B0%E8%A1%8C%E4%B8%BA"><span class="nav-number">8.1.</span> <span class="nav-text">兼容性拓展：二进制、源代码和函数行为</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%8C%E4%B8%BA%E7%9A%84%E5%A4%9A%E7%BB%A7%E6%89%BF"><span class="nav-number">8.2.</span> <span class="nav-text">行为的多继承</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">8.2.1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%EF%BC%9A%E4%B8%89%E6%9D%A1%E8%A7%84%E5%88%99"><span class="nav-number">8.2.2.</span> <span class="nav-text">解决：三条规则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%85%E5%86%B51%EF%BC%9A%E5%A4%9A%E5%B1%82%E7%BB%A7%E6%89%BF%E9%97%AE%E9%A2%98"><span class="nav-number">8.2.3.</span> <span class="nav-text">情况1：多层继承问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%85%E5%86%B52%EF%BC%9A%E5%B9%B3%E8%A1%8C%E7%BB%A7%E6%89%BF%E9%97%AE%E9%A2%98"><span class="nav-number">8.2.4.</span> <span class="nav-text">情况2：平行继承问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%85%E5%86%B53%EF%BC%9A%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF%E9%97%AE%E9%A2%98"><span class="nav-number">8.2.5.</span> <span class="nav-text">情况3：菱形继承问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Optional-%E5%8F%AF%E9%80%89%E7%B1%BB%E5%9E%8B"><span class="nav-number">9.</span> <span class="nav-text">Optional 可选类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%80%9D%E6%83%B3"><span class="nav-number">10.</span> <span class="nav-text">其他思想</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="yloopdaed"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">yloopdaed</p>
+  <div class="site-description" itemprop="description">可能是个非典型程序员吧 ^ ^</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">112</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">132</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/YorickYu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;YorickYu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yykeepbreak@gmail.com" title="E-Mail → mailto:yykeepbreak@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/9901b7042663" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;9901b7042663" rel="noopener" target="_blank">简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/14337507/yloopdaed" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;14337507&#x2F;yloopdaed" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/YorickYu/YYTODOLIST" title="https:&#x2F;&#x2F;github.com&#x2F;YorickYu&#x2F;YYTODOLIST" rel="noopener" target="_blank">TODOLIST</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/YorickYu/IHAVEAQUESTION" title="https:&#x2F;&#x2F;github.com&#x2F;YorickYu&#x2F;IHAVEAQUESTION" rel="noopener" target="_blank">IHAVEAQUESTION</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://azh.ink/" title="http:&#x2F;&#x2F;azh.ink" rel="noopener" target="_blank">azh</a>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
     </header>
 
     
@@ -161,19 +273,24 @@
     <span>0%</span>
   </div>
 
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
 
-          <div class="content post posts-expand">
-            
+    <div class="main-inner post posts-expand">
+      
 
-    
+      
+
+  
+
+
+<div class="post-block">
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/04/20/diff-of-java8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -190,24 +307,27 @@
           面试官：Java8到底有什么新特性？
         </h1>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-04-20 00:12:13" itemprop="dateCreated datePublished" datetime="2021-04-20T00:12:13+08:00">2021-04-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
-              </span>
-
+        <div class="post-meta-container">
           
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-20 00:12:13" itemprop="dateCreated datePublished" datetime="2021-04-20T00:12:13+08:00">2021-04-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+
+  
+</div>
 
         </div>
       </header>
@@ -216,8 +336,6 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
         <h3 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h3><p>先罗列一下相关的关键字吧。</p>
 <p><strong>行为参数化</strong>、<strong>函数式编程</strong>、<strong>Lambda</strong>、<strong>Stream</strong>、<strong>模式匹配</strong>、<strong>Optional</strong>、<strong>默认方法（接口多继承）</strong> 等</p>
 <p>如果面试真的遇到这个问题，任选上面几点展现一下理解的深度。</p>
@@ -351,36 +469,35 @@
     
     
 
-      <footer class="post-footer">
+    <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/JDK-8/" rel="tag"># -JDK 8</a>
           </div>
 
         
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2021/04/15/i-dont-know-java/" rel="prev" title="Java 2年的感受">
-      <i class="fa fa-chevron-left"></i> Java 2年的感受
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/04/22/Fibonacci/" rel="next" title="Stream生成斐波那契数列（无限流）">
-      Stream生成斐波那契数列（无限流） <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/15/i-dont-know-java/" rel="prev" title="Java 2年的感受">
+                  <i class="fa fa-chevron-left"></i> Java 2年的感受
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/04/22/Fibonacci/" rel="next" title="Stream生成斐波那契数列（无限流）">
+                  Stream生成斐波那契数列（无限流） <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
           </div>
-          
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -389,7 +506,7 @@
       activeClass = localStorage.getItem('comments_active') || activeClass;
     }
     if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
       if (activeTab) {
         activeTab.click();
       }
@@ -398,95 +515,20 @@
   if (CONFIG.comments.storage) {
     window.addEventListener('tabs:click', event => {
       if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
+      const commentClass = event.target.classList[1];
       localStorage.setItem('comments_active', commentClass);
     });
   }
 </script>
 
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">1.</span> <span class="nav-text">关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8C%E4%B8%BA%E5%8F%82%E6%95%B0%E5%8C%96"><span class="nav-number">2.</span> <span class="nav-text">行为参数化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E4%BC%A0%E9%80%92"><span class="nav-number">3.</span> <span class="nav-text">代码传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3"><span class="nav-number">4.</span> <span class="nav-text">函数式接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">lambda表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%BC%95%E7%94%A8"><span class="nav-number">6.</span> <span class="nav-text">方法引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stream%E6%B5%81"><span class="nav-number">7.</span> <span class="nav-text">Stream流</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">7.1.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AD%9B%E9%80%89%E5%92%8C%E5%88%87%E7%89%87"><span class="nav-number">7.1.1.</span> <span class="nav-text">筛选和切片</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%98%A0%E5%B0%84"><span class="nav-number">7.1.2.</span> <span class="nav-text">映射</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8C%B9%E9%85%8D%E5%92%8C%E6%9F%A5%E6%89%BE"><span class="nav-number">7.1.3.</span> <span class="nav-text">匹配和查找</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BD%92%E7%BA%A6%EF%BC%9A%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E4%B8%AD%E5%8F%AB%E6%8A%98%E5%8F%A0"><span class="nav-number">7.1.4.</span> <span class="nav-text">归约：函数式编程中叫折叠</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F"><span class="nav-number">7.1.5.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%86%E5%8C%BA%E5%92%8C%E5%88%86%E7%BB%84"><span class="nav-number">7.1.6.</span> <span class="nav-text">分区和分组</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E6%B5%81"><span class="nav-number">7.2.</span> <span class="nav-text">数值流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E6%B5%81%E8%8C%83%E5%9B%B4"><span class="nav-number">7.3.</span> <span class="nav-text">数值流范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E7%9A%84%E6%9E%84%E5%BB%BA"><span class="nav-number">7.4.</span> <span class="nav-text">流的构建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">7.5.</span> <span class="nav-text">相关关键字</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E6%96%B9%E6%B3%95"><span class="nav-number">8.</span> <span class="nav-text">默认方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%BC%E5%AE%B9%E6%80%A7%E6%8B%93%E5%B1%95%EF%BC%9A%E4%BA%8C%E8%BF%9B%E5%88%B6%E3%80%81%E6%BA%90%E4%BB%A3%E7%A0%81%E5%92%8C%E5%87%BD%E6%95%B0%E8%A1%8C%E4%B8%BA"><span class="nav-number">8.1.</span> <span class="nav-text">兼容性拓展：二进制、源代码和函数行为</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%8C%E4%B8%BA%E7%9A%84%E5%A4%9A%E7%BB%A7%E6%89%BF"><span class="nav-number">8.2.</span> <span class="nav-text">行为的多继承</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">8.2.1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%EF%BC%9A%E4%B8%89%E6%9D%A1%E8%A7%84%E5%88%99"><span class="nav-number">8.2.2.</span> <span class="nav-text">解决：三条规则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%85%E5%86%B51%EF%BC%9A%E5%A4%9A%E5%B1%82%E7%BB%A7%E6%89%BF%E9%97%AE%E9%A2%98"><span class="nav-number">8.2.3.</span> <span class="nav-text">情况1：多层继承问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%85%E5%86%B52%EF%BC%9A%E5%B9%B3%E8%A1%8C%E7%BB%A7%E6%89%BF%E9%97%AE%E9%A2%98"><span class="nav-number">8.2.4.</span> <span class="nav-text">情况2：平行继承问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%85%E5%86%B53%EF%BC%9A%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF%E9%97%AE%E9%A2%98"><span class="nav-number">8.2.5.</span> <span class="nav-text">情况3：菱形继承问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Optional-%E5%8F%AF%E9%80%89%E7%B1%BB%E5%9E%8B"><span class="nav-number">9.</span> <span class="nav-text">Optional 可选类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%80%9D%E6%83%B3"><span class="nav-number">10.</span> <span class="nav-text">其他思想</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="yloopdaed"
-      src="/images/avatar.jpg">
-  <p class="site-author-name" itemprop="name">yloopdaed</p>
-  <div class="site-description" itemprop="description">可能是个非典型程序员吧 ^ ^</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">112</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-        <span class="site-state-item-count">10</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">132</span>
-        <span class="site-state-item-name">标签</span>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/YorickYu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;YorickYu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:yykeepbreak@gmail.com" title="E-Mail → mailto:yykeepbreak@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://stackoverflow.com/users/14337507/yloopdaed" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;14337507&#x2F;yloopdaed" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
-      </span>
-  </div>
-
-
-
-      </div>
-
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
+  </main>
 
+  <footer class="footer">
+    <div class="footer-inner">
+      
 
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
+      
 
 <div class="copyright">
   
@@ -497,39 +539,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">yloopdaed</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/muse.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
 
@@ -539,6 +557,18 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+  
 
 
 
