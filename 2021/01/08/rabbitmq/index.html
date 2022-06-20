@@ -545,12 +545,12 @@
 <p> <img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/image-20191126213115873.png"></p>
 <p>在广播模式下，消息发送流程是这样的：</p>
 <ul>
-<li>可以有多个消费者</li>
-<li>每个<strong>消费者有自己的queue</strong>（队列）</li>
-<li>每个<strong>队列都要绑定到Exchange</strong>（交换机）</li>
-<li><strong>生产者发送的消息，只能发送到交换机</strong>，交换机来决定要发给哪个队列，生产者无法决定。</li>
-<li>交换机把消息发送给绑定过的所有队列</li>
-<li>队列的消费者都能拿到消息。实现一条消息被多个消费者消费</li>
+<li> 可以有多个消费者</li>
+<li> 每个<strong>消费者有自己的queue</strong>（队列）</li>
+<li> 每个<strong>队列都要绑定到Exchange</strong>（交换机）</li>
+<li> <strong>生产者发送的消息，只能发送到交换机</strong>，交换机来决定要发给哪个队列，生产者无法决定。</li>
+<li> 交换机把消息发送给绑定过的所有队列</li>
+<li> 队列的消费者都能拿到消息。实现一条消息被多个消费者消费</li>
 </ul>
 <h4 id="开发生产者-2"><a href="#开发生产者-2" class="headerlink" title="开发生产者"></a>开发生产者</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//声明交换机</span></span><br><span class="line">channel.exchangeDeclare(<span class="string">&quot;logs&quot;</span>,<span class="string">&quot;fanout&quot;</span>);<span class="comment">//广播 一条消息多个消费者同时消费</span></span><br><span class="line"><span class="comment">//发布消息</span></span><br><span class="line">channel.basicPublish(<span class="string">&quot;logs&quot;</span>,<span class="string">&quot;&quot;</span>,<span class="keyword">null</span>,<span class="string">&quot;hello&quot;</span>.getBytes());</span><br></pre></td></tr></table></figure>
 
