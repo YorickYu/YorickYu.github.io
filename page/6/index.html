@@ -218,7 +218,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-count">114</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -290,6 +290,89 @@
       
 
       
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/04/27/tomap-mergemap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/27/tomap-mergemap/" class="post-title-link" itemprop="url">Map拼接</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-27 22:39:46" itemprop="dateCreated datePublished" datetime="2021-04-27T22:39:46+08:00">2021-04-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><strong>准备工作</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// constructor, getters, setters</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>map.merge()</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Description</span> merge</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 该方法接收三个参数，一个 key 值，一个 value，一个 BiFunction&lt;? super V, ? super V, ? extends V&gt; remappingFunction</span></span><br><span class="line"><span class="comment">* 如果给定的 key 不存在，它就变成了 put(key, value) 。</span></span><br><span class="line"><span class="comment">* 如果 key 已经存在一些值，那么 remappingFunction 可以选择合并的方式，然后将合并得到的 newValue 赋值给原先的 key。</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Author</span> yloopdaed</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Date</span> 11:04 2021/4/27</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Map&lt;String, Employee&gt; map3 = <span class="keyword">new</span> HashMap&lt;&gt;(map1);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">for (Map.Entry&lt;String, Employee&gt; entry : map2.entrySet()) &#123;</span></span><br><span class="line"><span class="comment">    String key = entry.getKey();</span></span><br><span class="line"><span class="comment">    Employee value = entry.getValue();</span></span><br><span class="line"><span class="comment">    map3.merge(key, value, (v1, v2) -&gt; new Employee(v1.getId(), v2.getName()));</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">map2.forEach((key, value) -&gt; map3.merge(key, value, (v1, v2) -&gt; <span class="keyword">new</span> Employee(v1.getId(),v2.getName())));</span><br><span class="line">System.out.println(map3);</span><br></pre></td></tr></table></figure>
+
+<p><strong>Collectors.toMap()</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Description</span> Stream.concat()</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* toMap() 接收三个参数，一个 key 值，一个 value，一个 BinaryOperator&lt;U&gt; mergeFunction</span></span><br><span class="line"><span class="comment">* 如果 key 不存在，它就变成了 put(key, value) - 这种情况下可以 通过(v1, v2) -&gt; v1, TreeMap::new 进行默认排序</span></span><br><span class="line"><span class="comment">* 如果 key 已经存在，那么 mergeFunction 可以处理</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Author</span> yloopdaed</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Date</span> 11:04 2021/4/27</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Map&lt;String, Employee&gt; result = Stream.concat(map1.entrySet().stream(), map2.entrySet().stream())</span><br><span class="line">    .collect(Collectors.toMap(</span><br><span class="line">            Map.Entry::getKey,</span><br><span class="line">            Map.Entry::getValue,</span><br><span class="line">            (value1, value2) -&gt; <span class="keyword">new</span> Employee(value2.getId(), value1.getName())));</span><br></pre></td></tr></table></figure>
+
+
+<p>代码示例：<a target="_blank" rel="noopener" href="https://github.com/YorickYu/JPP/blob/main/src/main/java/com/yy/collection/InitializeMap.java">InitializeMap.java</a><br>代码示例：<a target="_blank" rel="noopener" href="https://github.com/YorickYu/JPP/blob/main/src/main/java/com/yy/collection/MapMerge.java">MapMerge.java</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
     
 
 
@@ -1093,85 +1176,6 @@
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT id FROM url WHERE url=&quot;http://www.mysql.com&quot; AND url_crc=CRC32(&quot;http://www.mysql.com&quot;);</span><br></pre></td></tr></table></figure>
 <p>由于哈希冲突。所以还是需要带有原条件，在伪哈希索引之后再扫描少量的数据。</p>
 <h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>本篇文章只是对于大字符串索引优化提供另一种思路。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/03/21/redisson-watchdog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="yloopdaed">
-      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yloopdaed">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/21/redisson-watchdog/" class="post-title-link" itemprop="url">redisson 锁续期</a>
-        </h2>
-
-        <div class="post-meta-container">
-          
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-21 13:29:28" itemprop="dateCreated datePublished" datetime="2021-03-21T13:29:28+08:00">2021-03-21</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>redisson 默认加锁有效期 30s</p>
-<p>watchdog 调用频率 10s，每次调用会将锁有效期更新为 30s。</p>
-<p>如果redis服务宕机，那么锁和watchdog都会停止服务。即，锁到期会正常过期，没有死锁。</p>
-<p>相关源码如下：</p>
-<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/redisson%E9%94%81%E7%BB%AD%E6%9C%9F.jpg"></p>
-<p>参考：</p>
-<p>简书作者，花神子 - <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/0d3f5395ceaf">缓存Redis 分布式锁的续期</a></p>
 
       
     </div>
