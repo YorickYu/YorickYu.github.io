@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/emoji1.jpg">
 <meta property="article:published_time" content="2022-06-25T15:52:06.000Z">
-<meta property="article:modified_time" content="2022-06-25T17:36:39.366Z">
+<meta property="article:modified_time" content="2022-06-25T17:38:02.189Z">
 <meta property="article:author" content="yloopdaed">
 <meta property="article:tag" content="iOS JAVA">
 <meta name="twitter:card" content="summary">
@@ -336,7 +336,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-06-26 01:36:39" itemprop="dateModified" datetime="2022-06-26T01:36:39+08:00">2022-06-26</time>
+        <time title="修改时间：2022-06-26 01:38:02" itemprop="dateModified" datetime="2022-06-26T01:38:02+08:00">2022-06-26</time>
       </span>
 
   
@@ -367,8 +367,10 @@
 <blockquote>
 <p>编码规则如下：<br>1 对于单个字节的字符，第一位设为 0，后面的 7 位对应这个字符的 Unicode 码点。因此，对于英文中的 0 - 127 号字符，与 ASCII 码完全相同。这意味着 ASCII 码那个年代的文档用 UTF-8 编码打开完全没有问题。<br>2 对于需要使用 N 个字节来表示的字符（N &gt; 1），第一个字节的前 N 位都设为 1，第 N + 1 位设为0，剩余的 N - 1 个字节的前两位都设位 10，剩下的二进制位则使用这个字符的 Unicode 码点来填充。</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">字符：汉</span><br><span class="line">Unicode：\u6c49   </span><br><span class="line">二进制：110110001001001</span><br><span class="line">编码：**11100**110 **10**110001 **10**001001</span><br><span class="line">十六进制：0xE6 0xB7 0x89</span><br></pre></td></tr></table></figure>
-
+<p>例如：</p>
+<blockquote>
+</blockquote>
+<p>字符：汉<br>Unicode：\u6c49<br>二进制：110110001001001<br>编码：<strong>11100</strong>110 <strong>10</strong>110001 <strong>10</strong>001001<br>十六进制：0xE6 0xB7 0x89</p>
 <h5 id="UTF-16"><a href="#UTF-16" class="headerlink" title="UTF-16"></a>UTF-16</h5><p>UTF-16 编码介于 UTF-32 与 UTF-8 之间，同时结合了定长和变长两种编码方法的特点，字符处理方便且速度快。</p>
 <blockquote>
 <p>编码规则如下：<br>1 基本平面的字符占用 2 个字节（U+0000 到 U+FFFF），编码后的值与码点一致。<br>2 辅助平面的字符占用 4 个字节（U+010000 到 U+10FFFF），编码后码点被映射成两个代理码点。<br>系统可以通过是否是<strong>代理码点</strong>来判断该字符是用2个或者4个字节表示。</p>
