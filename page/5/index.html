@@ -218,7 +218,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">114</span>
+          <span class="site-state-item-count">115</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -290,6 +290,104 @@
       
 
       
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/06/27/hotKey/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/27/hotKey/" class="post-title-link" itemprop="url">HotKey 缓存数据结构设计</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-06-27 22:59:05" itemprop="dateCreated datePublished" datetime="2021-06-27T22:59:05+08:00">2021-06-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/" itemprop="url" rel="index"><span itemprop="name">数据持久化</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="热点问题"><a href="#热点问题" class="headerlink" title="热点问题"></a>热点问题</h3><p>概念：某时刻，缓存系统面临巨大的访问量，且访问倾斜在极少的数据上</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>1 集群级别：一致性哈希、缓存<br>2 单机级别：多级缓存<br>3 缓存KV存储引擎：数组+有序环（HotRing）</p>
+<h3 id="HotRing"><a href="#HotRing" class="headerlink" title="HotRing"></a>HotRing</h3><p>基于RCU无锁引擎的热点感知型KV系统</p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/%20hotring-1.png"></p>
+<h4 id="挑战一、热点是动态变化的。如何检测？如何转移？"><a href="#挑战一、热点是动态变化的。如何检测？如何转移？" class="headerlink" title="挑战一、热点是动态变化的。如何检测？如何转移？"></a>挑战一、热点是动态变化的。如何检测？如何转移？</h4><h5 id="随机策略（读时更新）"><a href="#随机策略（读时更新）" class="headerlink" title="随机策略（读时更新）"></a>随机策略（读时更新）</h5><p>下一次访问的节点如果是hotKey，那么不移动；如果不是，随机在环中挑选一个节点<br>这种方案<strong>适合热点key集中的场景</strong>。随机采样速度快，无需计算</p>
+<h5 id="统计策略（读时更新）"><a href="#统计策略（读时更新）" class="headerlink" title="统计策略（读时更新）"></a>统计策略（读时更新）</h5><p>统计整个有序环的访问次数和环中单个节点的访问次数，并通过公式计算下次移动节点的收益值<br>这种方案<strong>适合热点key多个的场景</strong>。会有一定的分析开销</p>
+<h5 id="热点继承策略（写时更新）"><a href="#热点继承策略（写时更新）" class="headerlink" title="热点继承策略（写时更新）"></a>热点继承策略（写时更新）</h5><p>如果有序环中有节点被更新，那么head指向这个被更新的节点<br>如果有序环中有节点被删除，那么head指向这个被删除节点的下一个节点</p>
+<h4 id="挑战二、读取要求低延迟。无锁，数据安全"><a href="#挑战二、读取要求低延迟。无锁，数据安全" class="headerlink" title="挑战二、读取要求低延迟。无锁，数据安全"></a>挑战二、读取要求低延迟。无锁，数据安全</h4><h5 id="CAS-gt-Compare-And-Swap"><a href="#CAS-gt-Compare-And-Swap" class="headerlink" title="CAS -&gt; Compare-And-Swap"></a>CAS -&gt; Compare-And-Swap</h5><p>操作系统级别。比较并交换</p>
+<h5 id="RCU-gt-Read-Copy-Update"><a href="#RCU-gt-Read-Copy-Update" class="headerlink" title="RCU -&gt; Read-Copy-Update"></a>RCU -&gt; Read-Copy-Update</h5><p>读不做限制，写时复制COW -&gt; Copy-On-Write</p>
+<h5 id="occupy"><a href="#occupy" class="headerlink" title="occupy"></a>occupy</h5><p>当一个节点被更新或者被删除时，设置为1，操作完成重置为0</p>
+<p>无锁并发访问：<br>1 并发增，可能造成新增节点数据丢失。<br>2 并发改，可能造成更新节点数据错误。<br>3 并发增、改，可能造成新增节点数据丢失。<br>4 并发删、改，可能造成更新节点的数据丢失。<br>解决：CAS</p>
+<p>头指针移动：</p>
+<p>并发情况下通过 CAS + occupy 来保证移动头指针时的安全</p>
+<h4 id="挑战三、无锁rehash（扩容）"><a href="#挑战三、无锁rehash（扩容）" class="headerlink" title="挑战三、无锁rehash（扩容）"></a>挑战三、无锁rehash（扩容）</h4><p><strong>扩容条件</strong>是查询所需的平均内存访问次数 access overhead &gt; 2 时触发rehash</p>
+<p>三个过程：初始化、分裂、删除</p>
+<p>整个过程会在后台创建一个rehash线程处理</p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/hotring-2.png"><br><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/hotring-3.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
     
 
 
@@ -1094,98 +1192,6 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Guava Maps</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;Integer, Animal&gt; <span class="title">convertListWithGuava</span><span class="params">(List&lt;Animal&gt; list)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Maps.uniqueIndex(list, Animal::getId);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// MapUtils</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;Integer, Animal&gt; <span class="title">convertListWithApacheCommons2</span><span class="params">(List&lt;Animal&gt; list)</span> </span>&#123;</span><br><span class="line">    Map&lt;Integer, Animal&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    MapUtils.populateMap(map, list, Animal::getId);</span><br><span class="line">    <span class="keyword">return</span> map;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// MapUtils 处理key冲突 - IllegalStateException</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;Integer, Animal&gt; <span class="title">convertListWithApacheCommons2_conflict</span><span class="params">(List&lt;Animal&gt; list)</span> </span>&#123;</span><br><span class="line">    Map&lt;Integer, Animal&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    MapUtils.populateMap(map, list, Animal::getId, animal -&gt; animal);</span><br><span class="line">    <span class="keyword">return</span> map;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>代码示例：<a target="_blank" rel="noopener" href="https://github.com/YorickYu/JPP/blob/main/src/main/java/com/yy/collection/ListToMap.java">ArrayMerge.java</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/05/09/microservices/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="yloopdaed">
-      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yloopdaed">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/09/microservices/" class="post-title-link" itemprop="url">微服务拆分和搭建 SOP</a>
-        </h2>
-
-        <div class="post-meta-container">
-          
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-05-09 19:17:49" itemprop="dateCreated datePublished" datetime="2021-05-09T19:17:49+08:00">2021-05-09</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/SOP/" itemprop="url" rel="index"><span itemprop="name">SOP</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="微服务拆分维度"><a href="#微服务拆分维度" class="headerlink" title="微服务拆分维度"></a>微服务拆分维度</h3><p>1 按系统维度：例如前后台拆分<br>2 按功能维度：例如用户服务、价格服务、商品库存服务<br>3 按读写维度：例如搜索和信息流服务、注册和下单服务</p>
-<p><strong>每个服务也可以由若干服务支持构成</strong></p>
-<h3 id="微服务架构搭建"><a href="#微服务架构搭建" class="headerlink" title="微服务架构搭建"></a>微服务架构搭建</h3><p>一般随着公司业务体量的增长，需要考虑从单体服务拆分成微服务架构。</p>
-<p>微服务架构需要考虑下面几个方面：没有优先级之分（不一定完整）</p>
-<h4 id="数据异构"><a href="#数据异构" class="headerlink" title="数据异构"></a>数据异构</h4><p>1 分库分表：以id分表、以用户分表、以数据热度分表<br>2 数据聚合：请求合并，数据闭环</p>
-<h4 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h4><p>本地缓存、缓存架构、集群、负载</p>
-<h4 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h4><p>异步处理、流量削峰、应用解耦<br>考虑消费失败和重复消费场景，需要数据校验和补偿机制<br>最终一致性</p>
-<h4 id="高可用"><a href="#高可用" class="headerlink" title="高可用"></a>高可用</h4><p>1 降级、限流、分组和故障隔离<br>降级要做开关，需要动态配置<br>2 流量治理和监控<br>监控不合法的流量来源并隔离治理。如果非法流量无法控制，保留版本回退的能力</p>
-<h4 id="业务安全性"><a href="#业务安全性" class="headerlink" title="业务安全性"></a>业务安全性</h4><p>1 接口幂等<br>2 防重设计<br>3 状态机：正向逆向流程</p>
-<h4 id="监控和预警"><a href="#监控和预警" class="headerlink" title="监控和预警"></a>监控和预警</h4><p>发现问题、定位问题和解决问题<br>全链路埋点：每一个操作经过网络、服务层、中间层都要监控</p>
-<h4 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h4><p>1 动态负载<br>2 服务依赖和治理（优化）</p>
 
       
     </div>

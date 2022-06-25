@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yloopdaed.icu","root":"/","scheme":"Muse","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="课题：如何准确统计Emoji的长度？结论：无法统计  基础概念字符字符（Character）是各种文字和符号的总称，包括各国家文字、标点符号、图形符号、数字等。 字符集字符集（Character set）是多个字符的集合，字符集种类较多，每个字符集包含的字符个数不同，常见字符集名称：ASCII字符集、GB2312字符集、BIG5字符集、 GB18030字符集、Unicode字符集等。 字符编码字符">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于 Emoji">
+<meta property="og:url" content="http://yloopdaed.icu/2022/06/25/about-emoji/index.html">
+<meta property="og:site_name" content="yloopdaed">
+<meta property="og:description" content="课题：如何准确统计Emoji的长度？结论：无法统计  基础概念字符字符（Character）是各种文字和符号的总称，包括各国家文字、标点符号、图形符号、数字等。 字符集字符集（Character set）是多个字符的集合，字符集种类较多，每个字符集包含的字符个数不同，常见字符集名称：ASCII字符集、GB2312字符集、BIG5字符集、 GB18030字符集、Unicode字符集等。 字符编码字符">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/emoji1.jpg">
+<meta property="article:published_time" content="2022-06-25T15:52:06.000Z">
+<meta property="article:modified_time" content="2022-06-25T17:34:55.833Z">
+<meta property="article:author" content="yloopdaed">
+<meta property="article:tag" content="iOS JAVA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/emoji1.jpg">
+
+
+<link rel="canonical" href="http://yloopdaed.icu/2022/06/25/about-emoji/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>关于 Emoji | yloopdaed</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">yloopdaed</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">YYYYYY iOS to Java. DON'T BE WILD</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">基础概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6"><span class="nav-number">1.1.</span> <span class="nav-text">字符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="nav-number">1.2.</span> <span class="nav-text">字符集</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81"><span class="nav-number">1.3.</span> <span class="nav-text">字符编码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E6%B7%B1%E5%85%A5"><span class="nav-number">2.</span> <span class="nav-text">概念深入</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Unicode"><span class="nav-number">2.1.</span> <span class="nav-text">Unicode</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#UTF-8"><span class="nav-number">2.2.</span> <span class="nav-text">UTF-8</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#UTF-16"><span class="nav-number">2.3.</span> <span class="nav-text">UTF-16</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Emoji"><span class="nav-number">3.</span> <span class="nav-text">Emoji</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A0%87%E5%87%86Emoji"><span class="nav-number">3.1.</span> <span class="nav-text">标准Emoji</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ZWJ-Emoji"><span class="nav-number">3.2.</span> <span class="nav-text">ZWJ Emoji</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="yloopdaed"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">yloopdaed</p>
+  <div class="site-description" itemprop="description">可能是个非典型程序员吧 ^ ^</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">115</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">133</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/YorickYu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;YorickYu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yykeepbreak@gmail.com" title="E-Mail → mailto:yykeepbreak@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/9901b7042663" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;9901b7042663" rel="noopener" target="_blank">简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/14337507/yloopdaed" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;14337507&#x2F;yloopdaed" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/YorickYu/YYTODOLIST" title="https:&#x2F;&#x2F;github.com&#x2F;YorickYu&#x2F;YYTODOLIST" rel="noopener" target="_blank">TODOLIST</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/YorickYu/IHAVEAQUESTION" title="https:&#x2F;&#x2F;github.com&#x2F;YorickYu&#x2F;IHAVEAQUESTION" rel="noopener" target="_blank">IHAVEAQUESTION</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://azh.ink/" title="http:&#x2F;&#x2F;azh.ink" rel="noopener" target="_blank">azh</a>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2022/06/25/about-emoji/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          关于 Emoji
+        </h1>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-06-25 23:52:06" itemprop="dateCreated datePublished" datetime="2022-06-25T23:52:06+08:00">2022-06-25</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-26 01:34:55" itemprop="dateModified" datetime="2022-06-26T01:34:55+08:00">2022-06-26</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>课题：如何准确统计Emoji的长度？<br>结论：无法统计</p>
+<hr>
+<h4 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h4><h5 id="字符"><a href="#字符" class="headerlink" title="字符"></a>字符</h5><p>字符（Character）是各种文字和符号的总称，包括各国家文字、标点符号、图形符号、数字等。</p>
+<h5 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h5><p>字符集（Character set）是多个字符的集合，字符集种类较多，每个字符集包含的字符个数不同，常见字符集名称：ASCII字符集、GB2312字符集、BIG5字符集、 GB18030字符集、Unicode字符集等。</p>
+<h5 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h5><p>字符编码（英语：Character encoding）也称字集码。计算机要准确的处理各种字符集文字，就需要进行字符编码，以便计算机能够识别和存储各种文字。</p>
+<h4 id="概念深入"><a href="#概念深入" class="headerlink" title="概念深入"></a>概念深入</h4><h5 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h5><p>如果有一种编码，将世界上所有的文字和符号都纳入其中，无论是英文、日文、还是中文等，大家都使用这个编码表，每个符号对应一个唯一的编码，乱码问题就不存在了。这就是Unicode编码。<br>Unicode当然是一个很大的集合，现在的规模可以容纳100多万个符号。每个符号的编码都不一样</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>深入理解 Unicode<br>1.1 码点<br>Code Point：通俗的说，码点就是字符在Unicode中所对应的二进制数。<br>1.2 码元<br>Code Unit：在计算机存储和网络传输时，码点被映射到一个或多个码元。码元可理解为字符编码方式CEF(Character Encoding Form)对码点值进行编码处理时作为一个整体来看待的最小基本单元(基本单位)。<br>1.3 平面<br>Unicode的编码空间从U+0000到+10FFFF，共有1,112,064个码点，可用来映射字符. 整个编码空间可以划分为17个平面（plane），每个平面包含216（65,536）个码位。17个平面的码位可表示为从U+xx0000到U+xxFFFF,其中xx表示十六进制值从00到10，共计17个平面。<br>1.4 编码方式<br>一个字符的Unicode码点是确定的。但是在实际传输过程中，由于不同系统平台的设计不一定一致，以及出于节省空间的目的，对Unicode的编码方式有所不同。<br>Unicode的编码方式称为Unicode转换格式（Unicode Transformation Format，简称为UTF）。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>比如一个英文字母使用1个字节存储就够了，但是一个中文可能至少需要2个字节，那么问题来了，计算机怎么知道你要展示的文字是一个字符还是多个字符呢？固然每个文字都用4个字节来表示，高位补0来解决这个问题，但是会造成极大的空间浪费。所以就产生了不同的编码方式。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h5 id="UTF-8"><a href="#UTF-8" class="headerlink" title="UTF-8"></a>UTF-8</h5><p>UTF-8（8-bit Unicode Transformation Format）是一种针对Unicode的可变长度字符编码，是目前互联网上使用最广泛的一种 Unicode 编码方式，它的最大特点就是可变长。它可以使用 1 - 4 个字节表示一个字符，根据字符的不同变换长度。</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>编码规则如下：<br>1 对于单个字节的字符，第一位设为 0，后面的 7 位对应这个字符的 Unicode 码点。因此，对于英文中的 0 - 127 号字符，与 ASCII 码完全相同。这意味着 ASCII 码那个年代的文档用 UTF-8 编码打开完全没有问题。<br>2 对于需要使用 N 个字节来表示的字符（N &gt; 1），第一个字节的前 N 位都设为 1，第 N + 1 位设为0，剩余的 N - 1 个字节的前两位都设位 10，剩下的二进制位则使用这个字符的 Unicode 码点来填充。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+<p>字符：汉<br>Unicode：\u6c49<br>二进制：110110001001001<br>编码：<strong>11100</strong>110 <strong>10</strong>110001 <strong>10</strong>001001<br>十六进制：0xE6 0xB7 0x89</p>
+</blockquote>
+</blockquote>
+<h5 id="UTF-16"><a href="#UTF-16" class="headerlink" title="UTF-16"></a>UTF-16</h5><p>UTF-16 编码介于 UTF-32 与 UTF-8 之间，同时结合了定长和变长两种编码方法的特点，字符处理方便且速度快。</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>编码规则如下：<br>1 基本平面的字符占用 2 个字节（U+0000 到 U+FFFF），编码后的值与码点一致。<br>2 辅助平面的字符占用 4 个字节（U+010000 到 U+10FFFF），编码后码点被映射成两个代理码点。<br>系统可以通过是否是<strong>代理码点</strong>来判断该字符是用2个或者4个字节表示。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h4 id="Emoji"><a href="#Emoji" class="headerlink" title="Emoji"></a>Emoji</h4><p>表情符号。日本创作，由苹果iOS5引入后流行，加入Unicode字符集。</p>
+<p>回归到课题，其实<strong>统计Emoji的长度</strong>就是<strong>统计Emoji对应的Unicode的字符数</strong></p>
+<p>那么为什么说无法统计呢？</p>
+<h5 id="标准Emoji"><a href="#标准Emoji" class="headerlink" title="标准Emoji"></a>标准Emoji</h5><p>因为平时编译器的 File Encoding 都是 UTF-8。</p>
+<p>所以 Emoji 的长度可以通过码点来统计，JDK提供了方法 <code>codePointCount</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Returns the number of Unicode code points in the specified text</span></span><br><span class="line"><span class="comment">    * range of this &#123;<span class="doctag">@code</span> String&#125;. The text range begins at the</span></span><br><span class="line"><span class="comment">    * specified &#123;<span class="doctag">@code</span> beginIndex&#125; and extends to the</span></span><br><span class="line"><span class="comment">    * &#123;<span class="doctag">@code</span> char&#125; at index &#123;<span class="doctag">@code</span> endIndex - 1&#125;. Thus the</span></span><br><span class="line"><span class="comment">    * length (in &#123;<span class="doctag">@code</span> char&#125;s) of the text range is</span></span><br><span class="line"><span class="comment">    * &#123;<span class="doctag">@code</span> endIndex-beginIndex&#125;. Unpaired surrogates within</span></span><br><span class="line"><span class="comment">    * the text range count as one code point each.</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> beginIndex the index to the first &#123;<span class="doctag">@code</span> char&#125; of</span></span><br><span class="line"><span class="comment">    * the text range.</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> endIndex the index after the last &#123;<span class="doctag">@code</span> char&#125; of</span></span><br><span class="line"><span class="comment">    * the text range.</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> the number of Unicode code points in the specified text</span></span><br><span class="line"><span class="comment">    * range</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@exception</span> IndexOutOfBoundsException if the</span></span><br><span class="line"><span class="comment">    * &#123;<span class="doctag">@code</span> beginIndex&#125; is negative, or &#123;<span class="doctag">@code</span> endIndex&#125;</span></span><br><span class="line"><span class="comment">    * is larger than the length of this &#123;<span class="doctag">@code</span> String&#125;, or</span></span><br><span class="line"><span class="comment">    * &#123;<span class="doctag">@code</span> beginIndex&#125; is larger than &#123;<span class="doctag">@code</span> endIndex&#125;.</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@since</span>  1.5</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">codePointCount</span><span class="params">(<span class="keyword">int</span> beginIndex, <span class="keyword">int</span> endIndex)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (beginIndex &lt; <span class="number">0</span> || endIndex &gt; value.length || beginIndex &gt; endIndex) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IndexOutOfBoundsException();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Character.codePointCountImpl(value, beginIndex, endIndex - beginIndex);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="ZWJ-Emoji"><a href="#ZWJ-Emoji" class="headerlink" title="ZWJ Emoji"></a>ZWJ Emoji</h5><p>“无缝连接”(“Zero-width joiner，即ZWJ”)，通过一些特定的Emoji组合，可以创造出新的表情，在增加Emoji丰富度的同时，不需要增加过多的码点</p>
+<p><strong>这种规则下的Emoji无法准确统计长度</strong></p>
+<p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/emoji1.jpg"></p>
+<p>上面这个Emoji就是又三个Unicode组合而成。所以码点的个数也会是3</p>
+<p>分享下比较权威的Emoji网站：<br>Emoji Unicode 编码表：<a target="_blank" rel="noopener" href="https://unicode.org/emoji/charts/full-emoji-list.html">Full Emoji List, v14.0 (unicode.org)</a><br>Emoji All 搜索库： <a target="_blank" rel="noopener" href="https://www.emojiall.com/zh-hans">Emoji大全 | Emoji表情符号词典 📓 | EmojiAll中文官方网站</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/06/23/clean-architecture/" rel="prev" title="clean architecture">
+                  <i class="fa fa-chevron-left"></i> clean architecture
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yloopdaed</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
