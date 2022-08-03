@@ -218,7 +218,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">115</span>
+          <span class="site-state-item-count">116</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -290,6 +290,79 @@
       
 
       
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/10/19/compare-service/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/19/compare-service/" class="post-title-link" itemprop="url">借助GoReplay实现比对服务</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-19 22:15:42" itemprop="dateCreated datePublished" datetime="2021-10-19T22:15:42+08:00">2021-10-19</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="架构图"><a href="#架构图" class="headerlink" title="架构图"></a>架构图</h3><p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/compare-service.jpg"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
     
 
 
@@ -1028,91 +1101,6 @@
           <p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/dns-route.png"></p>
 <p>优点：<br>1 dns服务可靠<br>2 顶层分流</p>
 <p>缺点：<br>1 不保证节点可用，宕机机器依然参与轮询<br>2 ip列表变更延迟，TTL一般是10分钟<br>3 需要配置多组域名记录，占用ip资源</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/09/02/seckill/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="yloopdaed">
-      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yloopdaed">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/02/seckill/" class="post-title-link" itemprop="url">秒杀服务设计</a>
-        </h2>
-
-        <div class="post-meta-container">
-          
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-09-02 23:52:36" itemprop="dateCreated datePublished" datetime="2021-09-02T23:52:36+08:00">2021-09-02</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h4 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h4><p>单一职责、库存预热、反扒、流量削峰、限流和降级</p>
-<h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><p>1 单一职责<br>因为秒杀一般面对的高并发场景，在秒杀活动前后的流量非常大，平时的流量很少。一般建议将秒杀服务独立部署，平时只部署少量的机器维持C端展示，在活动开始前按情况动态扩容</p>
-<p>2 库存预热<br>通常在秒杀活动开始前，会将活动商品的库存写入redis，可以根据提供库存的量级来设计redis的存放规则。引入分段锁的概念</p>
-<p>3 反扒<br>一般秒杀服务都会接入反扒避免恶意攻击，如果公司没有反扒团队，也可以用其他手段代替：比如活动真实链接需要在活动前1s才下发，或者自定义规则对秒杀接口进行加密等</p>
-<p>4 流量削峰<br>如果你们公司的秒杀活动的QPS已经超过单机redis承受的极限，那么要考虑做流量削峰。最简单的机制是增加用户参与的流程：比如下单前输入验证码等（验证码的形式是很多样的）</p>
-<p>5 限流和降级<br>讨论限流和降级时，说明秒杀活动的QPS已经非常高了，需要通过限流和降级优先保证服务稳定性。最好的方法是在网关层做限流，如果没有条件可以做本地限流，触发限流后返回一个友好的“抢光了”页面</p>
-<h4 id="业务流程"><a href="#业务流程" class="headerlink" title="业务流程"></a>业务流程</h4><p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/miaosha.png"></p>
-<h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><blockquote>
-<p>其实秒杀服务很适合用MQ进行削峰处理，主要是按业务场景来做技术选型</p>
-</blockquote>
-<p>1 使用数据库事务保证redis可回滚</p>
-<p>2 定时任务增量，或者DTS实时消费数据</p>
-<p>3 秒杀无超卖</p>
 
       
     </div>

@@ -218,7 +218,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">115</span>
+          <span class="site-state-item-count">116</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -290,6 +290,89 @@
       
 
       
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/06/28/hash-detection/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/28/hash-detection/" class="post-title-link" itemprop="url">探测 - 单数组解决hash冲突问题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-06-28 22:14:49" itemprop="dateCreated datePublished" datetime="2021-06-28T22:14:49+08:00">2021-06-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><strong>解决Hash冲突</strong></p>
+<p>Java中常见的HashMap使用 <strong><em>数组+链表/红黑树</em></strong> 的方式解决Hash冲突问题。</p>
+<p><strong>为什么依赖数组？</strong></p>
+<p><strong><em>无序数组</em></strong><br>操作                           时间复杂度<br>查询                           O(1)<br>插入(空间充足)                    O(1)<br>插入(空间不足)                    O(n)+O(1)=O(n)<br>删除(末尾元素)                    O(1)<br>删除(非末尾元素且元素个数&gt;1)     O(1)+O(n)=O(n)</p>
+<p>可见数组在查询、插入和删除时表现出的性能都非常优秀。存储数据时只需要将要存储的值的Hash值根据数组长度算出下标插入即可。</p>
+<p>但是数组的长度不可能无限扩容，在有限的数组中存储数据必定要解决Hash冲突的问题。所以才引入了 <strong><em>数组+链表/红黑树</em></strong> 的数据结构。</p>
+<p><strong>单数组解决Hash冲突</strong></p>
+<p><strong><em>探测</em></strong><br>1 相邻空位 - 线性探测<br>2 间隔1、4、9、16的空位 - 平方探测</p>
+<blockquote>
+<p>Java应用案例： ThreadLocal<br><a href="https://yloopdaed.icu/2020/12/10/threadlocal">尝试阅读ThreadLocal源码-基础部分</a><br><a href="https://yloopdaed.icu/2020/12/13/threadlocal2">尝试阅读ThreadLocal源码-Hash冲突、启动/探测式清理、扩容</a></p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
     
 
 
@@ -1114,84 +1197,6 @@
 <p>写一套数据校验的接口，将生产环境的数据依次读取并完成序列化操作。<br>如果是数据库，以数据表为单位。如果是redis，那么以key为单位。注意是只读</p>
 <h3 id="交叉测试流程"><a href="#交叉测试流程" class="headerlink" title="交叉测试流程"></a>交叉测试流程</h3><p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/C87CF8C6-863A-41DA-9CB2-0D00799C1989.png"></p>
 <p>重构项目在生产环境写入数据前需要做必要的数据备份，以防比对不通过时进行数据回滚</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/05/21/list-to-map/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="yloopdaed">
-      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yloopdaed">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/21/list-to-map/" class="post-title-link" itemprop="url">list to map</a>
-        </h2>
-
-        <div class="post-meta-container">
-          
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-05-21 00:55:58" itemprop="dateCreated datePublished" datetime="2021-05-21T00:55:58+08:00">2021-05-21</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>根据一定的规则将 list 转成 map</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Accessors(chain = true)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Java8之前</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;Integer, Animal&gt; <span class="title">convertListBeforeJava8</span><span class="params">(List&lt;Animal&gt; list)</span> </span>&#123;</span><br><span class="line">    Map&lt;Integer, Animal&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (Animal animal : list) &#123;</span><br><span class="line">        map.put(animal.getId(), animal);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> map;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Java8之后</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;Integer, Animal&gt; <span class="title">convertListAfterJava8</span><span class="params">(List&lt;Animal&gt; list)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> list.stream().collect(Collectors.toMap(Animal::getId, animal -&gt; animal));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Java8之后 处理key冲突 - IllegalStateException</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;Integer, Animal&gt; <span class="title">convertListAfterJava8_conflict</span><span class="params">(List&lt;Animal&gt; list)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> list.stream().collect(Collectors.toMap(Animal::getId, animal -&gt; animal, (ov, nv) -&gt; nv));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Guava Maps</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;Integer, Animal&gt; <span class="title">convertListWithGuava</span><span class="params">(List&lt;Animal&gt; list)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Maps.uniqueIndex(list, Animal::getId);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// MapUtils</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;Integer, Animal&gt; <span class="title">convertListWithApacheCommons2</span><span class="params">(List&lt;Animal&gt; list)</span> </span>&#123;</span><br><span class="line">    Map&lt;Integer, Animal&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    MapUtils.populateMap(map, list, Animal::getId);</span><br><span class="line">    <span class="keyword">return</span> map;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// MapUtils 处理key冲突 - IllegalStateException</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;Integer, Animal&gt; <span class="title">convertListWithApacheCommons2_conflict</span><span class="params">(List&lt;Animal&gt; list)</span> </span>&#123;</span><br><span class="line">    Map&lt;Integer, Animal&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    MapUtils.populateMap(map, list, Animal::getId, animal -&gt; animal);</span><br><span class="line">    <span class="keyword">return</span> map;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>代码示例：<a target="_blank" rel="noopener" href="https://github.com/YorickYu/JPP/blob/main/src/main/java/com/yy/collection/ListToMap.java">ArrayMerge.java</a></p>
 
       
     </div>
