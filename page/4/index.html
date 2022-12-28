@@ -218,7 +218,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">116</span>
+          <span class="site-state-item-count">117</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -290,6 +290,81 @@
       
 
       
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/09/06/dns-poll/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="yloopdaed">
+      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yloopdaed">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/06/dns-poll/" class="post-title-link" itemprop="url">DNS 轮询</a>
+        </h2>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-06 22:55:10" itemprop="dateCreated datePublished" datetime="2021-09-06T22:55:10+08:00">2021-09-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><img src="https://yloopdaed-oss.oss-cn-beijing.aliyuncs.com/dns-route.png"></p>
+<p>优点：<br>1 dns服务可靠<br>2 顶层分流</p>
+<p>缺点：<br>1 不保证节点可用，宕机机器依然参与轮询<br>2 ip列表变更延迟，TTL一般是10分钟<br>3 需要配置多组域名记录，占用ip资源</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
     
 
 
@@ -1052,85 +1127,6 @@
 <p>将迁移服务独立拆分，避免以后重复造轮子。（迁移方案可以使用策略模式，兼容不同的情况）</p>
 <p>4 使用游标</p>
 <p>使用游标的方式从旧库分批select数据，经过rehash后批量插入（batch insert）到新库，此处需要配置jdbc连接串参数rewriteBatchedStatements=true才能使批处理操作生效。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yloopdaed.icu/2021/06/28/pageable-cache/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="yloopdaed">
-      <meta itemprop="description" content="可能是个非典型程序员吧 ^ ^">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yloopdaed">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/28/pageable-cache/" class="post-title-link" itemprop="url">常见可分页缓存方案</a>
-        </h2>
-
-        <div class="post-meta-container">
-          
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-06-28 22:31:13" itemprop="dateCreated datePublished" datetime="2021-06-28T22:31:13+08:00">2021-06-28</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-06-20 00:42:53" itemprop="dateModified" datetime="2022-06-20T00:42:53+08:00">2022-06-20</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>一、缓存key中使用page，size做标记，直接按分页结果缓存<br>适用场景：<br>1 列表长度无法提前预知<br>2 数据排列顺序不经常变更</p>
-<p><strong>定时任务，不断更新前几页的缓存（热）数据。可以搭配JetCache + Redis + SQL直接实现多级缓存</strong></p>
-<p>二、缓存整个列表的id（和关键信息），然后根据id游标，聚合<br>适用场景：<br>1 列表长度有限，且分页情况多变<br>2 对象数据或排序权重频繁更新</p>
-<p><strong>定时任务，更新缓存池</strong></p>
-<blockquote>
-<p>不同的缓存方案需要在性能和数据一致性之间寻找一个平衡点</p>
-</blockquote>
 
       
     </div>
