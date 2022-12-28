@@ -406,7 +406,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-12-28 15:33:12 / 修改时间：15:35:14" itemprop="dateCreated datePublished" datetime="2022-12-28T15:33:12+08:00">2022-12-28</time>
+      <time title="创建时间：2022-12-28 15:33:12 / 修改时间：15:36:49" itemprop="dateCreated datePublished" datetime="2022-12-28T15:33:12+08:00">2022-12-28</time>
     </span>
 
   
@@ -419,16 +419,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>数字类型</p>
-<hr>
-<p>1 自增整型类型做主键，务必使用类型 BIGINT，而非 INT（单表情况下）</p>
+          <h2 id="数字类型"><a href="#数字类型" class="headerlink" title="数字类型"></a>数字类型</h2><p>1 自增整型类型做主键，务必使用类型 BIGINT，而非 INT（单表情况下）</p>
 <p>2 MySQL 8.0 版本前，自增整型会有回溯问题：数据库发生重启时自增值可能回溯</p>
 <p>3 当达到自增整型类型的上限值时，再次自增插入，MySQL 数据库会报重复错误</p>
 <p>4 不要再使用浮点类型 Float、Double，MySQL 后续版本将不再支持上述两种类型</p>
 <p>5 账户余额字段，设计是用整型类型，而不是 DECIMAL 类型，这样性能更好，存储更紧凑</p>
-<p>字符类型</p>
-<hr>
-<p>1 CHAR 和 VARCHAR 虽然分别用于存储定长和变长字符，但对于变长字符集（如 GBK、UTF8MB4），其本质是一样的，都是变长，<strong>设计时完全可以用 VARCHAR 替代 CHAR；</strong></p>
+<h2 id="字符类型"><a href="#字符类型" class="headerlink" title="字符类型"></a>字符类型</h2><p>1 CHAR 和 VARCHAR 虽然分别用于存储定长和变长字符，但对于变长字符集（如 GBK、UTF8MB4），其本质是一样的，都是变长，<strong>设计时完全可以用 VARCHAR 替代 CHAR；</strong></p>
 <p>2 推荐 MySQL 字符集默认设置为 UTF8MB4，可以用于存储 emoji 等扩展字符</p>
 <p>3 排序规则很重要，用于字符的比较和排序，但大部分场景不需要用区分大小写的排序规则</p>
 <blockquote>
