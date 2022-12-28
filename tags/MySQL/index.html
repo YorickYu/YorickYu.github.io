@@ -25,7 +25,7 @@
   <meta name="description" content="可能是个非典型程序员吧 ^ ^">
 <meta property="og:type" content="website">
 <meta property="og:title" content="yloopdaed">
-<meta property="og:url" content="http://yloopdaed.icu/tags/MySQL/index.html">
+<meta property="og:url" content="http://yloopdaed.icu/tags/MySql/index.html">
 <meta property="og:site_name" content="yloopdaed">
 <meta property="og:description" content="可能是个非典型程序员吧 ^ ^">
 <meta property="og:locale" content="zh_CN">
@@ -34,7 +34,7 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://yloopdaed.icu/tags/MySQL/">
+<link rel="canonical" href="http://yloopdaed.icu/tags/MySql/">
 
 
 <script class="page-configurations">
@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>标签: MySQL | yloopdaed</title>
+  <title>标签: MySql | yloopdaed</title>
   
 
 
@@ -229,7 +229,7 @@
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">134</span>
+        <span class="site-state-item-count">135</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -297,7 +297,7 @@
   <div class="post-block">
     <div class="post-content">
       <div class="collection-title">
-        <h2 class="collection-header">MySQL
+        <h2 class="collection-header">MySql
           <small>标签</small>
         </h2>
       </div>
@@ -311,84 +311,122 @@
     <header class="post-header">
       <div class="post-meta-container">
         <time itemprop="dateCreated"
-              datetime="2022-02-06T23:37:49+08:00"
-              content="2022-02-06">
-          02-06
+              datetime="2022-12-28T15:33:12+08:00"
+              content="2022-12-28">
+          12-28
         </time>
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2022/02/06/mysql-xmind/" itemprop="url">
-            <span itemprop="name">MySQL 底层</span>
+          <a class="post-title-link" href="/2022/12/28/mysql789/" itemprop="url">
+            <span itemprop="name">mysql 要点摘要</span>
           </a>
       </div>
 
       
     </header>
   </article>
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+
     </div>
+  </div>
+  
+  
+  
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-12-04T15:49:59+08:00"
-              content="2021-12-04">
-          12-04
-        </time>
-      </div>
+  
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/12/04/vertical-table-sep/" itemprop="url">
-            <span itemprop="name">垂直分表</span>
-          </a>
-      </div>
+
 
       
-    </header>
-  </article>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-04-11T00:09:15+08:00"
-              content="2021-04-11">
-          04-11
-        </time>
-      </div>
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/04/11/high-performance-mysql/" itemprop="url">
-            <span itemprop="name">《高性能MySQL》 归纳整理</span>
-          </a>
-      </div>
+    </div>
+  </main>
 
+  <footer class="footer">
+    <div class="footer-inner">
       
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-03-29T09:24:16+08:00"
-              content="2021-03-29">
-          03-29
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/29/mysql-innodb-hash/" itemprop="url">
-            <span itemprop="name">MySQL Innodb 自定义Hash索引</span>
-          </a>
-      </div>
-
+ 
       
-    </header>
-  </article>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <a href="https://beian.miit.gov.cn/" target="_blank">沪ICP备2020029595</a>
+  <span class="author" itemprop="copyrightHolder">yloopdaed</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
+le>
 
     </div>
   </div>

@@ -19,9 +19,109 @@
 ]]></content>
   </entry>
   <entry>
-    <title>mysql789</title>
+    <title>mysql 要点摘要</title>
     <url>/2022/12/28/mysql789/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p>数字类型</p>
+<hr>
+<p>1 自增整型类型做主键，务必使用类型 BIGINT，而非 INT（单表情况下）</p>
+<p>2 MySQL 8.0 版本前，自增整型会有回溯问题：数据库发生重启时自增值可能回溯</p>
+<p>3 当达到自增整型类型的上限值时，再次自增插入，MySQL 数据库会报重复错误</p>
+<p>4 不要再使用浮点类型 Float、Double，MySQL 后续版本将不再支持上述两种类型</p>
+<p>5 账户余额字段，设计是用整型类型，而不是 DECIMAL 类型，这样性能更好，存储更紧凑</p>
+<p>字符类型</p>
+<hr>
+<p>1 CHAR 和 VARCHAR 虽然分别用于存储定长和变长字符，但对于变长字符集（如 GBK、UTF8MB4），其本质是一样的，都是变长，<strong>设计时完全可以用 VARCHAR 替代 CHAR；</strong></p>
+<p>2 推荐 MySQL 字符集默认设置为 UTF8MB4，可以用于存储 emoji 等扩展字符</p>
+<p>3 排序规则很重要，用于字符的比较和排序，但大部分场景不需要用区分大小写的排序规则</p>
+<blockquote>
+<p>utf8mb4_0900_as_ci </p>
+<p>utf8mb4_0900_as_cs</p>
+<p>utf8mb4_0900_bin</p>
+<p>排序规则以 _ci 结尾，表示不区分大小写（Case Insentive），_cs 表示大小写敏感，_bin 表示通过存储字符的二进制进行比较。</p>
+</blockquote>
+<p>4 修改表中已有列的字符集，使用命令 ALTER TABLE … CONVERT TO ….</p>
+<p>5 业务隐私信息，如密码、手机、信用卡等信息，需要加密。切记简单的MD5算法是可以进行暴力破解，并不安全，推荐使用动态盐+动态加密算法进行隐私数据的存储</p>
+<p>日期类型</p>
+<hr>
+<p>1 推荐日期类型使用 DATETIME，而不是 TIMESTAMP 和 INT 类型</p>
+<blockquote>
+<p>MySQL 5.6 版本开始 DATETIME 和 TIMESTAMP 精度支持到毫秒</p>
+<p>DATETIME 占用 8 个字节，TIMESTAMP 占用 4 个字节，DATETIME(6) 依然占用 8 个字节，TIMESTAMP(6) 占用 7 个字节</p>
+<p>TIMESTAMP 日期存储的上限为 2038-01-19 03:14:07，业务用 TIMESTAMP 存在风险</p>
+<p>使用 TIMESTAMP 必须显式地设置时区，不要使用默认系统时区，否则存在性能问题，推荐在配置文件中设置参数 time_zone = ‘+08:00’</p>
+</blockquote>
+<p>2 表结构设计时，每个核心业务表，推荐设计一个 last_modify_date 的字段，用以记录每条记录的最后修改时间</p>
+<blockquote>
+<p>last_modify_date <strong>datetime</strong>(6) <strong>NOT</strong> <strong>NULL</strong> <strong>DEFAULT</strong> <strong>CURRENT_TIMESTAMP</strong>(6) <strong>ON</strong> <strong>UPDATE</strong> <strong>CURRENT_TIMESTAMP</strong>(6)</p>
+</blockquote>
+<p>范式准则</p>
+<hr>
+<p>一范式要求所有属性都是不可分的基本数据项</p>
+<p>二范式解决部分依赖</p>
+<p>三范式解决传递依赖</p>
+<p>MySql压缩表</p>
+<hr>
+<p>1 COMPRESS 页压缩</p>
+<p>ROW_FORMAT=COMPRESS</p>
+<p>KEY_BLOCK_SIZE=8</p>
+<p>表示将一个 16K 的页压缩为 8K。总的来说，COMPRESS 页压缩，适合用于一些对性能不敏感的业务表，例如日志表、监控表、告警表等，压缩比例通常能达到 50% 左右。但是内存开销很大，因为一个压缩页在内存缓冲池中，存在压缩和解压两个页。</p>
+<p>2 TPC压缩（5.7 版本+）</p>
+<p>其利用文件系统的空洞（Punch Hole）特性进行压缩</p>
+<p>一些较为核心的流水业务表上，推荐使用 TPC压缩。由于流水表通常是按月或天进行存储，对当前正在使用的流水表不要启用 TPC 功能，对已经成为历史的流水表启用 TPC 压缩功能</p>
+<blockquote>
+<ul>
+<li><p>只对后续数据开启压缩（瞬间完成）：ALTER TABLE xxx COMPRESSION = ZLIB</p>
+</li>
+<li><p>对整个表进行压缩：<strong>ALTER</strong> <strong>TABLE</strong> Transaction202102 COMPRESSION=ZLIB; OPTIMIZE <strong>TABLE</strong> Transaction202102;</p>
+</li>
+</ul>
+</blockquote>
+<p>MySql索引管理</p>
+<hr>
+<p>1 可以通过查询表 mysql.innodb_index_stats 查看每个索引的大致情况</p>
+<blockquote>
+<p><strong>SELECT</strong>  table_name,index_name,stat_name, stat_value,stat_description  <strong>FROM</strong> innodb_index_stats  <strong>WHERE</strong> table_name = ‘orders’ <strong>and</strong> index_name = ‘PRIMARY’;</p>
+</blockquote>
+<p>2 可以通过查询表sys.schema_unused_indexes，查看有哪些索引一直未被使用过</p>
+<blockquote>
+<p><strong>SELECT</strong> * <strong>FROM</strong> schema_unused_indexes <strong>WHERE</strong> object_schema != ‘performance_schema’;</p>
+</blockquote>
+<p>MySql执行过程</p>
+<hr>
+<p>1 MySQL 数据库由 Server 层和 Engine 层</p>
+<blockquote>
+<p>Server 层有 SQL 分析器、SQL优化器、SQL 执行器，用于负责 SQL 语句的具体执行过程</p>
+<p>Engine 层负责存储具体的数据，如最常使用的 InnoDB 存储引擎，还有用于在内存中存储临时结果集的 TempTable 引擎</p>
+</blockquote>
+<p>2 SQL 优化器会分析所有可能的执行计划，选择成本最低的执行，这种优化器称之为：CBO（Cost-based Optimizer，基于成本的优化器）</p>
+<blockquote>
+<p>Cost  = Server Cost + Engine Cost      </p>
+<p>​          = CPU Cost + IO Cost</p>
+</blockquote>
+<p>3 EXPLAIN FORMAT=tree 可以查看一条SQL可能执行的不同索引的执行成本（MySql 8.0.21）</p>
+<p>到底能不能写JOIN？</p>
+<hr>
+<p>可以写！</p>
+<p>如果  JOIN 带有 WHERE 过滤条件，并且是根据主键、索引进行过滤，那么驱动表只有一条或少量记录，这时进行 JOIN 的开销是非常小的，其实你拆分语句的过程，就是优化器的执行结果，而且优化器更可靠，速度更快，而拆成多条 SQL 的方式，本身网络交互的时间开销就大了 n 倍</p>
+<blockquote>
+<p>使用 JOIN，要确保 SQL 的执行计划使用了正确的索引以及索引覆盖，<strong>因此索引设计显得尤为重要，这也是DBA在架构设计方面的重要工作之一。</strong></p>
+</blockquote>
+<p>到底能不能写子查询？</p>
+<hr>
+<p>1 MySQL8.0之后可以“毫无顾忌”地写子查询，对于子查询的优化已经相当完备</p>
+<p>2 对于老版本的 MySQL，<strong>请 Review 所有子查询的SQL执行计划，</strong> 对于出现 <strong>DEPENDENT SUBQUERY</strong> 的提示，请务必即使进行优化，否则对业务将造成重大的性能影响</p>
+<p>数据库高可用架构设计</p>
+<hr>
+<p>系统高可用设计，真正的难点、痛点不在于无状态服务的设计，而在于数据库的高可用设计，这是因为：</p>
+<ul>
+<li>数据持久化在数据库中，是有状态的服务</li>
+<li>数据库的容量比较大，Failover 的时间相对无状态服务会更多</li>
+<li>一些系统，如金融场景的数据库，会要求数据完全不能丢失，这又增加了高可用实现的难度</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>MySql</tag>
+      </tags>
   </entry>
   <entry>
     <title>后端感悟</title>
